@@ -1,0 +1,24 @@
+{
+  "meta": {
+    "title": "Contact | Angela Ceremonies",
+    "description": "Neem contact op met Angela Ceremonies voor een vrijblijvend kennismakingsgesprek. Trouwambtenaar en ceremoniespreker in Rotterdam, werkzaam door heel Nederland."
+  },
+  "hero": {
+    "kicker": "Contact",
+    "titel": "Laten we",
+    "titelAccent": "kennismaken",
+    "subtitel": "Vragen, kennismaken of samen ontdekken wat bij jullie past? Ik hoor graag van jullie."
+  },
+  "info": {
+    "kicker": "Bereikbaar",
+    "titel": "Neem contact op",
+    "tekst": "Hebben jullie vragen, willen jullie kennismaken of samen ontdekken wat bij jullie past? Ik hoor graag van jullie en denk met jullie mee."
+  },
+  "formulier": {
+    "titel": "Stuur een bericht",
+    "intro": "Vertel kort iets over jullie trouwdag, wensen of vragen. Ik reageer zo snel mogelijk.",
+    "knopLabel": "Verstuur bericht",
+    "succesTitel": "Bedankt voor je bericht!",
+    "succesTekst": "Ik neem zo snel mogelijk contact met jullie op. Tot snel!"
+  }
+}

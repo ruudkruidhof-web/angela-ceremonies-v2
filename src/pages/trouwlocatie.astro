@@ -1,0 +1,94 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import t from '../content/teksten/trouwlocatie.json';
+import heroImg from '../assets/curacao-strand.jpg';
+import relaxImg from '../assets/curacao-relax.jpg';
+---
+
+<Base title={t.meta.title} description={t.meta.description} canonical="/trouwlocatie" darkHero>
+  <PageHero
+    kicker={t.hero.kicker}
+    title={t.hero.titel}
+    titleAccent={t.hero.titelAccent}
+    subtitle={t.hero.subtitel}
+    image={heroImg}
+    imageAlt={t.hero.afbeeldingAlt}
+    objectPosition="50% 48%"
+    tint="cool"
+  />
+
+  <section class="section bg-cream">
+    <div class="wrap split">
+      <div class="split-text">
+        <p class="kicker reveal">{t.intro.kicker}</p>
+        <h2 class="section-title reveal" style="--reveal-delay:80ms">{t.intro.titel}</h2>
+        <span class="rule reveal-rule" style="--reveal-delay:150ms"></span>
+        <div class="prose">
+          {t.intro.alineas.map((p, i) => <p class="reveal" style={`--reveal-delay:${180 + i * 90}ms`}>{p}</p>)}
+        </div>
+      </div>
+      <div class="loc-media reveal" style="--reveal-delay:120ms">
+        <div class="loc-frame">
+          <Image src={relaxImg} alt="Strand met ligbedden op Curaçao" widths={[480, 720, 960]} sizes="(max-width: 880px) 90vw, 440px" quality={74} format="webp" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-champagne">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="kicker">{t.features.kicker}</p>
+        <h2 class="section-title">{t.features.titel}</h2>
+      </div>
+      <div class="cards-3">
+        {t.features.items.map((item, i) => (
+          <article class="value-card reveal" style={`--reveal-delay:${i * 120}ms`}>
+            <span class="value-orn" aria-hidden="true">✦</span>
+            <h3>{item.titel}</h3>
+            <p>{item.tekst}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section loc-cta">
+    <div class="wrap wrap-narrow loc-cta-inner reveal">
+      <p class="kicker kicker-light">{t.cta.kicker}</p>
+      <h2 class="loc-cta-title">{t.cta.titel}</h2>
+      <p class="loc-cta-text">{t.cta.tekst}</p>
+      <div class="loc-cta-actions">
+        <a href={t.cta.knopHref} target="_blank" rel="noopener" class="btn btn-gold">{t.cta.knopLabel} <span class="arrow">→</span></a>
+        <a href="/contact" class="btn btn-ghost">Neem contact op</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .split-text .rule { margin: 1.5rem 0 1.8rem; }
+  .split-text .kicker { margin-bottom: 1rem; }
+  .loc-media { position: relative; }
+  .loc-frame { overflow: hidden; border-radius: 3px; box-shadow: var(--shadow-lift); aspect-ratio: 4 / 5; }
+  .loc-frame :global(img) { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+
+  .loc-cta {
+    position: relative;
+    background: radial-gradient(135% 115% at 50% -10%, hsl(200 45% 28%), hsl(202 50% 16%) 70%);
+    color: var(--cream);
+    text-align: center;
+    padding-block: clamp(4.5rem, 9vw, 7rem);
+  }
+  .loc-cta-inner { text-align: center; }
+  .kicker-light { color: hsl(190 50% 75%); margin-bottom: 1rem; }
+  .loc-cta-title { color: var(--cream); font-size: clamp(2rem, 1.4rem + 2.8vw, 3.2rem); margin-bottom: 1.2rem; }
+  .loc-cta-text { color: hsl(200 25% 86% / 0.9); font-size: 1.075rem; margin-bottom: 2.2rem; }
+  .loc-cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+  @media (max-width: 880px) {
+    .loc-media { max-width: 440px; margin: 0 auto; }
+  }
+</style>

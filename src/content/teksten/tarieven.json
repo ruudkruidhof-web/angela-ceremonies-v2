@@ -1,0 +1,65 @@
+{
+  "meta": {
+    "title": "Tarieven trouwambtenaar | Angela Ceremonies",
+    "description": "Transparante tarieven voor een persoonlijke trouwceremonie door Angela Ceremonies. Een complete huwelijksceremonie vanaf € 795, met ruimte voor jullie wensen."
+  },
+  "hero": {
+    "kicker": "Tarieven",
+    "titel": "Transparant en",
+    "titelAccent": "persoonlijk",
+    "subtitel": "Heldere tarieven, met alle ruimte voor jullie persoonlijke wensen."
+  },
+  "pakketten": {
+    "kicker": "Pakketten",
+    "titel": "Wat ik aanbied",
+    "items": [
+      {
+        "label": "Complete ceremonie",
+        "naam": "Complete huwelijksceremonie",
+        "prijs": "€ 795",
+        "omschrijving": "Een persoonlijke ceremonie, volledig afgestemd op jullie verhaal.",
+        "uitgelicht": true,
+        "inbegrepen": [
+          "Persoonlijke hulplijn",
+          "Hulp bij het schrijven van geloften",
+          "Verzamelen van mooie verhalen bij familie en vrienden",
+          "Zorgdragen van huwelijksakte en benodigde documenten",
+          "Op maat gemaakte speech",
+          "Een ontspannen en persoonlijke ceremonie met humor"
+        ],
+        "knopLabel": "Kennismaken? Neem contact op",
+        "knopHref": "/contact"
+      },
+      {
+        "label": "Extra ondersteuning",
+        "naam": "Ceremoniespreker",
+        "prijs": "Op aanvraag",
+        "omschrijving": "Voor wie extra ondersteuning wenst op de dag zelf.",
+        "uitgelicht": false,
+        "inbegrepen": [
+          "Op verzoek jullie ceremoniemeester op de dag",
+          "In combinatie met mijn rol als trouwambtenaar",
+          "Ontvangst van gasten en bewaken van de planning",
+          "Eerste aanspreekpunt op locatie voor gasten en leveranciers",
+          "Speeches plannen naar jullie wensen",
+          "Tips, advies en hulp met het draaiboek",
+          "Overige wensen in overleg"
+        ],
+        "knopLabel": "Neem contact op",
+        "knopHref": "/contact"
+      }
+    ]
+  },
+  "citaat": {
+    "tekst": "Jullie dag verdient het allerbeste. Laten we samen iets bijzonders maken.",
+    "naam": "Angela Bhagole-Mangre"
+  },
+  "cta": {
+    "kicker": "Vragen?",
+    "titel": "Vragen over de tarieven?",
+    "tekst": "Neem gerust contact op. Ik denk graag met jullie mee over wat het beste bij jullie past.",
+    "knopLabel": "Neem contact op",
+    "knopHref": "/contact",
+    "noot": "Algemene voorwaarden zijn op aanvraag beschikbaar."
+  }
+}

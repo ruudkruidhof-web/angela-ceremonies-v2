@@ -1,0 +1,47 @@
+{
+  "meta": {
+    "title": "Over Angela Bhagole-Mangre | BABS Rotterdam | Angela Ceremonies",
+    "description": "Trouwambtenaar (BABS) en ceremoniespreker uit Rotterdam. Sinds 2018 actief, 490+ huwelijken voltrokken in heel Nederland. Liefdevol, persoonlijk en verbindend."
+  },
+  "hero": {
+    "kicker": "Over mij",
+    "titel": "Liefdevol. Persoonlijk.",
+    "titelAccent": "Verbindend.",
+    "subtitel": "De vrouw achter Angela Ceremonies."
+  },
+  "bio": {
+    "kicker": "Wie ik ben",
+    "naam": "Angela Bhagole-Mangre",
+    "rol": "BABS & ceremoniespreker",
+    "alineas": [
+      "Mijn naam is Angela Bhagole-Mangre. Ik ben gelukkig getrouwd en trotse moeder van twee zonen.",
+      "Al vele jaren ben ik met toewijding werkzaam als buitengewoon ambtenaar van de burgerlijke stand. Met mijn Hindoestaanse roots en Rotterdam als thuisbasis beweeg ik mij in een omgeving vol diversiteit, cultuur en tradities. Deze rijkdom neem ik vanzelfsprekend mee in mijn werk, waarbij respect en verbinding centraal staan.",
+      "Mijn werk is meer dan een functie; het is mijn passie. Elk bruidspaar en elk verhaal is uniek. Het is telkens weer bijzonder om aanwezig te mogen zijn bij het moment waarop twee mensen bewust en vol vertrouwen voor elkaar kiezen."
+    ],
+    "citaat": "Liefde kent geen grenzen en verdient een ceremonie die daarbij past.",
+    "afbeeldingAlt": "Angela Bhagole-Mangre, trouwambtenaar en ceremoniespreker, in toga",
+    "profielLabel": "Bekijk mijn profiel op AlleTrouwambtenaren.nl",
+    "profielHref": "https://alletrouwambtenaren.nl/babs/hindoestaanse-trouwambtenaar-angela/"
+  },
+  "waarden": {
+    "kicker": "Waar ik voor sta",
+    "titel": "Mijn waarden",
+    "items": [
+      { "titel": "Liefdevol", "tekst": "Ik benader elk stel met oprechte warmte en zorg. Jullie ceremonie is meer dan een taak; het is een voorrecht." },
+      { "titel": "Persoonlijk", "tekst": "Geen standaardverhalen. Ik neem de tijd om jullie echt te leren kennen en jullie unieke verhaal te vertellen." },
+      { "titel": "Verbindend", "tekst": "Met respect voor diversiteit en cultuur zorg ik voor een ceremonie die mensen samenbrengt." }
+    ]
+  },
+  "cijfers": [
+    { "getal": "490+", "label": "Huwelijken voltrokken" },
+    { "getal": "Sinds 2018", "label": "Actief als BABS" },
+    { "getal": "Heel NL", "label": "Werkzaam door heel Nederland" }
+  ],
+  "cta": {
+    "kicker": "Laten we kennismaken",
+    "titel": "Benieuwd of het klikt?",
+    "tekst": "Ik vertel graag meer over mezelf en hoe ik jullie ceremonie kan begeleiden.",
+    "knopLabel": "Neem contact op",
+    "knopHref": "/contact"
+  }
+}

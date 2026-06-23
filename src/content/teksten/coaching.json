@@ -1,0 +1,64 @@
+{
+  "meta": {
+    "title": "Coaching voor BABS'en & ceremoniesprekers | Angela Ceremonies",
+    "description": "Coaching en begeleiding voor startende en ervaren BABS'en, gast-BABS'en en ceremoniesprekers. Groei in je rol met vertrouwen, rust en plezier."
+  },
+  "hero": {
+    "kicker": "Coaching voor (startende) BABS'en",
+    "titel": "Met vertrouwen voor het",
+    "titelAccent": "bruidspaar staan",
+    "subtitel": "Met plezier, rust en je eigen stijl naar een ceremonie die raakt."
+  },
+  "intro": {
+    "kicker": "Voor wie",
+    "titel": "Klaar voor jouw eerste of volgende ceremonie",
+    "tekst": "Droom je ervan om BABS te worden? Of sta je binnenkort voor het eerst, of juist vaker, voor een bruidspaar en wil je meer rust, zelfvertrouwen en verdieping in je ceremonie? Of je nu net begint of al ervaring hebt: ik help je graag om jouw rol met plezier en overtuiging neer te zetten.",
+    "lijst": [
+      "(Startende) buitengewoon ambtenaren van de burgerlijke stand",
+      "Gast-BABS'en of BABS voor één dag",
+      "Ceremoniesprekers",
+      "Trouwambtenaren die meer vertrouwen, rust en eigenheid zoeken"
+    ],
+    "noot": "Sta je binnenkort voor een bruidspaar en wil je goed voorbereid, ontspannen en met een verhaal dat raakt spreken? Dan is deze coaching voor jou."
+  },
+  "achtergrond": {
+    "kicker": "Waarom coaching van mij",
+    "titel": "Uit de praktijk, niet uit een boekje",
+    "alineas": [
+      "Sinds 2018 ben ik met trots buitengewoon ambtenaar van de burgerlijke stand. Ik begon bij de gemeente Rotterdam, waar ik met veel plezier huwelijken voltrok en alle ruimte kreeg om te oefenen, te groeien en mijn eigen stijl te ontwikkelen.",
+      "Binnen de gemeente begeleid ik regelmatig gast-BABS'en die nog weinig of geen ervaring hebben. Juist daar zie ik hoeveel verschil het maakt om iemand naast je te hebben die met je meekijkt, meedenkt en je geruststelt. Vanuit die ervaring is mijn coaching ontstaan."
+    ],
+    "statGetal": "490+",
+    "statLabel": "Huwelijken voltrokken"
+  },
+  "inhoud": {
+    "kicker": "De inhoud",
+    "titel": "Wat komt er aan bod?",
+    "lijst": [
+      "Hoe word je BABS of BABS voor één dag?",
+      "Welke vragen stel je het bruidspaar, en op welk moment?",
+      "Hoe ziet een ceremonie eruit en hoe lang duurt die?",
+      "Hoe schrijf je een persoonlijke, pakkende en oprechte speech?",
+      "Wat moet je regelen met de gemeente?",
+      "Hoe zorg je voor een ontspannen, warme en onvergetelijke ceremonie?"
+    ],
+    "citaat": "Uiteindelijk draait alles om één ding: een verhaal vertellen dat raakt. Voor het bruidspaar én hun gasten."
+  },
+  "praktisch": {
+    "kicker": "Praktisch",
+    "titel": "Hoe gaat het in zijn werk?",
+    "items": [
+      { "label": "Locatie", "waarde": "Bij mij thuis of een andere gezellige locatie" },
+      { "label": "Duur", "waarde": "Vanaf 2,5 uur (langer mag altijd)" },
+      { "label": "Investering", "waarde": "€250 per sessie" }
+    ],
+    "tekst": "We starten altijd met een vrijblijvende kennismaking, want een goede klik is essentieel. Ik denk met je mee, bereid je goed voor en ben jouw persoonlijke vraagbaak."
+  },
+  "cta": {
+    "kicker": "Zin om te sparren?",
+    "titel": "Plan een kennismakingsgesprek",
+    "tekst": "Een goede klik is het belangrijkste. Stuur me een bericht en we plannen vrijblijvend een gesprek.",
+    "knopLabel": "Plan een kennismaking",
+    "knopHref": "mailto:angela.bhagole@gmail.com?subject=Kennismaking%20coaching%20BABS"
+  }
+}

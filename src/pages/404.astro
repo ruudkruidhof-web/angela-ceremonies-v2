@@ -1,0 +1,36 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Pagina niet gevonden | Angela Ceremonies" description="Deze pagina bestaat niet of is verplaatst.">
+  <section class="nf">
+    <div class="wrap wrap-narrow nf-inner">
+      <p class="kicker">Foutje</p>
+      <h1 class="nf-title">Deze pagina bestaat niet</h1>
+      <div class="ornament nf-orn"><span>✦</span></div>
+      <p class="nf-text">Misschien is de pagina verplaatst of heeft het adres een typefout. Laten we je weer op weg helpen.</p>
+      <div class="nf-actions">
+        <a href="/" class="btn btn-gold">Naar de homepage <span class="arrow">→</span></a>
+        <a href="/contact" class="btn btn-outline">Neem contact op</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .nf {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding-top: 120px;
+    padding-bottom: clamp(3rem, 6vw, 5rem);
+    background: radial-gradient(120% 80% at 50% 0%, var(--cream-deep), var(--cream) 65%);
+  }
+  .nf-inner { text-align: center; }
+  .nf .kicker { margin-bottom: 1rem; }
+  .nf-title { font-size: clamp(2.2rem, 1.6rem + 3vw, 3.6rem); }
+  .nf-orn { max-width: 90px; margin: 1.8rem auto; }
+  .nf-text { color: var(--muted); font-size: 1.075rem; margin-bottom: 2.2rem; }
+  .nf-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+</style>

@@ -1,0 +1,180 @@
+---
+import '../styles/global.css';
+import { ClientRouter } from 'astro:transitions';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import site from '../content/site.json';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  ogImage?: string;
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+  darkHero?: boolean;
+}
+
+const { title, description, canonical = Astro.url.pathname, ogImage = '/og/home.jpg', jsonLd, darkHero = false } = Astro.props;
+const canonicalURL = new URL(canonical, Astro.site ?? Astro.url.origin).href;
+const ogURL = new URL(ogImage, Astro.site ?? Astro.url.origin).href;
+---
+
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script is:inline>document.documentElement.classList.add('js');</script>
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    <meta name="theme-color" content="#f6f1e7" />
+    <meta name="author" content={site.persoon} />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <ClientRouter fallback="swap" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="nl_NL" />
+    <meta property="og:site_name" content={site.naam} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={ogURL} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogURL} />
+
+    {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+
+    {/* Klantdashboard meetscript — plak hier het exacte snippet van de Sites-pagina (app.haagsebrandmerk.nl) */}
+    {/* <script defer src="DASHBOARD_MEETSCRIPT_URL"></script> */}
+
+    {/* CMS preview-brug */}
+    <script src="https://cms-denhaag.vercel.app/preview-bridge.js" defer></script>
+  </head>
+  <body>
+    <a href="#main" class="visually-hidden">Naar de inhoud</a>
+    <Nav forceSolid={!darkHero} />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+
+    {/* Cookie-consent — Google Analytics laadt pas na akkoord, naast cookieloze Vercel Web Analytics */}
+    <div class="cookie" data-cookie hidden>
+      <p>Wij gebruiken cookieloze statistieken en, met jouw akkoord, Google Analytics om de site te verbeteren.</p>
+      <div class="cookie-actions">
+        <button type="button" data-cookie-decline class="cookie-btn ghost">Alleen noodzakelijk</button>
+        <button type="button" data-cookie-accept class="cookie-btn">Akkoord</button>
+      </div>
+    </div>
+
+    <style>
+      .cookie[hidden] { display: none; }
+      .cookie {
+        position: fixed;
+        left: 50%;
+        bottom: 1.25rem;
+        transform: translateX(-50%);
+        z-index: 60;
+        width: min(560px, calc(100vw - 2rem));
+        animation: cookie-rise 0.6s 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+        background: var(--white);
+        border: 1px solid var(--line);
+        box-shadow: var(--shadow-lift);
+        border-radius: 4px;
+        padding: 1.1rem 1.25rem;
+        display: flex;
+        align-items: center;
+        gap: 1.25rem;
+        flex-wrap: wrap;
+      }
+      .cookie p { font-size: 0.82rem; line-height: 1.6; color: var(--muted); flex: 1 1 240px; margin: 0; }
+      .cookie-actions { display: flex; gap: 0.6rem; }
+      .cookie-btn {
+        font-family: var(--font-body);
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding: 0.6rem 1rem;
+        border-radius: 2px;
+        cursor: pointer;
+        border: 1px solid var(--brown);
+        background: var(--brown);
+        color: var(--cream);
+      }
+      .cookie-btn.ghost { background: transparent; color: var(--brown); border-color: var(--line); }
+      .cookie-btn:hover { filter: brightness(1.08); }
+      @keyframes cookie-rise { from { opacity: 0; transform: translateX(-50%) translateY(1rem); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
+      @media (prefers-reduced-motion: reduce) { .cookie { animation: none; } }
+    </style>
+
+    <script>
+      // Re-initialised on every page load AND after each View Transition swap.
+      const GA_ID = ''; // TODO: vul Google Analytics ID in (G-XXXXXXX)
+
+      function initReveal() {
+        const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const revealEls = document.querySelectorAll('.reveal, .reveal-rule');
+        if (reduce || !('IntersectionObserver' in window)) {
+          revealEls.forEach((el) => el.classList.add('in'));
+          return;
+        }
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('in');
+                io.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.12, rootMargin: '0px 0px -8% 0px' }
+        );
+        revealEls.forEach((el) => io.observe(el));
+      }
+
+      function loadGA() {
+        if (!GA_ID || (window as any).__gaLoaded) return;
+        (window as any).__gaLoaded = true;
+        const s = document.createElement('script');
+        s.async = true;
+        s.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
+        document.head.appendChild(s);
+        (window as any).dataLayer = (window as any).dataLayer || [];
+        function gtag(...args: any[]) { (window as any).dataLayer.push(args); }
+        gtag('js', new Date());
+        gtag('config', GA_ID, { anonymize_ip: true });
+      }
+
+      function initCookie() {
+        const bar = document.querySelector('[data-cookie]') as HTMLElement | null;
+        if (!bar) return;
+        let consent: string | null = null;
+        try { consent = localStorage.getItem('ac-cookie-consent'); } catch (e) {}
+        const decide = (choice: string) => {
+          try { localStorage.setItem('ac-cookie-consent', choice); } catch (e) {}
+          bar.hidden = true;
+          if (choice === 'accepted') loadGA();
+        };
+        if (consent === 'accepted') { loadGA(); bar.hidden = true; }
+        else if (consent === 'declined') { bar.hidden = true; }
+        else { bar.hidden = false; }
+        bar.querySelector('[data-cookie-accept]')?.addEventListener('click', () => decide('accepted'));
+        bar.querySelector('[data-cookie-decline]')?.addEventListener('click', () => decide('declined'));
+      }
+
+      document.addEventListener('astro:page-load', () => {
+        initReveal();
+        initCookie();
+      });
+    </script>
+  </body>
+</html>

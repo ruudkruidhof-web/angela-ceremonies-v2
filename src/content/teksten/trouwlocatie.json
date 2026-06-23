@@ -1,0 +1,37 @@
+{
+  "meta": {
+    "title": "Huwelijksreis Curaçao | Enjoy The Breeze | Angela Ceremonies",
+    "description": "Trouwen en op huwelijksreis naar Curaçao? Verblijf in appartement Enjoy The Breeze in Blue Bay resort. Ideaal voor een intieme start van jullie leven samen."
+  },
+  "hero": {
+    "kicker": "Enjoy The Breeze · Blue Bay",
+    "titel": "Jullie droomreis op",
+    "titelAccent": "Curaçao",
+    "subtitel": "Na jullie onvergetelijke trouwdag verdienen jullie een even onvergetelijke huwelijksreis.",
+    "afbeeldingAlt": "Turquoise baai met wit strand op Curaçao"
+  },
+  "intro": {
+    "kicker": "Enjoy The Breeze · Blue Bay",
+    "titel": "Appartement Enjoy The Breeze op Curaçao",
+    "alineas": [
+      "Na jullie onvergetelijke trouwdag verdienen jullie een even onvergetelijke huwelijksreis. In ons prachtige appartement Enjoy The Breeze op Curaçao, gelegen in het luxe resort Blue Bay, genieten jullie van zon, zee en totale ontspanning.",
+      "Het appartement biedt alle comfort die jullie nodig hebben: een eigen zwembad, ruime terrassen met uitzicht op de tropische tuin, en het strand op loopafstand. Het resort beschikt ook over een golfbaan en duikschool. De perfecte start van jullie leven samen."
+    ]
+  },
+  "features": {
+    "kicker": "Wat het bijzonder maakt",
+    "titel": "Een tropisch paradijs",
+    "items": [
+      { "titel": "Tropisch paradijs", "tekst": "Gelegen in het populaire Blue Bay resort, omringd door palmbomen, met een eigen zwembad en tropische tuin. Het resort heeft ook een golfbaan en duikschool." },
+      { "titel": "Luxe & comfort", "tekst": "Volledig uitgerust appartement met ruime terrassen, moderne keuken en alle voorzieningen voor een zorgeloze vakantie." },
+      { "titel": "Strand & zee", "tekst": "Het mooie strand van Blue Bay ligt op korte afstand. Geniet van het heldere blauwe water en witte zandstrand." }
+    ]
+  },
+  "cta": {
+    "kicker": "Beschikbaarheid",
+    "titel": "Bekijk de beschikbaarheid",
+    "tekst": "Benieuwd of het appartement beschikbaar is voor jullie huwelijksreis? Bekijk direct de beschikbaarheid en boek jullie droomvakantie op Curaçao.",
+    "knopLabel": "Bekijk beschikbaarheid",
+    "knopHref": "https://preview--ao-booking-bliss.lovable.app/"
+  }
+}

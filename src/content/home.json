@@ -1,0 +1,89 @@
+{
+  "hero": {
+    "kicker": "Trouwambtenaar & ceremoniespreker · Rotterdam",
+    "titel": "Jullie liefde,",
+    "titelAccent": "mijn woorden",
+    "subtitel": "Liefde verdient een ceremonie die bij je past.",
+    "knopPrimair": { "label": "Ontdek mijn aanpak", "href": "/trouwen" },
+    "knopSecundair": { "label": "Neem contact op", "href": "/contact" },
+    "afbeeldingAlt": "Warm kaarslicht en bloemen bij een trouwceremonie"
+  },
+  "intro": {
+    "kicker": "Welkom aanstaande bruidspaar",
+    "titel": "Jullie trouwdag is een uniek moment",
+    "alineas": [
+      "Een dag waarop alles samenkomt: liefde, betekenis en verbondenheid. Ik help jullie graag om dit moment te vertalen naar een ceremonie die écht over jullie gaat.",
+      "Met aandacht, rust en persoonlijke betrokkenheid creëren we samen een trouwceremonie die raakt, verrast en blijft hangen. Geen standaardverhaal, maar een oprechte ceremonie waarin jullie verhaal centraal staat. Precies zoals jullie zijn.",
+      "Of jullie nu kiezen voor ingetogen en stijlvol of warm en uitbundig: ik zorg voor woorden die kloppen en een sfeer die past."
+    ]
+  },
+  "diensten": {
+    "kicker": "Wat ik voor jullie doe",
+    "titel": "Een ceremonie die bij jullie past",
+    "items": [
+      {
+        "nummer": "01",
+        "titel": "Wettelijk trouwen",
+        "tekst": "Als BABS voltrek ik jullie officiële huwelijk met de zorg en persoonlijkheid die jullie dag verdient.",
+        "href": "/trouwen#wettelijk"
+      },
+      {
+        "nummer": "02",
+        "titel": "Ceremonieel huwelijk",
+        "tekst": "Een ceremonie zonder wettelijke binding, volledig op maat. Jullie verhaal, jullie woorden, jullie moment.",
+        "href": "/trouwen#ceremonieel"
+      },
+      {
+        "nummer": "03",
+        "titel": "Geloften vernieuwen",
+        "tekst": "Sta opnieuw voor elkaar en vier jullie liefde met een intieme, betekenisvolle herbevestiging.",
+        "href": "/trouwen#geloften"
+      }
+    ]
+  },
+  "citaat": {
+    "tekst": "Samen maken we van jullie trouwceremonie een herinnering om nooit te vergeten.",
+    "naam": "Angela Bhagole-Mangre",
+    "afbeeldingAlt": "Handen van een bruidspaar tijdens de ringuitwisseling"
+  },
+  "over": {
+    "kicker": "Over Angela Ceremonies",
+    "titelRegels": ["Liefdevol.", "Persoonlijk.", "Verbindend."],
+    "alineas": [
+      "Angela Ceremonies verzorgt persoonlijke en liefdevolle trouwceremonies die passen bij wie jullie zijn. Angela Bhagole-Mangre is actief als BABS, zelfstandig trouwambtenaar en ceremoniespreker en begeleidt zowel wettelijke als ceremoniële huwelijken.",
+      "Vanuit Rotterdam en werkzaam door heel Nederland staat Angela Ceremonies voor rust, verbinding en een ceremonie die bijblijft."
+    ],
+    "knop": { "label": "Lees meer over mij", "href": "/over-mij" },
+    "afbeeldingAlt": "Angela Bhagole-Mangre, trouwambtenaar en ceremoniespreker, in toga"
+  },
+  "cijfers": [
+    { "getal": "490+", "label": "Huwelijken voltrokken" },
+    { "getal": "2018", "label": "Actief als BABS sinds" },
+    { "getal": "Heel NL", "label": "Werkzaam door heel Nederland" }
+  ],
+  "reviews": {
+    "kicker": "Lieve woorden",
+    "titel": "Wat bruidsparen vertellen",
+    "intro": "De mooiste terugkoppeling is te horen dat een ceremonie heeft geraakt. Dat mensen het nog lang napraten. Dat het echt klopte.",
+    "knop": { "label": "Lees alle lieve woorden", "href": "/lieve-woorden" }
+  },
+  "coaching": {
+    "kicker": "Coaching voor BABS'en",
+    "titel": "Met vertrouwen voor het bruidspaar staan",
+    "tekst": "Droom je ervan om BABS te worden? Of sta je binnenkort voor het eerst voor een bruidspaar en wil je meer rust, zelfvertrouwen en verdieping? Ik help je graag om jouw rol met plezier en overtuiging neer te zetten.",
+    "punten": [
+      "Startende buitengewoon ambtenaren",
+      "Gast-BABS'en of BABS voor één dag",
+      "Ceremoniesprekers",
+      "Trouwambtenaren die willen groeien"
+    ],
+    "knop": { "label": "Meer over coaching", "href": "/coaching" },
+    "afbeeldingAlt": "Coaching voor trouwambtenaren"
+  },
+  "cta": {
+    "kicker": "Laten we kennismaken",
+    "titel": "Klaar om jullie verhaal te vertellen?",
+    "tekst": "Hebben jullie vragen, willen jullie kennismaken of samen ontdekken wat bij jullie past? Ik hoor graag van jullie en denk met jullie mee.",
+    "knop": { "label": "Neem contact op", "href": "/contact" }
+  }
+}

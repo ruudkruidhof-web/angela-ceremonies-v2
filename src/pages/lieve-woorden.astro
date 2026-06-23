@@ -1,0 +1,98 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaSection from '../components/CtaSection.astro';
+import lw from '../content/teksten/lieve-woorden.json';
+import reviews from '../content/reviews.json';
+import heroImg from '../assets/candles-roses.jpg';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: 'Angela Ceremonies',
+  url: 'https://angelaceremonies.com',
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '5',
+    reviewCount: String(reviews.length),
+    bestRating: '5',
+  },
+  review: reviews.slice(0, 8).map((r) => ({
+    '@type': 'Review',
+    reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
+    author: { '@type': 'Person', name: r.naam },
+    reviewBody: r.quote,
+  })),
+};
+---
+
+<Base title={lw.meta.title} description={lw.meta.description} canonical="/lieve-woorden" jsonLd={jsonLd}>
+  <PageHero
+    kicker={lw.hero.kicker}
+    title={lw.hero.titel}
+    titleAccent={lw.hero.titelAccent}
+    subtitle={lw.hero.subtitel}
+    image={heroImg}
+    imageAlt="Witte rozen en kaarsen bij een ceremonie"
+    objectPosition="50% 45%"
+  />
+
+  <section class="section bg-cream">
+    <div class="wrap">
+      <p class="lw-intro reveal">{lw.intro.tekst}</p>
+
+      <div class="lw-wall">
+        {reviews.map((r, i) => (
+          <figure class="lw-card reveal" style={`--reveal-delay:${(i % 3) * 90}ms`}>
+            <p class="lw-mark" aria-hidden="true">&ldquo;</p>
+            <blockquote class="lw-quote">{r.quote}</blockquote>
+            <figcaption class="lw-cite">
+              <span class="lw-name">{r.naam}</span>
+              <span class="lw-date">{r.datum}</span>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CtaSection
+    kicker={lw.cta.kicker}
+    title={lw.cta.titel}
+    text={lw.cta.tekst}
+    buttonLabel={lw.cta.knopLabel}
+    buttonHref={lw.cta.knopHref}
+  />
+</Base>
+
+<style>
+  .lw-intro {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto clamp(3rem, 5vw, 4.5rem);
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: clamp(1.25rem, 1.05rem + 1vw, 1.7rem);
+    line-height: 1.45;
+    color: var(--ink);
+  }
+  .lw-wall { columns: 3; column-gap: clamp(1rem, 2.5vw, 1.75rem); }
+  .lw-card {
+    break-inside: avoid;
+    margin: 0 0 clamp(1rem, 2.5vw, 1.75rem);
+    padding: clamp(1.5rem, 2.5vw, 2.1rem);
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    box-shadow: var(--shadow-soft);
+  }
+  .lw-card:nth-child(4n) { border-top: 2px solid var(--gold); }
+  .lw-mark { font-family: var(--font-display); font-size: 2.4rem; line-height: 0.4; color: var(--gold); margin-bottom: 1rem; opacity: 0.7; }
+  .lw-quote { margin: 0 0 1.25rem; color: var(--brown); font-size: 0.98rem; line-height: 1.65; }
+  .lw-cite { display: flex; flex-direction: column; gap: 0.15rem; }
+  .lw-name { font-family: var(--font-display); font-size: 1.08rem; color: var(--ink); }
+  .lw-date { font-size: 0.72rem; letter-spacing: 0.08em; color: var(--gold); }
+
+  @media (max-width: 900px) { .lw-wall { columns: 2; } }
+  @media (max-width: 600px) { .lw-wall { columns: 1; } }
+</style>

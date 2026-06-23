@@ -1,0 +1,227 @@
+---
+import site from '../content/site.json';
+
+interface Props {
+  forceSolid?: boolean;
+}
+const { forceSolid = false } = Astro.props;
+const { pathname } = Astro.url;
+const isActive = (href: string) => pathname === href || pathname === href + '/';
+---
+
+<header class:list={['nav', { solid: forceSolid }]} data-nav data-force-solid={forceSolid ? 'true' : undefined}>
+  <div class="nav-inner wrap">
+    <a href="/" class="brand" aria-label={`${site.naam} — home`}>
+      <span class="brand-name">Angela</span>
+      <span class="brand-sub">Ceremonies</span>
+    </a>
+
+    <nav class="nav-links" aria-label="Hoofdmenu">
+      {site.nav.map((item) => (
+        <a href={item.href} class:list={['nav-link', { active: isActive(item.href) }]}>{item.label}</a>
+      ))}
+    </nav>
+
+    <a href="/contact" class="nav-cta">Plan een kennismaking</a>
+
+    <button class="nav-toggle" type="button" aria-label="Menu openen" aria-expanded="false" data-toggle>
+      <span></span><span></span>
+    </button>
+  </div>
+
+  <div class="nav-drawer" data-drawer hidden>
+    <nav aria-label="Mobiel menu">
+      {site.nav.map((item) => (
+        <a href={item.href} class="drawer-link">{item.label}</a>
+      ))}
+      <a href="/contact" class="drawer-link drawer-cta">Plan een kennismaking</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .nav {
+    position: fixed;
+    top: 0;
+    inset-inline: 0;
+    z-index: 50;
+    transition: background 0.5s ease, box-shadow 0.5s ease, backdrop-filter 0.5s ease;
+  }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    height: 80px;
+  }
+  .brand {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: var(--cream);
+    transition: color 0.5s ease;
+  }
+  .brand-name {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+  }
+  .brand-sub {
+    font-family: var(--font-body);
+    font-size: 0.66rem;
+    font-weight: 600;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    opacity: 0.8;
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1.85rem;
+    margin-inline-start: auto;
+  }
+  .nav-link {
+    position: relative;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    color: var(--cream);
+    opacity: 0.92;
+    padding-block: 0.25rem;
+    transition: opacity 0.3s ease;
+  }
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: 0;
+    width: 100%; height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .nav-link:hover::after,
+  .nav-link.active::after { transform: scaleX(1); }
+  .nav-link:hover { opacity: 1; }
+
+  .nav-cta {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--cream);
+    border: 1px solid hsl(40 40% 97% / 0.5);
+    padding: 0.7rem 1.25rem;
+    border-radius: 2px;
+    transition: background 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+  }
+  .nav-cta:hover { background: var(--cream); color: var(--ink); border-color: var(--cream); }
+
+  /* Scrolled / solid state */
+  .nav.solid {
+    background: hsl(40 40% 97% / 0.86);
+    backdrop-filter: saturate(140%) blur(14px);
+    box-shadow: 0 1px 0 hsl(34 24% 85% / 0.8);
+  }
+  .nav.solid .brand,
+  .nav.solid .nav-link { color: var(--brown); }
+  .nav.solid .brand-name { color: var(--ink); }
+  .nav.solid .nav-cta { color: var(--brown); border-color: var(--line); }
+  .nav.solid .nav-cta:hover { background: var(--brown); color: var(--cream); border-color: var(--brown); }
+  .nav.solid .nav-toggle span { background: var(--ink); }
+
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    width: 30px;
+    height: 30px;
+    justify-content: center;
+    align-items: flex-end;
+    background: none;
+    border: 0;
+    cursor: pointer;
+    padding: 0;
+  }
+  .nav-toggle span {
+    display: block;
+    width: 26px;
+    height: 1.5px;
+    background: var(--cream);
+    transition: transform 0.4s ease, opacity 0.3s ease, width 0.4s ease;
+  }
+  .nav-toggle span:last-child { width: 18px; }
+  .nav.open .nav-toggle span:first-child { transform: translateY(3.5px) rotate(45deg); }
+  .nav.open .nav-toggle span:last-child { width: 26px; transform: translateY(-3px) rotate(-45deg); }
+
+  .nav-drawer {
+    background: var(--cream);
+    border-top: 1px solid var(--line);
+    padding: 1rem var(--gutter) 2rem;
+  }
+  .nav-drawer nav { display: flex; flex-direction: column; }
+  .drawer-link {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    color: var(--ink);
+    text-decoration: none;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .drawer-cta {
+    margin-top: 1.25rem;
+    border: 1px solid var(--brown);
+    text-align: center;
+    border-radius: 2px;
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 0.95rem;
+  }
+
+  @media (max-width: 980px) {
+    .nav-links, .nav-cta { display: none; }
+    .nav-toggle { display: flex; }
+  }
+</style>
+
+<script>
+  let navAbort: AbortController | undefined;
+
+  function initNav() {
+    navAbort?.abort();
+    navAbort = new AbortController();
+    const signal = navAbort.signal;
+
+    const nav = document.querySelector('[data-nav]') as HTMLElement | null;
+    const toggle = document.querySelector('[data-toggle]') as HTMLButtonElement | null;
+    const drawer = document.querySelector('[data-drawer]') as HTMLElement | null;
+    if (!nav) return;
+
+    const forceSolid = nav.dataset.forceSolid === 'true';
+    const onScroll = () => {
+      if (forceSolid) return;
+      nav.classList.toggle('solid', window.scrollY > 40);
+    };
+    if (!forceSolid) {
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true, signal });
+    }
+
+    toggle?.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', String(open));
+      if (!drawer) return;
+      if (open) { drawer.hidden = false; }
+      else { setTimeout(() => (drawer.hidden = true), 10); }
+    }, { signal });
+  }
+
+  document.addEventListener('astro:page-load', initNav);
+</script>

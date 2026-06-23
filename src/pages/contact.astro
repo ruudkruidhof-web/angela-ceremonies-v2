@@ -1,0 +1,192 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import site from '../content/site.json';
+import c from '../content/teksten/contact.json';
+import angelaCandid from '../assets/angela-candid.jpg';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: 'Angela Ceremonies',
+  email: site.email,
+  telephone: site.telefoonLink,
+  address: { '@type': 'PostalAddress', addressLocality: 'Rotterdam', addressCountry: 'NL' },
+  url: 'https://angelaceremonies.com/contact',
+};
+---
+
+<Base title={c.meta.title} description={c.meta.description} canonical="/contact" jsonLd={jsonLd}>
+  <PageHero
+    kicker={c.hero.kicker}
+    title={c.hero.titel}
+    titleAccent={c.hero.titelAccent}
+    subtitle={c.hero.subtitel}
+    portrait={angelaCandid}
+    portraitAlt="Angela Bhagole-Mangre, ontspannen thuis"
+    portraitPosition="50% 30%"
+  />
+
+  <section class="section bg-cream">
+    <div class="wrap contact-grid">
+      <aside class="contact-info reveal">
+        <p class="kicker">{c.info.kicker}</p>
+        <h2 class="contact-title">{c.info.titel}</h2>
+        <span class="rule reveal-rule"></span>
+        <p class="contact-intro">{c.info.tekst}</p>
+
+        <ul class="contact-list">
+          <li>
+            <span class="ci-label">E-mail</span>
+            <a href={`mailto:${site.email}`} data-hb-goal="email">{site.email}</a>
+          </li>
+          <li>
+            <span class="ci-label">Telefoon</span>
+            <a href={`tel:${site.telefoonLink}`} data-hb-goal="bellen">{site.telefoon}</a>
+          </li>
+          <li>
+            <span class="ci-label">Locatie</span>
+            <span>{site.stad}, werkzaam door heel Nederland</span>
+          </li>
+          <li>
+            <span class="ci-label">Volg mij</span>
+            <span class="ci-socials">
+              <a href={site.instagram} target="_blank" rel="noopener">Instagram</a>
+              <a href={site.facebook} target="_blank" rel="noopener">Facebook</a>
+            </span>
+          </li>
+        </ul>
+      </aside>
+
+      <div class="contact-form-wrap reveal" style="--reveal-delay:120ms">
+        <h2 class="form-title">{c.formulier.titel}</h2>
+        <p class="form-intro">{c.formulier.intro}</p>
+
+        <form class="contact-form" data-hb-lead data-contact-form>
+          <div class="field-row">
+            <label class="field">
+              <span>Voornaam</span>
+              <input type="text" name="voornaam" autocomplete="given-name" required placeholder="Jullie voornaam" />
+            </label>
+            <label class="field">
+              <span>Achternaam</span>
+              <input type="text" name="achternaam" autocomplete="family-name" required placeholder="Achternaam" />
+            </label>
+          </div>
+          <div class="field-row">
+            <label class="field">
+              <span>E-mail</span>
+              <input type="email" name="email" autocomplete="email" required placeholder="jullie@email.nl" />
+            </label>
+            <label class="field">
+              <span>Telefoon <em>(optioneel)</em></span>
+              <input type="tel" name="telefoon" autocomplete="tel" placeholder="06 12 34 56 78" />
+            </label>
+          </div>
+          <label class="field">
+            <span>Bericht</span>
+            <textarea name="bericht" rows="5" required placeholder="Vertel iets over jullie trouwdag, wensen of vragen..."></textarea>
+          </label>
+          <button type="submit" class="btn btn-gold form-submit">{c.formulier.knopLabel} <span class="arrow">→</span></button>
+        </form>
+
+        <div class="form-success" data-form-success hidden>
+          <span class="success-orn" aria-hidden="true">✦</span>
+          <h3>{c.formulier.succesTitel}</h3>
+          <p>{c.formulier.succesTekst}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .contact-grid { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: clamp(2.5rem, 6vw, 5rem); align-items: start; }
+  .contact-info .kicker { margin-bottom: 1rem; }
+  .contact-title { font-size: clamp(1.8rem, 1.4rem + 1.8vw, 2.6rem); }
+  .contact-info .rule { margin: 1.4rem 0 1.6rem; }
+  .contact-intro { color: var(--muted); margin-bottom: 2rem; }
+  .contact-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 1.4rem; }
+  .contact-list li { display: flex; flex-direction: column; gap: 0.3rem; }
+  .ci-label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); }
+  .contact-list a { color: var(--ink); text-decoration: none; font-size: 1.05rem; transition: color 0.3s ease; width: fit-content; }
+  .contact-list a:hover { color: var(--gold); }
+  .ci-socials { display: flex; gap: 1.25rem; }
+  .ci-socials a { font-size: 0.98rem; }
+
+  .contact-form-wrap {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: clamp(1.75rem, 4vw, 3rem);
+    box-shadow: var(--shadow-soft);
+  }
+  .form-title { font-size: 1.6rem; }
+  .form-intro { color: var(--muted); margin: 0.6rem 0 1.8rem; font-size: 0.97rem; }
+  .contact-form { display: flex; flex-direction: column; gap: 1.1rem; }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; }
+  .field { display: flex; flex-direction: column; gap: 0.45rem; }
+  .field span { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; color: var(--brown); }
+  .field span em { font-style: normal; font-weight: 400; color: var(--muted); }
+  .field input, .field textarea {
+    font-family: var(--font-body);
+    font-size: 0.97rem;
+    color: var(--ink);
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 0.8rem 0.95rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  }
+  .field input::placeholder, .field textarea::placeholder { color: hsl(26 12% 56%); }
+  .field input:focus, .field textarea:focus {
+    outline: none;
+    border-color: var(--gold);
+    background: var(--white);
+    box-shadow: 0 0 0 3px hsl(36 40% 47% / 0.12);
+  }
+  .field textarea { resize: vertical; }
+  .form-submit { margin-top: 0.6rem; align-self: flex-start; }
+
+  .form-success { text-align: center; padding: clamp(2rem, 5vw, 3.5rem) 1rem; }
+  .success-orn { display: block; font-size: 1.6rem; color: var(--gold); margin-bottom: 1rem; }
+  .form-success h3 { font-size: 1.6rem; margin-bottom: 0.6rem; }
+  .form-success p { color: var(--muted); }
+
+  @media (max-width: 880px) {
+    .contact-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 520px) {
+    .field-row { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+  function initContactForm() {
+    const form = document.querySelector('[data-contact-form]') as HTMLFormElement | null;
+    if (!form || form.dataset.bound) return;
+    form.dataset.bound = 'true';
+    const success = document.querySelector('[data-form-success]') as HTMLElement | null;
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!form.reportValidity()) return;
+      var data = new FormData(form);
+      var naam = (data.get('voornaam') || '') + ' ' + (data.get('achternaam') || '');
+      var lines = [
+        'Naam: ' + naam.trim(),
+        'E-mail: ' + (data.get('email') || ''),
+        'Telefoon: ' + (data.get('telefoon') || '-'),
+        '',
+        (data.get('bericht') || ''),
+      ];
+      var subject = 'Aanvraag via website - ' + naam.trim();
+      var mailto = 'mailto:angela.bhagole@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(lines.join('\n'));
+      // Open the visitor's mail client as a no-backend fallback; the dashboard lead-tracker also reads this [data-hb-lead] form.
+      window.location.href = mailto;
+      form.hidden = true;
+      if (success) success.hidden = false;
+    });
+  }
+
+  document.addEventListener('astro:page-load', initContactForm);
+</script>

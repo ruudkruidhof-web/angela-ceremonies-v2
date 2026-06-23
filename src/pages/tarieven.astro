@@ -1,0 +1,122 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaSection from '../components/CtaSection.astro';
+import t from '../content/teksten/tarieven.json';
+import heroImg from '../assets/hero-ceremony.jpg';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Trouwceremonie op maat',
+  serviceType: 'Trouwambtenaar',
+  provider: { '@type': 'ProfessionalService', name: 'Angela Ceremonies' },
+  areaServed: { '@type': 'Country', name: 'Nederland' },
+  offers: {
+    '@type': 'Offer',
+    name: 'Complete huwelijksceremonie',
+    price: '795',
+    priceCurrency: 'EUR',
+    description: 'Een persoonlijke ceremonie, volledig afgestemd op jullie verhaal.',
+  },
+};
+---
+
+<Base title={t.meta.title} description={t.meta.description} canonical="/tarieven" jsonLd={jsonLd}>
+  <PageHero
+    kicker={t.hero.kicker}
+    title={t.hero.titel}
+    titleAccent={t.hero.titelAccent}
+    subtitle={t.hero.subtitel}
+    image={heroImg}
+    imageAlt="Warme kaarslicht-setting bij een trouwceremonie"
+    objectPosition="50% 60%"
+  />
+
+  <section class="section bg-cream">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="kicker">{t.pakketten.kicker}</p>
+        <h2 class="section-title">{t.pakketten.titel}</h2>
+      </div>
+      <div class="prijzen">
+        {t.pakketten.items.map((p, i) => (
+          <article class:list={['price-card reveal', { featured: p.uitgelicht }]} style={`--reveal-delay:${i * 130}ms`}>
+            {p.uitgelicht && <span class="price-flag">Meest gekozen</span>}
+            <span class="price-eyebrow">{p.label}</span>
+            <h3 class="price-name">{p.naam}</h3>
+            <p class="price-amount">{p.prijs}</p>
+            <p class="price-desc">{p.omschrijving}</p>
+            <ul class="checklist price-list">
+              {p.inbegrepen.map((f) => <li>{f}</li>)}
+            </ul>
+            <a href={p.knopHref} class:list={['btn', p.uitgelicht ? 'btn-gold' : 'btn-outline']}>{p.knopLabel} <span class="arrow">→</span></a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-champagne">
+    <div class="wrap wrap-narrow">
+      <blockquote class="pull reveal">
+        <p class="pull-mark">&ldquo;</p>
+        <p class="pull-text">{t.citaat.tekst}</p>
+        <cite class="pull-name">{t.citaat.naam}</cite>
+      </blockquote>
+    </div>
+  </section>
+
+  <CtaSection
+    kicker={t.cta.kicker}
+    title={t.cta.titel}
+    text={t.cta.tekst}
+    buttonLabel={t.cta.knopLabel}
+    buttonHref={t.cta.knopHref}
+    note={t.cta.noot}
+  />
+</Base>
+
+<style>
+  .prijzen { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(1.25rem, 3vw, 2.25rem); max-width: 920px; margin-inline: auto; align-items: start; }
+  .price-card {
+    position: relative;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: clamp(2rem, 3.5vw, 2.75rem);
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-soft);
+  }
+  .price-card.featured { border-color: hsl(36 40% 72%); box-shadow: var(--shadow-lift); }
+  .price-flag {
+    position: absolute;
+    top: -12px;
+    left: clamp(2rem, 3.5vw, 2.75rem);
+    background: var(--gold);
+    color: hsl(26 30% 14%);
+    font-size: 0.66rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 0.4rem 0.85rem;
+    border-radius: 2px;
+  }
+  .price-eyebrow { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); }
+  .price-name { font-size: 1.55rem; margin: 0.5rem 0 1rem; }
+  .price-amount { font-family: var(--font-display); font-size: clamp(2.2rem, 1.8rem + 1.5vw, 2.8rem); color: var(--ink); line-height: 1; }
+  .price-desc { color: var(--muted); margin: 1rem 0 1.6rem; }
+  .price-list { margin-bottom: 2rem; gap: 0.8rem; }
+  .price-list li { font-size: 0.96rem; }
+  .price-card .btn { margin-top: auto; justify-content: center; }
+
+  .pull { text-align: center; margin: 0; }
+  .pull-mark { font-family: var(--font-display); font-size: 3.5rem; line-height: 0.4; color: var(--gold); margin-bottom: 1.2rem; }
+  .pull-text { font-family: var(--font-display); font-style: italic; font-size: clamp(1.5rem, 1.2rem + 1.6vw, 2.4rem); line-height: 1.35; color: var(--ink); }
+  .pull-name { display: block; margin-top: 1.4rem; font-style: normal; font-size: 0.74rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
+
+  @media (max-width: 760px) {
+    .prijzen { grid-template-columns: 1fr; max-width: 460px; }
+  }
+</style>

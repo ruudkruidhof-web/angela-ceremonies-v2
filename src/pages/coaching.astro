@@ -1,0 +1,171 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaSection from '../components/CtaSection.astro';
+import c from '../content/teksten/coaching.json';
+import coachImg from '../assets/angela-bureau.png';
+import heroPortrait from '../assets/angela-werk.png';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Coaching voor BABS en ceremoniesprekers',
+  serviceType: 'Coaching',
+  provider: { '@type': 'ProfessionalService', name: 'Angela Ceremonies' },
+  areaServed: { '@type': 'Country', name: 'Nederland' },
+  description: c.meta.description,
+};
+---
+
+<Base title={c.meta.title} description={c.meta.description} canonical="/coaching" jsonLd={jsonLd}>
+  <PageHero
+    kicker={c.hero.kicker}
+    title={c.hero.titel}
+    titleAccent={c.hero.titelAccent}
+    subtitle={c.hero.subtitel}
+    portrait={heroPortrait}
+    portraitAlt="Angela aan het werk als trouwambtenaar, met voorbereidingen en hamer"
+    portraitPosition="50% 30%"
+  />
+
+  <section class="section bg-cream">
+    <div class="wrap split">
+      <div class="split-text">
+        <p class="kicker reveal">{c.intro.kicker}</p>
+        <h2 class="section-title reveal" style="--reveal-delay:80ms">{c.intro.titel}</h2>
+        <span class="rule reveal-rule" style="--reveal-delay:150ms"></span>
+        <p class="prose reveal" style="--reveal-delay:180ms">{c.intro.tekst}</p>
+        <p class="intro-note reveal" style="--reveal-delay:260ms">{c.intro.noot}</p>
+      </div>
+      <div class="reveal" style="--reveal-delay:120ms">
+        <ul class="checklist who-list">
+          {c.intro.lijst.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-champagne">
+    <div class="wrap split reverse">
+      <div class="split-text">
+        <p class="kicker reveal">{c.achtergrond.kicker}</p>
+        <h2 class="section-title reveal" style="--reveal-delay:80ms">{c.achtergrond.titel}</h2>
+        <span class="rule reveal-rule" style="--reveal-delay:150ms"></span>
+        <div class="prose">
+          {c.achtergrond.alineas.map((p, i) => <p class="reveal" style={`--reveal-delay:${180 + i * 90}ms`}>{p}</p>)}
+        </div>
+      </div>
+      <div class="bg-media reveal" style="--reveal-delay:120ms">
+        <div class="bg-frame">
+          <Image src={coachImg} alt="Angela aan haar bureau, gefocust op een ceremonie" widths={[480, 720, 960]} sizes="(max-width: 880px) 90vw, 440px" quality={78} format="webp" />
+        </div>
+        <div class="stat-badge">
+          <span class="stat-badge-num">{c.achtergrond.statGetal}</span>
+          <span class="stat-badge-label">{c.achtergrond.statLabel}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-cream">
+    <div class="wrap inhoud">
+      <div class="section-head reveal">
+        <p class="kicker">{c.inhoud.kicker}</p>
+        <h2 class="section-title">{c.inhoud.titel}</h2>
+      </div>
+      <ul class="checklist inhoud-list reveal">
+        {c.inhoud.lijst.map((item) => <li>{item}</li>)}
+      </ul>
+      <blockquote class="inhoud-quote reveal">{c.inhoud.citaat}</blockquote>
+    </div>
+  </section>
+
+  <section class="section bg-champagne">
+    <div class="wrap praktisch">
+      <div class="section-head reveal">
+        <p class="kicker">{c.praktisch.kicker}</p>
+        <h2 class="section-title">{c.praktisch.titel}</h2>
+      </div>
+      <div class="praktisch-grid">
+        {c.praktisch.items.map((item, i) => (
+          <div class="praktisch-item reveal" style={`--reveal-delay:${i * 110}ms`}>
+            <span class="praktisch-label">{item.label}</span>
+            <span class="praktisch-waarde">{item.waarde}</span>
+          </div>
+        ))}
+      </div>
+      <p class="praktisch-tekst reveal">{c.praktisch.tekst}</p>
+    </div>
+  </section>
+
+  <CtaSection
+    kicker={c.cta.kicker}
+    title={c.cta.titel}
+    text={c.cta.tekst}
+    buttonLabel={c.cta.knopLabel}
+    buttonHref={c.cta.knopHref}
+  />
+</Base>
+
+<style>
+  .split-text .rule { margin: 1.5rem 0 1.8rem; }
+  .split-text .kicker { margin-bottom: 1rem; }
+  .intro-note { margin-top: 1.5rem; font-family: var(--font-display); font-style: italic; font-size: 1.15rem; color: var(--ink); line-height: 1.5; }
+  .who-list { background: var(--white); border: 1px solid var(--line); border-radius: 3px; padding: clamp(1.75rem, 3vw, 2.5rem); box-shadow: var(--shadow-soft); gap: 1.1rem; }
+  .who-list li { font-size: 1.02rem; }
+
+  .bg-media { position: relative; }
+  .bg-frame { overflow: hidden; border-radius: 3px; box-shadow: var(--shadow-lift); aspect-ratio: 4 / 5; }
+  .bg-frame :global(img) { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+  .stat-badge {
+    position: absolute;
+    bottom: -22px;
+    left: -22px;
+    background: var(--ink);
+    color: var(--cream);
+    padding: 1.1rem 1.5rem;
+    border-radius: 3px;
+    box-shadow: var(--shadow-lift);
+    text-align: center;
+  }
+  .stat-badge-num { display: block; font-family: var(--font-display); font-size: 2rem; color: var(--gold-soft); line-height: 1; }
+  .stat-badge-label { display: block; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: hsl(40 30% 84% / 0.75); margin-top: 0.35rem; }
+
+  .inhoud { max-width: 760px; }
+  .inhoud-list { gap: 1rem; }
+  .inhoud-list li { font-size: 1.05rem; }
+  .inhoud-quote {
+    margin: clamp(2.5rem, 4vw, 3.5rem) 0 0;
+    padding-top: clamp(2rem, 3vw, 2.5rem);
+    border-top: 1px solid var(--line);
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: clamp(1.3rem, 1.1rem + 1vw, 1.7rem);
+    line-height: 1.4;
+    color: var(--ink);
+    text-align: center;
+  }
+
+  .praktisch { max-width: 860px; }
+  .praktisch-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1rem, 2.5vw, 1.75rem); }
+  .praktisch-item {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-top: 2px solid var(--gold);
+    border-radius: 3px;
+    padding: clamp(1.5rem, 2.5vw, 2rem);
+    text-align: center;
+  }
+  .praktisch-label { display: block; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; }
+  .praktisch-waarde { display: block; font-family: var(--font-display); font-size: 1.15rem; color: var(--ink); line-height: 1.35; }
+  .praktisch-tekst { text-align: center; color: var(--muted); margin-top: 2.2rem; max-width: 60ch; margin-inline: auto; }
+
+  @media (max-width: 880px) {
+    .stat-badge { left: 50%; transform: translateX(-50%); bottom: -22px; }
+    .bg-media { max-width: 440px; margin: 0 auto 1.5rem; }
+  }
+  @media (max-width: 680px) {
+    .praktisch-grid { grid-template-columns: 1fr; }
+  }
+</style>

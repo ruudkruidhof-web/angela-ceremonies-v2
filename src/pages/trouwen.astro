@@ -1,0 +1,161 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaSection from '../components/CtaSection.astro';
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import t from '../content/teksten/trouwen.json';
+import heroImg from '../assets/hands-rings.jpg';
+import wettelijkImg from '../assets/hero-ceremony.jpg';
+import ceremonieelImg from '../assets/aisle-candles.jpg';
+import geloftenImg from '../assets/ring-exchange.jpg';
+
+const typeImages: Record<string, { src: ImageMetadata; alt: string }> = {
+  wettelijk: { src: wettelijkImg, alt: 'Warme kaarslicht-setting bij een wettelijke trouwceremonie' },
+  ceremonieel: { src: ceremonieelImg, alt: 'Sfeervolle ceremonie met kaarsen en bloemen' },
+  geloften: { src: geloftenImg, alt: 'Paar dat elkaar opnieuw de ringen geeft' },
+};
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Trouwceremonie op maat',
+  serviceType: 'Trouwambtenaar',
+  provider: { '@type': 'ProfessionalService', name: 'Angela Ceremonies' },
+  areaServed: { '@type': 'Country', name: 'Nederland' },
+  description: t.meta.description,
+};
+---
+
+<Base title={t.meta.title} description={t.meta.description} canonical="/trouwen" jsonLd={jsonLd} darkHero>
+  <PageHero
+    kicker={t.hero.kicker}
+    title={t.hero.titel}
+    titleAccent={t.hero.titelAccent}
+    subtitle={t.hero.subtitel}
+    image={heroImg}
+    imageAlt={t.hero.afbeeldingAlt}
+    objectPosition="50% 40%"
+  />
+
+  <section class="section bg-cream">
+    <div class="wrap wrap-narrow intro">
+      <p class="kicker reveal">{t.intro.kicker}</p>
+      <h2 class="intro-title reveal" style="--reveal-delay:80ms">{t.intro.titel}</h2>
+      <div class="ornament intro-orn reveal" style="--reveal-delay:140ms"><span>✦</span></div>
+      <p class="lead reveal" style="--reveal-delay:200ms">{t.intro.tekst}</p>
+    </div>
+  </section>
+
+  <section class="section bg-champagne">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="kicker">{t.types.kicker}</p>
+        <h2 class="section-title">{t.types.titel}</h2>
+      </div>
+    </div>
+
+    {t.types.items.map((item, i) => (
+      <div class="wrap type-block" id={item.anchor}>
+        <div class:list={['split type-split', { reverse: i % 2 === 1 }]}>
+          <div class="type-media reveal">
+            <div class="type-frame">
+              <Image src={typeImages[item.anchor].src} alt={typeImages[item.anchor].alt} widths={[400, 640, 880]} sizes="(max-width: 880px) 90vw, 420px" quality={74} format="webp" />
+            </div>
+            <span class="type-num" aria-hidden="true">{item.nummer}</span>
+          </div>
+          <div class="split-text reveal" style="--reveal-delay:120ms">
+            <h3 class="type-title">{item.titel}</h3>
+            <span class="rule reveal-rule" style="--reveal-delay:200ms"></span>
+            <div class="prose">
+              {item.alineas.map((p) => <p>{p}</p>)}
+            </div>
+          </div>
+        </div>
+      </div>
+    ))}
+  </section>
+
+  <section class="section bg-cream">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="kicker">{t.aanpak.kicker}</p>
+        <h2 class="section-title">{t.aanpak.titel}</h2>
+      </div>
+      <div class="steps">
+        {t.aanpak.stappen.map((s, i) => (
+          <div class="step reveal" style={`--reveal-delay:${i * 120}ms`}>
+            <span class="step-num">{s.nummer}</span>
+            <div>
+              <h3 class="step-title">{s.titel}</h3>
+              <p class="step-text">{s.tekst}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CtaSection
+    kicker={t.cta.kicker}
+    title={t.cta.titel}
+    text={t.cta.tekst}
+    buttonLabel={t.cta.knopLabel}
+    buttonHref={t.cta.knopHref}
+  />
+</Base>
+
+<style>
+  .type-block { scroll-margin-top: 92px; }
+  .type-block + .type-block { margin-top: clamp(3.5rem, 7vw, 6rem); }
+  .type-split { grid-template-columns: 0.82fr 1fr; align-items: center; }
+  .type-split.reverse { grid-template-columns: 1fr 0.82fr; }
+  .type-media { position: relative; }
+  .type-frame { overflow: hidden; border-radius: 3px; box-shadow: var(--shadow-lift); aspect-ratio: 4 / 5; }
+  .type-frame :global(img) { width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1); }
+  .type-media:hover .type-frame :global(img) { transform: scale(1.04); }
+  .type-num {
+    position: absolute;
+    top: -1.7rem;
+    left: -0.9rem;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: clamp(3.5rem, 6vw, 5.5rem);
+    line-height: 1;
+    color: var(--gold);
+    text-shadow: 0 2px 12px hsl(40 40% 97% / 0.9), 0 1px 3px hsl(26 30% 20% / 0.12);
+  }
+  .type-title { font-size: clamp(1.8rem, 1.4rem + 1.8vw, 2.6rem); }
+  .type-split .split-text .rule { margin: 1.4rem 0 1.6rem; }
+
+  @media (min-width: 881px) {
+    .type-split.reverse .type-media { order: 2; }
+    .type-split.reverse .split-text { order: 1; }
+  }
+  @media (max-width: 880px) {
+    .type-media { max-width: 420px; margin-inline: auto; }
+    .type-num { top: -1.3rem; }
+  }
+
+  .intro { text-align: center; }
+  .intro .kicker { margin-bottom: 1.1rem; }
+  .intro-title { font-size: clamp(1.9rem, 1.4rem + 2.4vw, 3.1rem); }
+  .intro-orn { max-width: 90px; margin: 1.8rem auto; }
+
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1.5rem, 3vw, 2.5rem); max-width: 980px; margin-inline: auto; }
+  .step { display: flex; gap: 1.1rem; align-items: flex-start; }
+  .step-num {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--gold);
+    line-height: 1;
+    padding-top: 0.1rem;
+    flex: none;
+  }
+  .step-title { font-size: 1.25rem; margin-bottom: 0.5rem; }
+  .step-text { color: var(--muted); font-size: 0.97rem; }
+
+  @media (max-width: 760px) {
+    .steps { grid-template-columns: 1fr; max-width: 420px; }
+  }
+</style>

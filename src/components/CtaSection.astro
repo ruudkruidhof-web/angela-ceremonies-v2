@@ -1,0 +1,36 @@
+---
+interface Props {
+  kicker?: string;
+  title: string;
+  text?: string;
+  buttonLabel: string;
+  buttonHref: string;
+  note?: string;
+}
+
+const { kicker, title, text, buttonLabel, buttonHref, note } = Astro.props;
+---
+
+<section class="section cta-band">
+  <div class="wrap wrap-narrow cta-inner reveal">
+    {kicker && <p class="kicker">{kicker}</p>}
+    <h2 class="cta-title">{title}</h2>
+    <div class="ornament cta-orn"><span>✦</span></div>
+    {text && <p class="cta-text">{text}</p>}
+    <a href={buttonHref} class="btn btn-gold">{buttonLabel} <span class="arrow">→</span></a>
+    {note && <p class="cta-note">{note}</p>}
+  </div>
+</section>
+
+<style>
+  .cta-band {
+    background: linear-gradient(180deg, var(--cream) 0%, var(--cream-deep) 100%);
+    text-align: center;
+  }
+  .cta-inner { text-align: center; }
+  .cta-band .kicker { margin-bottom: 1rem; }
+  .cta-title { font-size: clamp(2rem, 1.4rem + 2.8vw, 3.4rem); }
+  .cta-orn { max-width: 90px; margin: 1.8rem auto; }
+  .cta-text { color: var(--muted); font-size: 1.075rem; margin-bottom: 2.2rem; }
+  .cta-note { margin-top: 1.5rem; font-size: 0.85rem; color: var(--muted); opacity: 0.8; }
+</style>

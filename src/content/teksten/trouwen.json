@@ -1,0 +1,67 @@
+{
+  "meta": {
+    "title": "Trouwen | Wettelijk & ceremonieel huwelijk | Angela Ceremonies",
+    "description": "Wettelijk trouwen, ceremonieel huwelijk of geloften vernieuwen, persoonlijk en op maat door Angela Ceremonies. BABS en ceremoniespreker in Rotterdam."
+  },
+  "hero": {
+    "kicker": "Jullie grote dag",
+    "titel": "Een ceremonie die écht",
+    "titelAccent": "over jullie gaat",
+    "subtitel": "Wettelijk, ceremonieel of een herbevestiging van jullie geloften.",
+    "afbeeldingAlt": "Handen van een bruidspaar tijdens de ringuitwisseling"
+  },
+  "intro": {
+    "kicker": "Welkom",
+    "titel": "Liefde verdient een ceremonie die past",
+    "tekst": "Elke liefdesgeschiedenis is uniek en verdient een ceremonie die daarbij past. Of jullie nu kiezen voor een wettelijk huwelijk, een ceremonieel huwelijk of een geloftenvernieuwing: ik begeleid jullie met aandacht, warmte en oprechte betrokkenheid."
+  },
+  "types": {
+    "kicker": "Wat ik voor jullie doe",
+    "titel": "Drie manieren om ja te zeggen",
+    "items": [
+      {
+        "nummer": "01",
+        "anchor": "wettelijk",
+        "titel": "Wettelijk trouwen",
+        "alineas": [
+          "Als BABS (Buitengewoon Ambtenaar van de Burgerlijke Stand) voltrek ik jullie officiële huwelijk, dat wordt ingeschreven in de registers van de burgerlijke stand.",
+          "Samen maken we van dit formele moment een persoonlijke en onvergetelijke ceremonie, waarbij jullie verhaal centraal staat. Van de teksten tot de sfeer: alles stemmen we zorgvuldig op jullie af."
+        ]
+      },
+      {
+        "nummer": "02",
+        "anchor": "ceremonieel",
+        "titel": "Ceremonieel huwelijk",
+        "alineas": [
+          "Een ceremonieel huwelijk heeft geen wettelijke binding, maar dat maakt het niet minder betekenisvol. Dit is vaak de meest persoonlijke keuze, waarbij jullie volledige vrijheid hebben in vorm en inhoud.",
+          "Samen schrijven we een ceremonie die volledig van jullie is. Jullie woorden, jullie rituelen, jullie verhaal, tot in de kleinste details afgestemd op wie jullie zijn."
+        ]
+      },
+      {
+        "nummer": "03",
+        "anchor": "geloften",
+        "titel": "Geloften vernieuwen",
+        "alineas": [
+          "Jullie trouwdag was prachtig. En nu, jaren later, willen jullie opnieuw voor elkaar kiezen. Bewust en met alles wat jullie sindsdien samen hebben meegemaakt.",
+          "Een geloftenvernieuwing is een intiem, betekenisvol moment. Ik begeleid jullie bij het vormgeven van deze bijzondere herbevestiging van jullie liefde en toewijding."
+        ]
+      }
+    ]
+  },
+  "aanpak": {
+    "kicker": "Hoe ik werk",
+    "titel": "Onze samenwerking",
+    "stappen": [
+      { "nummer": "01", "titel": "Kennismaking", "tekst": "We beginnen met een vrijblijvend kennismakingsgesprek. Ik leer jullie kennen, jullie verhaal, jullie wensen." },
+      { "nummer": "02", "titel": "Op maat gemaakt", "tekst": "Op basis van jullie verhaal schrijf ik een persoonlijke ceremonie. We stemmen alles zorgvuldig op jullie af." },
+      { "nummer": "03", "titel": "Jullie dag", "tekst": "Op jullie trouwdag ben ik volledig aanwezig. Met rust, warmte en aandacht voor elk bijzonder moment." }
+    ]
+  },
+  "cta": {
+    "kicker": "Laten we beginnen",
+    "titel": "Klaar om jullie verhaal te vertellen?",
+    "tekst": "Neem vrijblijvend contact op voor een kennismakingsgesprek. Ik denk graag met jullie mee.",
+    "knopLabel": "Neem contact op",
+    "knopHref": "/contact"
+  }
+}
