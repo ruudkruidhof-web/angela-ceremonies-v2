@@ -7,23 +7,21 @@ import home from '../content/home.json';
 import reviews from '../content/reviews.json';
 import site from '../content/site.json';
 
-import heroBg from '../assets/hero-wedding.jpg';
-import angelaWarm from '../assets/angela-warm.jpg';
+import heroImg from '../assets/couple-hero.jpg';
+import coupleJoy from '../assets/couple-joy.jpg';
+import coupleBeach from '../assets/couple-beach.jpg';
 import angelaCandid from '../assets/angela-candid.jpg';
 import angelaWerk from '../assets/angela-werk.png';
-import statementImg from '../assets/hero-ceremony.jpg';
+import beloofteImg from '../assets/ring-exchange.jpg';
 import handsImg from '../assets/hands-rings.jpg';
 import aisleImg from '../assets/aisle-candles.jpg';
-import candlesRosesImg from '../assets/candles-roses.jpg';
-import ringExchangeImg from '../assets/ring-exchange.jpg';
 
 const featured = reviews.filter((r) => r.uitgelicht);
-
 const gallery: Record<string, ImageMetadata> = {
+  'couple-joy': coupleJoy,
+  'couple-beach': coupleBeach,
   'hands-rings': handsImg,
   'aisle-candles': aisleImg,
-  'candles-roses': candlesRosesImg,
-  'ring-exchange': ringExchangeImg,
 };
 
 const jsonLd = {
@@ -38,7 +36,6 @@ const jsonLd = {
   address: { '@type': 'PostalAddress', addressLocality: 'Rotterdam', addressCountry: 'NL' },
   areaServed: { '@type': 'Country', name: 'Nederland' },
   priceRange: '€€',
-  serviceType: ['Trouwambtenaar', 'Ceremoniespreker', 'BABS', 'Coaching'],
   founder: { '@type': 'Person', name: site.persoon },
   aggregateRating: { '@type': 'AggregateRating', ratingValue: '5', reviewCount: String(reviews.length), bestRating: '5' },
 };
@@ -52,60 +49,87 @@ const jsonLd = {
   jsonLd={jsonLd}
   darkHero
 >
-  <!-- HERO -->
+  <!-- HERO (full-bleed, foto-forward) -->
   <section class="hero">
-    <div class="hero-bg" data-parallax data-speed="0.12">
-      <Image src={heroBg} alt={home.hero.achtergrondAlt} widths={[768, 1280, 1920, 2200]} sizes="100vw" fetchpriority="high" loading="eager" quality={70} format="webp" />
+    <div class="hero-media" data-parallax data-speed="0.1">
+      <Image src={heroImg} alt={home.hero.afbeeldingAlt} widths={[768, 1280, 1920]} sizes="100vw" fetchpriority="high" loading="eager" quality={72} format="webp" />
     </div>
     <div class="hero-scrim"></div>
-
-    <div class="wrap hero-grid">
-      <div class="hero-text">
-        <p class="kicker hero-kicker he" style="--d:120ms">{home.hero.kicker}</p>
-        <h1 class="hero-title">
-          <span class="he" style="--d:260ms">{home.hero.titel}</span>
-          <span class="he" style="--d:400ms"><em>{home.hero.titelAccent}</em></span>
-        </h1>
-        <p class="hero-sub he" style="--d:560ms">{home.hero.subtitel}</p>
-        <div class="hero-trust he" style="--d:680ms">
-          {home.hero.trust.map((t, i) => (
-            <>
-              {i > 0 && <span class="dot" aria-hidden="true">·</span>}
-              <span>{t}</span>
-            </>
-          ))}
-        </div>
-        <div class="hero-actions he" style="--d:780ms">
-          <a href={home.hero.knopPrimair.href} class="btn btn-gold">{home.hero.knopPrimair.label} <span class="arrow">→</span></a>
-          <a href={home.hero.knopSecundair.href} class="hero-link">{home.hero.knopSecundair.label} <span class="arrow">→</span></a>
-        </div>
-      </div>
-
-      <div class="hero-portrait he-media" style="--d:480ms">
-        <div class="hero-portrait-frame">
-          <Image src={angelaWarm} alt={home.hero.afbeeldingAlt} widths={[420, 640, 860]} sizes="(max-width: 900px) 70vw, 420px" quality={82} format="webp" loading="eager" />
-        </div>
-        <span class="hero-portrait-deco" aria-hidden="true"></span>
+    <div class="wrap hero-inner">
+      <a href={home.hero.ratingHref} class="hero-rating he" style="--d:120ms"><span class="stars" aria-hidden="true">★★★★★</span> {home.hero.rating}</a>
+      <h1 class="hero-title">
+        <span class="he" style="--d:240ms">{home.hero.titel}</span>
+        <span class="he" style="--d:380ms"><em>{home.hero.titelAccent}</em></span>
+      </h1>
+      <p class="hero-sub he" style="--d:540ms">{home.hero.subtitel}</p>
+      <div class="hero-actions he" style="--d:660ms">
+        <a href={home.hero.knop.href} class="btn btn-gold">{home.hero.knop.label} <span class="arrow">→</span></a>
       </div>
     </div>
-
-    <a href="#intro" class="hero-scroll" aria-label="Scroll naar beneden"><span>Scroll</span><span class="hero-scroll-line"></span></a>
+    <a href="#statement" class="hero-scroll" aria-label="Scroll naar beneden"><span>Scroll</span><span class="hero-scroll-line"></span></a>
   </section>
 
-  <!-- INTRO (persoonlijk) -->
-  <section class="section bg-cream" id="intro">
-    <div class="wrap wrap-narrow intro">
-      <p class="kicker reveal">{home.intro.kicker}</p>
-      <h2 class="intro-title reveal" style="--reveal-delay:80ms">{home.intro.titel} <em>{home.intro.titelAccent}</em></h2>
-      <div class="ornament intro-orn reveal" style="--reveal-delay:160ms"><span>✦</span></div>
-      {home.intro.alineas.map((p, i) => (
-        <p class="intro-p reveal" style={`--reveal-delay:${200 + i * 90}ms`}>{p}</p>
-      ))}
+  <!-- STATEMENT -->
+  <section class="section bg-cream statement" id="statement">
+    <div class="wrap wrap-narrow statement-inner reveal">
+      <p class="statement-text rich" set:html={home.statement.html}></p>
+      <a href={home.statement.knop.href} class="btn btn-gold statement-btn">{home.statement.knop.label} <span class="arrow">→</span></a>
+    </div>
+  </section>
+
+  <!-- VIDEO / ACHTER DE SCHERMEN -->
+  <section class="video-section">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="kicker kicker-gold">{home.video.kicker}</p>
+        <h2 class="sec-title video-title">{home.video.titel}</h2>
+        <p class="video-intro">{home.video.intro}</p>
+      </div>
+      <div class="video-frame reveal">
+        <span class="video-play" aria-hidden="true">▶</span>
+        <span class="video-label">{home.video.placeholderLabel}</span>
+        <span class="video-soon">Video volgt</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- HI, IK BEN ANGELA (split) -->
+  <section class="section bg-cream">
+    <div class="wrap feature">
+      <div class="feature-media reveal">
+        <div class="feature-frame">
+          <Image src={angelaCandid} alt={home.intro.afbeeldingAlt} widths={[480, 760, 1000]} sizes="(max-width: 900px) 90vw, 480px" quality={80} format="webp" />
+        </div>
+        <span class="feature-deco" aria-hidden="true"></span>
+      </div>
+      <div class="feature-body reveal" style="--reveal-delay:120ms">
+        <p class="kicker">{home.intro.kicker}</p>
+        <h2 class="feature-title">{home.intro.titel} <em>{home.intro.titelAccent}</em></h2>
+        <div class="prose rich">
+          {home.intro.html.map((p) => <p set:html={p}></p>)}
+        </div>
+        <p class="signature script">{home.intro.signatuur}</p>
+        <a href={home.intro.knop.href} class="btn btn-outline">{home.intro.knop.label} <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BELOFTE (overlap panel) -->
+  <section class="section bg-champagne">
+    <div class="wrap overlap reveal">
+      <div class="overlap-media">
+        <Image src={beloofteImg} alt={home.belofte.afbeeldingAlt} widths={[480, 800, 1100]} sizes="(max-width: 900px) 90vw, 600px" quality={76} format="webp" />
+      </div>
+      <div class="overlap-panel">
+        <p class="kicker kicker-gold">{home.belofte.kicker}</p>
+        <h2 class="overlap-title">{home.belofte.titel}</h2>
+        <p class="overlap-text rich" set:html={home.belofte.html}></p>
+      </div>
     </div>
   </section>
 
   <!-- DIENSTEN -->
-  <section class="section bg-champagne">
+  <section class="section bg-cream">
     <div class="wrap">
       <div class="sec-head reveal">
         <p class="kicker">{home.diensten.kicker}</p>
@@ -124,65 +148,94 @@ const jsonLd = {
     </div>
   </section>
 
-  <!-- STATEMENT / FOTO-BREAK -->
-  <section class="statement">
-    <div class="statement-media" data-parallax data-speed="0.12">
-      <Image src={statementImg} alt={home.statement.afbeeldingAlt} widths={[768, 1280, 1800]} sizes="100vw" quality={70} format="webp" />
-    </div>
-    <div class="statement-scrim"></div>
-    <blockquote class="statement-content wrap reveal">
-      <p class="statement-text">{home.statement.tekst}</p>
-    </blockquote>
-  </section>
-
-  <!-- OVER ANGELA (persoonlijk verhaal) -->
-  <section class="section bg-cream">
-    <div class="wrap about">
-      <div class="about-media reveal">
-        <div class="about-frame">
-          <Image src={angelaCandid} alt={home.over.afbeeldingAlt} widths={[480, 720, 960]} sizes="(max-width: 880px) 90vw, 460px" quality={80} format="webp" />
-        </div>
-        <span class="about-deco about-deco-tl" aria-hidden="true"></span>
-        <span class="about-deco about-deco-br" aria-hidden="true"></span>
-      </div>
-      <div class="about-body">
-        <p class="kicker reveal">{home.over.kicker}</p>
-        <h2 class="about-title reveal" style="--reveal-delay:80ms">{home.over.titel} <em>{home.over.titelAccent}</em></h2>
-        <span class="rule reveal-rule" style="--reveal-delay:160ms"></span>
-        {home.over.alineas.map((p, i) => (
-          <p class="about-p reveal" style={`--reveal-delay:${180 + i * 80}ms`}>{p}</p>
-        ))}
-        <a href={home.over.knop.href} class="btn btn-outline reveal" style="--reveal-delay:420ms">{home.over.knop.label} <span class="arrow">→</span></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- WERKWIJZE -->
+  <!-- WERKWIJZE (split reversed) -->
   <section class="section bg-champagne" id="werkwijze">
-    <div class="wrap about about-reverse werkwijze">
-      <div class="about-body">
-        <p class="kicker reveal">{home.werkwijze.kicker}</p>
-        <h2 class="about-title reveal" style="--reveal-delay:80ms">{home.werkwijze.titel}</h2>
-        <span class="rule reveal-rule" style="--reveal-delay:150ms"></span>
-        <p class="about-p reveal" style="--reveal-delay:170ms">{home.werkwijze.intro}</p>
+    <div class="wrap feature feature-reverse">
+      <div class="feature-body reveal">
+        <p class="kicker">{home.werkwijze.kicker}</p>
+        <h2 class="feature-title">{home.werkwijze.titel}</h2>
+        <p class="prose-intro">{home.werkwijze.intro}</p>
         <ol class="steps-list">
           {home.werkwijze.stappen.map((s, i) => (
-            <li class="step-item reveal" style={`--reveal-delay:${220 + i * 90}ms`}>
+            <li class="step-item reveal" style={`--reveal-delay:${120 + i * 90}ms`}>
               <span class="step-num">{s.nummer}</span>
-              <div>
-                <h3 class="step-title">{s.titel}</h3>
-                <p class="step-text">{s.tekst}</p>
-              </div>
+              <div><h3 class="step-title">{s.titel}</h3><p class="step-text">{s.tekst}</p></div>
             </li>
           ))}
         </ol>
       </div>
-      <div class="about-media reveal" style="--reveal-delay:140ms">
-        <div class="about-frame">
-          <Image src={angelaWerk} alt={home.werkwijze.afbeeldingAlt} widths={[480, 720, 960]} sizes="(max-width: 880px) 90vw, 440px" quality={78} format="webp" />
+      <div class="feature-media reveal" style="--reveal-delay:120ms">
+        <div class="feature-frame">
+          <Image src={angelaWerk} alt={home.werkwijze.afbeeldingAlt} widths={[480, 760, 1000]} sizes="(max-width: 900px) 90vw, 460px" quality={78} format="webp" />
         </div>
-        <span class="about-deco about-deco-bl" aria-hidden="true"></span>
+        <span class="feature-deco feature-deco-left" aria-hidden="true"></span>
       </div>
+    </div>
+  </section>
+
+  <!-- UITGELICHTE REVIEW (foto + overlap panel) -->
+  <section class="section bg-cream">
+    <div class="wrap overlap overlap-review reveal">
+      <div class="overlap-media">
+        <PlaceholderImage label={home.uitgelichteReview.fotoLabel} vorm="liggend" />
+      </div>
+      <div class="overlap-panel overlap-panel-review">
+        <span class="review-stars" aria-hidden="true">★★★★★</span>
+        <blockquote class="overlap-quote rich" set:html={home.uitgelichteReview.quoteHtml}></blockquote>
+        <p class="overlap-cite">{home.uitgelichteReview.naam} <span class="overlap-date">· {home.uitgelichteReview.datum}</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS SHOWCASE -->
+  <section class="reviews-showcase">
+    <span class="rs-glow" aria-hidden="true"></span>
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="kicker kicker-gold">{home.reviews.kicker}</p>
+        <h2 class="sec-title rs-title">{home.reviews.titel}</h2>
+        <p class="rs-intro">{home.reviews.intro}</p>
+      </div>
+      <div class="rs-stage reveal" data-reviews aria-roledescription="carousel" aria-label="Wat bruidsparen vertellen">
+        <span class="rs-mark" aria-hidden="true">&ldquo;</span>
+        <div class="rs-track">
+          {featured.map((r, i) => (
+            <figure class:list={['rs-slide', { active: i === 0 }]} data-slide aria-hidden={i === 0 ? 'false' : 'true'}>
+              <blockquote class="rs-text">{r.quote}</blockquote>
+              <figcaption class="rs-cite"><span class="rs-name">{r.naam}</span><span class="rs-sep" aria-hidden="true">·</span><span class="rs-date">{r.datum}</span></figcaption>
+            </figure>
+          ))}
+        </div>
+        <div class="rs-controls">
+          <button class="rs-arrow" type="button" data-prev aria-label="Vorige review"><span aria-hidden="true">&larr;</span></button>
+          <div class="rs-dots" role="tablist" aria-label="Kies een review">
+            {featured.map((_, i) => (<button class:list={['rs-dot', { active: i === 0 }]} type="button" data-dot aria-label={`Review ${i + 1} van ${featured.length}`} aria-selected={i === 0 ? 'true' : 'false'} role="tab"></button>))}
+          </div>
+          <button class="rs-arrow" type="button" data-next aria-label="Volgende review"><span aria-hidden="true">&rarr;</span></button>
+        </div>
+      </div>
+      <div class="rs-foot reveal"><a href={home.reviews.knop.href} class="link-more link-more-light">{home.reviews.knop.label} <span class="arrow">→</span></a></div>
+    </div>
+  </section>
+
+  <!-- MOMENTEN (edge-to-edge galerij) -->
+  <section class="momenten">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="kicker">{home.momenten.kicker}</p>
+        <h2 class="sec-title">{home.momenten.titel}</h2>
+      </div>
+    </div>
+    <div class="gallery-bleed reveal">
+      {home.momenten.items.map((item) => (
+        <div class="gb-item">
+          {item.placeholder ? (
+            <PlaceholderImage label={item.label} vorm="vierkant" />
+          ) : (
+            <div class="gb-frame"><Image src={gallery[item.bron]} alt={item.alt} widths={[400, 640, 760]} sizes="(max-width: 700px) 50vw, 33vw" quality={74} format="webp" /></div>
+          )}
+        </div>
+      ))}
     </div>
   </section>
 
@@ -198,73 +251,7 @@ const jsonLd = {
     </div>
   </section>
 
-  <!-- REVIEWS -->
-  <section class="reviews-showcase">
-    <span class="rs-glow" aria-hidden="true"></span>
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <p class="kicker kicker-gold">{home.reviews.kicker}</p>
-        <h2 class="sec-title rs-title">{home.reviews.titel}</h2>
-        <p class="rs-intro">{home.reviews.intro}</p>
-      </div>
-
-      <div class="rs-stage reveal" data-reviews aria-roledescription="carousel" aria-label="Wat bruidsparen vertellen">
-        <span class="rs-mark" aria-hidden="true">&ldquo;</span>
-        <div class="rs-track">
-          {featured.map((r, i) => (
-            <figure class:list={['rs-slide', { active: i === 0 }]} data-slide aria-hidden={i === 0 ? 'false' : 'true'}>
-              <blockquote class="rs-text">{r.quote}</blockquote>
-              <figcaption class="rs-cite">
-                <span class="rs-name">{r.naam}</span>
-                <span class="rs-sep" aria-hidden="true">·</span>
-                <span class="rs-date">{r.datum}</span>
-              </figcaption>
-            </figure>
-          ))}
-        </div>
-
-        <div class="rs-controls">
-          <button class="rs-arrow" type="button" data-prev aria-label="Vorige review"><span aria-hidden="true">&larr;</span></button>
-          <div class="rs-dots" role="tablist" aria-label="Kies een review">
-            {featured.map((_, i) => (
-              <button class:list={['rs-dot', { active: i === 0 }]} type="button" data-dot aria-label={`Review ${i + 1} van ${featured.length}`} aria-selected={i === 0 ? 'true' : 'false'} role="tab"></button>
-            ))}
-          </div>
-          <button class="rs-arrow" type="button" data-next aria-label="Volgende review"><span aria-hidden="true">&rarr;</span></button>
-        </div>
-      </div>
-
-      <div class="rs-foot reveal">
-        <a href={home.reviews.knop.href} class="link-more link-more-light">{home.reviews.knop.label} <span class="arrow">→</span></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- MOMENTEN (galerij) -->
-  <section class="section bg-cream">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <p class="kicker">{home.momenten.kicker}</p>
-        <h2 class="sec-title">{home.momenten.titel}</h2>
-        <p class="sec-lead">{home.momenten.intro}</p>
-      </div>
-      <div class="gallery">
-        {home.momenten.items.map((item, i) => (
-          <div class="gallery-item reveal" style={`--reveal-delay:${(i % 3) * 90}ms`}>
-            {item.placeholder ? (
-              <PlaceholderImage label={item.label} vorm="staand" />
-            ) : (
-              <div class="gallery-frame">
-                <Image src={gallery[item.bron]} alt={item.alt} widths={[400, 640, 800]} sizes="(max-width: 700px) 90vw, 360px" quality={74} format="webp" />
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- COACHING (slim teaser) -->
+  <!-- COACHING (slim band) -->
   <section class="section bg-champagne coaching-band">
     <div class="wrap coaching-inner reveal">
       <div class="coaching-copy">
@@ -280,7 +267,7 @@ const jsonLd = {
   <section class="section bg-cream cta">
     <div class="wrap wrap-narrow cta-inner reveal">
       <p class="kicker">{home.cta.kicker}</p>
-      <h2 class="cta-title">{home.cta.titel}</h2>
+      <h2 class="cta-title rich" set:html={home.cta.titelHtml}></h2>
       <div class="ornament cta-orn"><span>✦</span></div>
       <p class="cta-text">{home.cta.tekst}</p>
       <div class="cta-actions">
@@ -295,141 +282,101 @@ const jsonLd = {
   .bg-cream { background: var(--cream); }
   .bg-champagne { background: linear-gradient(180deg, var(--cream) 0%, var(--cream-deep) 9%, var(--cream-deep) 91%, var(--cream) 100%); }
 
-  /* ===== HERO (cinematic split) ===== */
-  .hero {
-    position: relative;
-    min-height: 94svh;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-    isolation: isolate;
-    padding-top: 96px;
-    padding-bottom: clamp(2rem, 5vw, 4rem);
-  }
-  .hero-bg { position: absolute; inset: -8% 0; z-index: -2; }
-  .hero-bg :global(img) { width: 100%; height: 116%; object-fit: cover; object-position: 50% 55%; }
-  .hero-scrim {
-    position: absolute; inset: 0; z-index: -1;
-    background:
-      linear-gradient(100deg, hsl(26 36% 9% / 0.85) 0%, hsl(27 34% 12% / 0.55) 40%, hsl(26 32% 14% / 0.12) 100%),
-      linear-gradient(0deg, var(--cream) -2%, transparent 14%),
-      hsl(28 40% 16% / 0.16);
-  }
-  .hero-grid {
-    display: grid;
-    grid-template-columns: 1.05fr 0.8fr;
-    gap: clamp(2rem, 5vw, 4.5rem);
-    align-items: center;
-    width: 100%;
-  }
-  .hero-text { color: var(--cream); max-width: 36rem; }
-  .hero-kicker { color: hsl(40 40% 92% / 0.85); margin-bottom: 1.4rem; }
-  .hero-title { color: var(--cream); font-weight: 500; font-size: clamp(2.6rem, 1.9rem + 4.4vw, 5.25rem); line-height: 1.03; letter-spacing: -0.015em; }
+  /* ===== HERO ===== */
+  .hero { position: relative; min-height: 96svh; display: flex; align-items: flex-end; overflow: hidden; isolation: isolate; padding-bottom: clamp(3.5rem, 8vw, 7rem); }
+  .hero-media { position: absolute; inset: -8% 0; z-index: -2; }
+  .hero-media :global(img) { width: 100%; height: 100%; object-fit: cover; object-position: 50% 46%; }
+  .hero-scrim { position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, hsl(26 30% 10% / 0.34) 0%, hsl(26 28% 12% / 0.08) 26%, hsl(26 30% 10% / 0.26) 56%, hsl(26 32% 8% / 0.72) 100%), linear-gradient(0deg, var(--cream) -1%, transparent 14%); }
+  .hero-inner { color: var(--cream); max-width: 940px; text-align: center; margin-inline: auto; }
+  .hero-rating { display: inline-flex; align-items: center; gap: 0.55rem; color: hsl(40 40% 94% / 0.92); text-decoration: none; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.6rem; }
+  .hero-rating .stars { color: var(--gold-soft); letter-spacing: 0.1em; font-size: 0.92rem; }
+  .hero-rating:hover { color: var(--cream); }
+  .hero-title { color: var(--cream); font-weight: 400; font-size: clamp(2.8rem, 2rem + 5vw, 6rem); line-height: 1.02; letter-spacing: -0.02em; }
   .hero-title span { display: block; }
-  .hero-title em { font-style: italic; color: hsl(38 58% 80%); }
-  .hero-sub { margin-top: 1.6rem; font-size: clamp(1.05rem, 1rem + 0.45vw, 1.3rem); font-weight: 300; line-height: 1.6; color: hsl(40 40% 94% / 0.94); max-width: 32ch; }
-  .hero-trust { display: flex; align-items: center; flex-wrap: wrap; gap: 0.7rem; margin-top: 1.8rem; font-size: 0.74rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: hsl(40 40% 90% / 0.78); }
-  .hero-trust .dot { color: var(--gold-soft); }
-  .hero-actions { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; margin-top: 2.2rem; }
-  .hero-link { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--cream); text-decoration: none; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; padding-bottom: 2px; border-bottom: 1px solid hsl(40 40% 90% / 0.4); transition: border-color 0.3s ease; }
-  .hero-link:hover { border-color: var(--gold-soft); }
-  .hero-link .arrow { transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); }
-  .hero-link:hover .arrow { transform: translateX(4px); }
-
-  .hero-portrait { position: relative; justify-self: center; width: 100%; max-width: 420px; }
-  .hero-portrait-frame { overflow: hidden; border-radius: 4px; aspect-ratio: 4 / 5; box-shadow: 0 30px 60px -28px hsl(26 40% 6% / 0.7); border: 1px solid hsl(40 40% 92% / 0.18); }
-  .hero-portrait-frame :global(img) { width: 100%; height: 100%; object-fit: cover; object-position: 50% 28%; }
-  .hero-portrait-deco { position: absolute; width: 92px; height: 92px; border: 1px solid var(--gold-soft); opacity: 0.6; bottom: -16px; left: -16px; border-right: 0; border-top: 0; }
-
-  .hero-scroll { position: absolute; bottom: 1.6rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 0.6rem; text-decoration: none; color: hsl(40 40% 94% / 0.55); font-size: 0.64rem; letter-spacing: 0.24em; text-transform: uppercase; }
-  .hero-scroll-line { width: 1px; height: 40px; background: linear-gradient(hsl(40 40% 94% / 0.6), transparent); }
-
-  /* Hero entrance */
+  .hero-title em { font-style: italic; color: hsl(38 58% 82%); }
+  .hero-sub { margin: 1.6rem auto 0; font-size: clamp(1.05rem, 1rem + 0.5vw, 1.35rem); font-weight: 300; line-height: 1.6; color: hsl(40 40% 95% / 0.94); max-width: 40ch; }
+  .hero-actions { margin-top: 2.3rem; }
+  .hero-scroll { position: absolute; bottom: 1.4rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 0.55rem; text-decoration: none; color: hsl(40 40% 94% / 0.55); font-size: 0.62rem; letter-spacing: 0.24em; text-transform: uppercase; }
+  .hero-scroll-line { width: 1px; height: 38px; background: linear-gradient(hsl(40 40% 94% / 0.6), transparent); }
   .he { opacity: 0; animation: he-up 1s cubic-bezier(0.22, 1, 0.36, 1) var(--d, 0ms) forwards; }
-  .he-media { opacity: 0; animation: he-up 1.2s cubic-bezier(0.22, 1, 0.36, 1) var(--d, 0ms) forwards; }
   @keyframes he-up { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
-  @media (prefers-reduced-motion: reduce) { .he, .he-media { opacity: 1; animation: none; } }
+  @media (prefers-reduced-motion: reduce) { .he { opacity: 1; animation: none; } }
 
-  @media (max-width: 900px) {
-    .hero { min-height: 0; padding-top: 110px; padding-bottom: 3.5rem; text-align: center; }
-    .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-    .hero-text { max-width: none; margin-inline: auto; }
-    .hero-sub { margin-inline: auto; }
-    .hero-trust, .hero-actions { justify-content: center; }
-    .hero-portrait { order: -1; max-width: 280px; }
-    .hero-scroll { display: none; }
-  }
-
-  /* ===== Shared section heads ===== */
-  .sec-head { text-align: center; max-width: 640px; margin: 0 auto clamp(3rem, 5vw, 4.5rem); }
+  /* ===== shared heads ===== */
+  .sec-head { text-align: center; max-width: 660px; margin: 0 auto clamp(3rem, 5vw, 4.5rem); }
   .sec-head .kicker { margin-bottom: 0.9rem; }
-  .sec-title { font-size: clamp(1.9rem, 1.4rem + 2vw, 3rem); }
-  .sec-lead { color: var(--muted); margin-top: 1.1rem; font-size: 1.05rem; }
+  .sec-title { font-size: clamp(1.9rem, 1.4rem + 2vw, 3rem); font-weight: 400; }
+  .kicker-gold { color: var(--gold-soft); }
 
-  /* ===== INTRO ===== */
-  .intro { text-align: center; }
-  .intro .kicker { margin-bottom: 1.1rem; }
-  .intro-title { font-size: clamp(2rem, 1.4rem + 2.6vw, 3.4rem); margin-bottom: 0.5rem; }
-  .intro-title em { font-style: italic; color: var(--gold); }
-  .intro-orn { max-width: 90px; margin: 2rem auto; }
-  .intro-p { color: var(--muted); margin-bottom: 1.4rem; font-size: 1.075rem; }
-  .intro-p:last-child { margin-bottom: 0; }
+  /* ===== STATEMENT ===== */
+  .statement-inner { text-align: center; }
+  .statement-text { font-family: var(--font-display); font-weight: 400; font-size: clamp(1.5rem, 1.1rem + 2vw, 2.7rem); line-height: 1.36; color: var(--ink); }
+  .statement-text :global(em) { color: var(--gold); font-style: italic; }
+  .statement-text :global(strong) { color: var(--ink); font-weight: 700; }
+  .statement-btn { margin-top: 2.2rem; }
+
+  /* ===== VIDEO ===== */
+  .video-section { background: radial-gradient(130% 120% at 50% 0%, hsl(28 28% 22%), hsl(26 30% 13%)); color: var(--cream); padding-block: clamp(4.5rem, 9vw, 7.5rem); }
+  .video-title { color: var(--cream); }
+  .video-intro { color: hsl(40 26% 80% / 0.85); margin-top: 1rem; font-style: italic; font-family: var(--font-display); font-size: 1.15rem; }
+  .video-frame { position: relative; max-width: 900px; margin-inline: auto; aspect-ratio: 16 / 9; border-radius: 4px; border: 1px solid hsl(40 30% 80% / 0.2); background: repeating-linear-gradient(135deg, hsl(26 28% 16%) 0 14px, hsl(26 28% 18%) 14px 28px); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.9rem; }
+  .video-play { width: 68px; height: 68px; border-radius: 50%; display: grid; place-items: center; background: var(--gold); color: hsl(26 30% 14%); font-size: 1.3rem; padding-left: 4px; }
+  .video-label { font-family: var(--font-display); font-style: italic; font-size: 1.1rem; color: hsl(40 30% 86%); }
+  .video-soon { font-size: 0.66rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-soft); }
+
+  /* ===== FEATURE SPLIT ===== */
+  .feature { display: grid; grid-template-columns: 0.92fr 1fr; gap: clamp(2.5rem, 6vw, 5.5rem); align-items: center; }
+  .feature-reverse { grid-template-columns: 1fr 0.92fr; }
+  .feature-media { position: relative; }
+  .feature-frame { overflow: hidden; border-radius: 3px; box-shadow: var(--shadow-lift); aspect-ratio: 4 / 5; }
+  .feature-frame :global(img) { width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1); }
+  .feature-media:hover .feature-frame :global(img) { transform: scale(1.04); }
+  .feature-deco { position: absolute; width: 90px; height: 90px; border: 1px solid var(--gold); opacity: 0.5; bottom: -16px; right: -16px; border-left: 0; border-top: 0; }
+  .feature-deco-left { right: auto; left: -16px; border-left: 1px solid var(--gold); border-right: 0; border-top: 0; }
+  .feature-body .kicker { margin-bottom: 1rem; }
+  .feature-title { font-size: clamp(2rem, 1.5rem + 2.2vw, 3.2rem); font-weight: 400; line-height: 1.08; margin-bottom: 1.5rem; }
+  .feature-title em { font-style: italic; color: var(--gold); }
+  .prose p { color: var(--muted); margin-bottom: 1.2rem; line-height: 1.85; }
+  .prose-intro { color: var(--muted); margin-bottom: 1.6rem; line-height: 1.8; }
+  .signature { font-size: 2.6rem; color: var(--gold); line-height: 1; margin: 0.4rem 0 1.6rem; }
+
+  /* ===== OVERLAP PANEL ===== */
+  .overlap { display: grid; grid-template-columns: 1.05fr 0.95fr; align-items: center; }
+  .overlap-media { grid-column: 1; grid-row: 1; z-index: 1; overflow: hidden; border-radius: 3px; box-shadow: var(--shadow-lift); aspect-ratio: 3 / 2; }
+  .overlap-media :global(img) { width: 100%; height: 100%; object-fit: cover; }
+  .overlap-media :global(.ph-img) { height: 100%; }
+  .overlap-panel { grid-column: 2; grid-row: 1; z-index: 2; margin-left: -16%; background: var(--ink); color: var(--cream); padding: clamp(2rem, 4vw, 3.25rem); border-radius: 3px; box-shadow: var(--shadow-lift); }
+  .overlap-panel .kicker-gold { margin-bottom: 0.9rem; }
+  .overlap-title { color: var(--cream); font-weight: 400; font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.5rem); line-height: 1.12; margin-bottom: 1.2rem; }
+  .overlap-text { color: hsl(40 26% 84% / 0.92); line-height: 1.8; font-size: 1.05rem; }
+  .overlap-text :global(em) { color: var(--gold-soft); font-style: italic; }
+  .overlap-text :global(strong) { color: var(--cream); font-weight: 700; }
+  .review-stars { color: var(--gold-soft); font-size: 1rem; letter-spacing: 0.15em; }
+  .overlap-quote { color: var(--white); font-family: var(--font-display); font-style: italic; font-size: clamp(1.3rem, 1.05rem + 1.1vw, 1.9rem); line-height: 1.4; margin: 1rem 0 1.4rem; }
+  .overlap-quote :global(em) { color: var(--gold-soft); }
+  .overlap-quote :global(strong) { color: var(--white); font-weight: 600; font-style: normal; }
+  .overlap-cite { font-family: var(--font-display); font-size: 1.1rem; color: var(--gold-soft); }
+  .overlap-date { color: hsl(40 26% 78% / 0.7); font-size: 0.9rem; }
 
   /* ===== DIENSTEN ===== */
   .services { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1rem, 2.5vw, 2rem); }
   .service { display: flex; flex-direction: column; align-items: flex-start; gap: 0.85rem; padding: clamp(1.75rem, 3vw, 2.6rem); background: var(--white); border: 1px solid var(--line); border-radius: 3px; text-decoration: none; color: inherit; transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s ease, border-color 0.5s ease; }
   .service:hover { transform: translateY(-6px); box-shadow: var(--shadow-lift); border-color: hsl(36 40% 75%); }
-  .service-num { font-family: var(--font-display); font-style: italic; font-size: 1.05rem; color: var(--gold); letter-spacing: 0.05em; }
-  .service-title { font-size: 1.4rem; }
-  .service-text { color: var(--muted); font-size: 0.98rem; flex: 1; }
-  .service .link-more { margin-top: 0.5rem; }
+  .service-num { font-family: var(--font-display); font-style: italic; font-size: 1.05rem; color: var(--gold); }
+  .service-title { font-size: 1.4rem; font-weight: 400; }
+  .service-text { color: var(--muted); font-size: 0.98rem; flex: 1; line-height: 1.7; }
 
-  /* ===== STATEMENT / FOTO-BREAK ===== */
-  .statement { position: relative; overflow: hidden; isolation: isolate; padding-block: clamp(6rem, 14vw, 11rem); display: flex; align-items: center; justify-content: center; }
-  .statement-media { position: absolute; inset: -12% 0; z-index: -2; }
-  .statement-media :global(img) { width: 100%; height: 124%; object-fit: cover; object-position: center 40%; }
-  .statement-scrim { position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, var(--cream) -2%, transparent 12%, transparent 88%, var(--cream) 102%), hsl(26 30% 12% / 0.58); }
-  .statement-content { text-align: center; max-width: 920px; margin: 0; }
-  .statement-text { font-family: var(--font-display); font-style: italic; font-weight: 400; font-size: clamp(1.6rem, 1.1rem + 2.4vw, 3rem); line-height: 1.34; color: var(--white); }
-
-  /* ===== ABOUT (gedeeld) ===== */
-  .about { display: grid; grid-template-columns: 0.82fr 1fr; gap: clamp(2.5rem, 6vw, 5.5rem); align-items: center; }
-  .about-reverse { grid-template-columns: 1fr 0.82fr; }
-  .about-media { position: relative; }
-  .about-frame { position: relative; overflow: hidden; border-radius: 3px; box-shadow: var(--shadow-lift); aspect-ratio: 4 / 5; }
-  .about-frame :global(img) { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 25%; transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1); }
-  .about-media:hover .about-frame :global(img) { transform: scale(1.04); }
-  .about-deco { position: absolute; width: 92px; height: 92px; border: 1px solid var(--gold); opacity: 0.5; }
-  .about-deco-tl { top: -16px; left: -16px; border-right: 0; border-bottom: 0; }
-  .about-deco-br { bottom: -16px; right: -16px; border-left: 0; border-top: 0; }
-  .about-deco-bl { bottom: -16px; left: -16px; border-right: 0; border-top: 0; }
-  .about-title { font-size: clamp(1.9rem, 1.4rem + 2.2vw, 3.1rem); margin-bottom: 1.4rem; line-height: 1.08; }
-  .about-title em { font-style: italic; color: var(--gold); }
-  .about-body .rule { margin-bottom: 1.8rem; }
-  .about-p { color: var(--muted); margin-bottom: 1.2rem; }
-  .about-body .btn { margin-top: 1rem; }
-  .about-body .kicker { margin-bottom: 1rem; }
-
-  /* ===== WERKWIJZE ===== */
+  /* ===== WERKWIJZE STEPS ===== */
   .steps-list { list-style: none; padding: 0; margin: 0.5rem 0 0; display: flex; flex-direction: column; gap: 1.5rem; }
   .step-item { display: flex; gap: 1.1rem; align-items: flex-start; }
   .step-num { font-family: var(--font-display); font-size: 1.4rem; color: var(--gold); line-height: 1; flex: none; padding-top: 0.15rem; min-width: 2ch; }
-  .step-title { font-size: 1.2rem; margin-bottom: 0.35rem; }
-  .step-text { color: var(--muted); font-size: 0.97rem; }
-
-  /* ===== STATS ===== */
-  .stats { position: relative; background: linear-gradient(180deg, var(--cream) 0%, var(--cream-deep) 50%, var(--cream) 100%); color: var(--brown); padding-block: clamp(3.25rem, 6vw, 5rem); }
-  .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; text-align: center; }
-  .stat { display: flex; flex-direction: column; gap: 0.7rem; position: relative; }
-  .stat:not(:last-child)::after { content: ''; position: absolute; right: -1rem; top: 18%; height: 64%; width: 1px; background: var(--line); }
-  .stat-num { font-family: var(--font-display); font-size: clamp(2.4rem, 1.8rem + 2.5vw, 3.6rem); color: var(--gold); line-height: 1; }
-  .stat-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
+  .step-title { font-size: 1.2rem; font-weight: 400; margin-bottom: 0.35rem; }
+  .step-text { color: var(--muted); font-size: 0.97rem; line-height: 1.7; }
 
   /* ===== REVIEWS SHOWCASE ===== */
   .reviews-showcase { position: relative; overflow: hidden; isolation: isolate; background: linear-gradient(180deg, var(--cream) 0, transparent 96px), linear-gradient(0deg, var(--cream) 0, transparent 96px), radial-gradient(135% 115% at 50% -10%, hsl(28 28% 23%), hsl(26 30% 13%) 70%); color: var(--cream); padding-block: clamp(6.5rem, 6rem + 4vw, 8.5rem); }
   .rs-glow { position: absolute; inset: 0; z-index: -1; background: radial-gradient(55% 45% at 50% 48%, hsl(38 55% 52% / 0.16), transparent 72%); pointer-events: none; }
   .reviews-showcase .sec-head { margin-bottom: clamp(2.5rem, 4vw, 3.5rem); }
-  .kicker-gold { color: var(--gold-soft); }
   .rs-title { color: var(--cream); }
   .rs-intro { color: hsl(40 26% 80% / 0.85); margin-top: 1.1rem; font-size: 1.05rem; }
   .rs-stage { position: relative; max-width: 880px; margin-inline: auto; text-align: center; }
@@ -441,7 +388,7 @@ const jsonLd = {
   :global(.js) .rs-slide { grid-area: 1 / 1; margin-top: 0; opacity: 0; transform: translateY(14px); transition: opacity 0.45s ease, transform 0.45s ease; pointer-events: none; }
   :global(.js) .rs-slide.active { opacity: 1; transform: none; pointer-events: auto; transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.3s, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.3s; }
   .rs-text { font-family: var(--font-display); font-style: italic; font-weight: 400; font-size: clamp(1.45rem, 1.05rem + 1.9vw, 2.5rem); line-height: 1.4; color: var(--white); margin: 0; }
-  .rs-cite { display: flex; align-items: center; justify-content: center; gap: 0.7rem; margin-top: 1.9rem; font-style: normal; }
+  .rs-cite { display: flex; align-items: center; justify-content: center; gap: 0.7rem; margin-top: 1.9rem; }
   .rs-name { font-family: var(--font-display); font-size: 1.12rem; color: var(--gold-soft); }
   .rs-sep { color: hsl(40 30% 70% / 0.45); }
   .rs-date { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: hsl(40 26% 78% / 0.7); }
@@ -449,61 +396,71 @@ const jsonLd = {
   :global(html:not(.js)) .rs-controls { display: none; }
   .rs-arrow { width: 46px; height: 46px; display: grid; place-items: center; border: 1px solid hsl(40 30% 80% / 0.28); border-radius: 50%; background: transparent; color: var(--cream); font-size: 1.05rem; cursor: pointer; transition: border-color 0.4s ease, background 0.4s ease, transform 0.4s ease; }
   .rs-arrow:hover { border-color: var(--gold-soft); background: hsl(38 50% 60% / 0.12); transform: translateY(-2px); }
-  .rs-arrow:focus-visible { outline: 2px solid var(--gold-soft); outline-offset: 3px; }
   .rs-dots { display: flex; align-items: center; gap: 0.35rem; }
   .rs-dot { width: 28px; height: 28px; padding: 0; border: 0; background: transparent; cursor: pointer; position: relative; display: grid; place-items: center; }
   .rs-dot::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: hsl(40 30% 80% / 0.28); transition: background 0.4s ease, width 0.4s ease, border-radius 0.4s ease; }
-  .rs-dot:hover::before { background: hsl(40 30% 85% / 0.55); }
   .rs-dot.active::before { background: var(--gold-soft); width: 22px; border-radius: 4px; }
-  .rs-dot:focus-visible { outline: 2px solid var(--gold-soft); outline-offset: 2px; border-radius: 4px; }
   .rs-foot { text-align: center; margin-top: clamp(2.5rem, 4vw, 3.5rem); }
   .link-more-light { color: var(--gold-soft); }
 
-  /* ===== MOMENTEN (galerij) ===== */
-  .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(0.85rem, 2vw, 1.5rem); }
-  .gallery-frame { overflow: hidden; border-radius: 3px; box-shadow: var(--shadow-soft); aspect-ratio: 4 / 5; }
-  .gallery-frame :global(img) { width: 100%; height: 100%; object-fit: cover; transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1); }
-  .gallery-frame:hover :global(img) { transform: scale(1.05); }
+  /* ===== MOMENTEN (edge-to-edge) ===== */
+  .momenten { padding-block: clamp(4.5rem, 9vw, 7rem) 0; background: var(--cream); }
+  .gallery-bleed { display: grid; grid-template-columns: repeat(6, 1fr); margin-top: clamp(2rem, 4vw, 3rem); }
+  .gb-item { aspect-ratio: 1 / 1; overflow: hidden; }
+  .gb-frame { width: 100%; height: 100%; overflow: hidden; }
+  .gb-frame :global(img) { width: 100%; height: 100%; object-fit: cover; transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1); }
+  .gb-item:hover .gb-frame :global(img) { transform: scale(1.06); }
+  .gb-item :global(.ph-img) { height: 100%; border-radius: 0; border: 0; border-right: 1px solid hsl(40 40% 99% / 0.5); }
 
-  /* ===== COACHING BAND ===== */
-  .coaching-band { }
+  /* ===== STATS ===== */
+  .stats { position: relative; background: var(--cream-deep); color: var(--brown); padding-block: clamp(3.25rem, 6vw, 5rem); }
+  .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; text-align: center; }
+  .stat { display: flex; flex-direction: column; gap: 0.7rem; position: relative; }
+  .stat:not(:last-child)::after { content: ''; position: absolute; right: -1rem; top: 18%; height: 64%; width: 1px; background: var(--line); }
+  .stat-num { font-family: var(--font-display); font-size: clamp(2.4rem, 1.8rem + 2.5vw, 3.6rem); color: var(--gold); line-height: 1; }
+  .stat-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
+
+  /* ===== COACHING ===== */
   .coaching-inner { display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
   .coaching-copy { max-width: 60ch; }
   .coaching-copy .kicker { margin-bottom: 0.7rem; }
-  .coaching-title { font-size: clamp(1.6rem, 1.3rem + 1.4vw, 2.3rem); margin-bottom: 0.7rem; }
-  .coaching-text { color: var(--muted); }
+  .coaching-title { font-size: clamp(1.6rem, 1.3rem + 1.4vw, 2.3rem); font-weight: 400; margin-bottom: 0.7rem; }
+  .coaching-text { color: var(--muted); line-height: 1.8; }
   .coaching-inner .btn { flex: none; }
 
   /* ===== CTA ===== */
   .cta-inner { text-align: center; }
   .cta .kicker { margin-bottom: 1rem; }
-  .cta-title { font-size: clamp(2rem, 1.4rem + 2.8vw, 3.5rem); }
+  .cta-title { font-size: clamp(2rem, 1.4rem + 2.8vw, 3.5rem); font-weight: 400; }
+  .cta-title :global(em) { font-style: italic; color: var(--gold); }
   .cta-orn { max-width: 90px; margin: 1.8rem auto; }
-  .cta-text { color: var(--muted); font-size: 1.075rem; margin-bottom: 2.2rem; }
+  .cta-text { color: var(--muted); font-size: 1.075rem; margin-bottom: 2.2rem; line-height: 1.8; }
   .cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
 
   /* ===== RESPONSIVE ===== */
+  @media (max-width: 900px) {
+    .feature, .feature-reverse { grid-template-columns: 1fr; gap: 2.5rem; }
+    .feature-reverse .feature-body { order: 2; }
+    .feature-media { max-width: 460px; margin-inline: auto; }
+    .overlap { grid-template-columns: 1fr; }
+    .overlap-media { grid-column: 1; grid-row: 1; aspect-ratio: 3 / 2; }
+    .overlap-panel { grid-column: 1; grid-row: 2; margin-left: 0; margin-top: -2.5rem; margin-inline: 1rem 0; }
+    .gallery-bleed { grid-template-columns: repeat(3, 1fr); }
+  }
   @media (max-width: 880px) {
     .services, .stats-grid { grid-template-columns: 1fr; }
-    .about, .about-reverse { grid-template-columns: 1fr; gap: 2.5rem; }
-    .about-reverse .about-body { order: 2; }
-    .about-media { max-width: 440px; margin-inline: auto; }
     .stat:not(:last-child)::after { display: none; }
     .stat:not(:last-child) { padding-bottom: 1.75rem; border-bottom: 1px solid var(--line); }
     .rs-mark { top: -2.5rem; font-size: 6rem; }
-    .gallery { grid-template-columns: repeat(2, 1fr); }
-    .gallery-item.wide { grid-column: span 2; }
     .coaching-inner { flex-direction: column; align-items: flex-start; text-align: left; }
   }
-  @media (max-width: 520px) {
-    .gallery { grid-template-columns: 1fr; }
-    .gallery-item.wide { grid-column: span 1; }
+  @media (max-width: 560px) {
+    .gallery-bleed { grid-template-columns: repeat(2, 1fr); }
   }
 </style>
 
 <script>
   let homeAbort: AbortController | undefined;
-
   function initHome() {
     homeAbort?.abort();
     homeAbort = new AbortController();
@@ -518,7 +475,7 @@ const jsonLd = {
         for (const el of items) {
           const rect = el.getBoundingClientRect();
           if (rect.bottom < 0 || rect.top > vh) continue;
-          const speed = parseFloat(el.dataset.speed || '0.15');
+          const speed = parseFloat(el.dataset.speed || '0.12');
           const offset = (rect.top + rect.height / 2 - vh / 2) * -speed;
           el.style.transform = `translate3d(0, ${offset.toFixed(1)}px, 0)`;
         }
@@ -538,39 +495,24 @@ const jsonLd = {
       const next = stage.querySelector('[data-next]');
       let current = 0;
       let timer: ReturnType<typeof setInterval> | undefined;
-
       const go = (index: number) => {
         current = (index + slides.length) % slides.length;
-        slides.forEach((slide, i) => {
-          const active = i === current;
-          slide.classList.toggle('active', active);
-          slide.setAttribute('aria-hidden', active ? 'false' : 'true');
-        });
-        dots.forEach((dot, i) => {
-          const active = i === current;
-          dot.classList.toggle('active', active);
-          dot.setAttribute('aria-selected', active ? 'true' : 'false');
-        });
+        slides.forEach((slide, i) => { const a = i === current; slide.classList.toggle('active', a); slide.setAttribute('aria-hidden', a ? 'false' : 'true'); });
+        dots.forEach((dot, i) => { const a = i === current; dot.classList.toggle('active', a); dot.setAttribute('aria-selected', a ? 'true' : 'false'); });
       };
-
       const stop = () => { if (timer) { clearInterval(timer); timer = undefined; } };
       const start = () => { if (reduce || slides.length < 2) return; stop(); timer = setInterval(() => go(current + 1), 6500); };
       signal.addEventListener('abort', stop);
-
       prev?.addEventListener('click', () => { go(current - 1); start(); }, { signal });
       next?.addEventListener('click', () => { go(current + 1); start(); }, { signal });
       dots.forEach((dot, i) => dot.addEventListener('click', () => { go(i); start(); }, { signal }));
-
       stage.addEventListener('mouseenter', stop, { signal });
       stage.addEventListener('mouseleave', start, { signal });
       stage.addEventListener('focusin', stop, { signal });
       stage.addEventListener('focusout', start, { signal });
       document.addEventListener('visibilitychange', () => { document.hidden ? stop() : start(); }, { signal });
-
-      go(0);
-      start();
+      go(0); start();
     }
   }
-
   document.addEventListener('astro:page-load', initHome);
 </script>
