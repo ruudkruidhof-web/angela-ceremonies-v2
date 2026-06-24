@@ -79,11 +79,10 @@ const ogURL = new URL(ogImage, Astro.site ?? Astro.url.origin).href;
       .cookie[hidden] { display: none; }
       .cookie {
         position: fixed;
-        left: 50%;
+        left: 1.25rem;
         bottom: 1.25rem;
-        transform: translateX(-50%);
         z-index: 60;
-        width: min(560px, calc(100vw - 2rem));
+        width: min(400px, calc(100vw - 2rem));
         animation: cookie-rise 0.6s 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
         background: var(--white);
         border: 1px solid var(--line);
@@ -91,12 +90,13 @@ const ogURL = new URL(ogImage, Astro.site ?? Astro.url.origin).href;
         border-radius: 4px;
         padding: 1.1rem 1.25rem;
         display: flex;
-        align-items: center;
-        gap: 1.25rem;
-        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.9rem;
       }
-      .cookie p { font-size: 0.82rem; line-height: 1.6; color: var(--muted); flex: 1 1 240px; margin: 0; }
-      .cookie-actions { display: flex; gap: 0.6rem; }
+      .cookie p { font-size: 0.82rem; line-height: 1.6; color: var(--muted); margin: 0; }
+      .cookie-actions { display: flex; gap: 0.6rem; align-self: stretch; }
+      .cookie-actions .cookie-btn { flex: 1; text-align: center; }
       .cookie-btn {
         font-family: var(--font-body);
         font-size: 0.72rem;
@@ -112,7 +112,7 @@ const ogURL = new URL(ogImage, Astro.site ?? Astro.url.origin).href;
       }
       .cookie-btn.ghost { background: transparent; color: var(--brown); border-color: var(--line); }
       .cookie-btn:hover { filter: brightness(1.08); }
-      @keyframes cookie-rise { from { opacity: 0; transform: translateX(-50%) translateY(1rem); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
+      @keyframes cookie-rise { from { opacity: 0; transform: translateY(1rem); } to { opacity: 1; transform: translateY(0); } }
       @media (prefers-reduced-motion: reduce) { .cookie { animation: none; } }
     </style>
 
@@ -159,22 +159,29 @@ const ogURL = new URL(ogImage, Astro.site ?? Astro.url.origin).href;
         if (!bar) return;
         let consent: string | null = null;
         try { consent = localStorage.getItem('ac-cookie-consent'); } catch (e) {}
+        if (consent === 'accepted') { loadGA(); bar.hidden = true; }
+        else if (consent === 'declined') { bar.hidden = true; }
+        else { bar.hidden = false; }
+        if (bar.dataset.bound) return;
+        bar.dataset.bound = 'true';
         const decide = (choice: string) => {
           try { localStorage.setItem('ac-cookie-consent', choice); } catch (e) {}
           bar.hidden = true;
           if (choice === 'accepted') loadGA();
         };
-        if (consent === 'accepted') { loadGA(); bar.hidden = true; }
-        else if (consent === 'declined') { bar.hidden = true; }
-        else { bar.hidden = false; }
         bar.querySelector('[data-cookie-accept]')?.addEventListener('click', () => decide('accepted'));
         bar.querySelector('[data-cookie-decline]')?.addEventListener('click', () => decide('declined'));
       }
 
-      document.addEventListener('astro:page-load', () => {
-        initReveal();
-        initCookie();
-      });
+      function initAll() { initReveal(); initCookie(); }
+      // Bind immediately (covers the first load even if astro:page-load already fired)
+      // and again after every View Transition swap.
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initAll, { once: true });
+      } else {
+        initAll();
+      }
+      document.addEventListener('astro:page-load', initAll);
     </script>
   </body>
 </html>

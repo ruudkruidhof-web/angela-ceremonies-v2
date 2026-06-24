@@ -3,18 +3,20 @@
     "kicker": "Trouwambtenaar & ceremoniespreker · Rotterdam",
     "titel": "Jullie liefde,",
     "titelAccent": "mijn woorden",
-    "subtitel": "Liefde verdient een ceremonie die bij je past.",
-    "knopPrimair": { "label": "Ontdek mijn aanpak", "href": "/trouwen" },
-    "knopSecundair": { "label": "Neem contact op", "href": "/contact" },
-    "afbeeldingAlt": "Warm kaarslicht en bloemen bij een trouwceremonie"
+    "subtitel": "Ik ben Angela. Ik maak van jullie ja-woord een ceremonie die voelt alsof we elkaar al jaren kennen.",
+    "trust": ["490+ ceremonies", "Sinds 2018", "Heel Nederland"],
+    "knopPrimair": { "label": "Plan een kennismaking", "href": "/contact" },
+    "knopSecundair": { "label": "Zo werk ik", "href": "#werkwijze" },
+    "afbeeldingAlt": "Angela Bhagole-Mangre, trouwambtenaar en ceremoniespreker",
+    "achtergrondAlt": "Warm kaarslicht en bloemen bij een trouwceremonie"
   },
   "intro": {
-    "kicker": "Welkom aanstaande bruidspaar",
-    "titel": "Jullie trouwdag is een uniek moment",
+    "kicker": "Welkom, lief bruidspaar",
+    "titel": "Geen standaardverhaal.",
+    "titelAccent": "Jullie verhaal.",
     "alineas": [
-      "Een dag waarop alles samenkomt: liefde, betekenis en verbondenheid. Ik help jullie graag om dit moment te vertalen naar een ceremonie die écht over jullie gaat.",
-      "Met aandacht, rust en persoonlijke betrokkenheid creëren we samen een trouwceremonie die raakt, verrast en blijft hangen. Geen standaardverhaal, maar een oprechte ceremonie waarin jullie verhaal centraal staat. Precies zoals jullie zijn.",
-      "Of jullie nu kiezen voor ingetogen en stijlvol of warm en uitbundig: ik zorg voor woorden die kloppen en een sfeer die past."
+      "Jullie trouwdag is geen formaliteit, het is hét moment waarop jullie hardop kiezen voor elkaar. Ik vind het een voorrecht om daarbij te mogen staan en jullie verhaal te vertellen in woorden die echt kloppen.",
+      "Met rust, warmte en oprechte aandacht maken we samen een ceremonie die raakt en bijblijft. Ingetogen en stijlvol of warm en uitbundig: het mag precies zo zijn als jullie zijn."
     ]
   },
   "diensten": {
@@ -41,20 +43,33 @@
       }
     ]
   },
-  "citaat": {
-    "tekst": "Samen maken we van jullie trouwceremonie een herinnering om nooit te vergeten.",
-    "naam": "Angela Bhagole-Mangre",
-    "afbeeldingAlt": "Handen van een bruidspaar tijdens de ringuitwisseling"
+  "statement": {
+    "tekst": "Aan het eind van de ceremonie wil ik dat jullie gasten denken: zo kende ik hen nog niet, en zo herken ik hen helemaal.",
+    "afbeeldingAlt": "Sfeervolle trouwceremonie met kaarslicht en bloemen"
   },
   "over": {
-    "kicker": "Over Angela Ceremonies",
-    "titelRegels": ["Liefdevol.", "Persoonlijk.", "Verbindend."],
+    "kicker": "Even voorstellen",
+    "titel": "Hi, ik ben",
+    "titelAccent": "Angela",
     "alineas": [
-      "Angela Ceremonies verzorgt persoonlijke en liefdevolle trouwceremonies die passen bij wie jullie zijn. Angela Bhagole-Mangre is actief als BABS, zelfstandig trouwambtenaar en ceremoniespreker en begeleidt zowel wettelijke als ceremoniële huwelijken.",
-      "Vanuit Rotterdam en werkzaam door heel Nederland staat Angela Ceremonies voor rust, verbinding en een ceremonie die bijblijft."
+      "Geboren en getogen in Rotterdam, met Hindoestaanse roots en een hart dat sneller gaat kloppen van liefde in al haar vormen. Ik ben gelukkig getrouwd en trotse moeder van twee zonen.",
+      "Sinds 2018 ben ik trouwambtenaar, en eerlijk: het voelt nooit als werk. Elk paar is anders, elk verhaal is uniek, en juist die diversiteit, cultuur en tradities neem ik met liefde mee in mijn ceremonies. Respect en verbinding staan altijd centraal.",
+      "Liefde kent geen grenzen, en verdient een ceremonie die daarbij past."
     ],
-    "knop": { "label": "Lees meer over mij", "href": "/over-mij" },
-    "afbeeldingAlt": "Angela Bhagole-Mangre, trouwambtenaar en ceremoniespreker, in toga"
+    "knop": { "label": "Lees mijn verhaal", "href": "/over-mij" },
+    "afbeeldingAlt": "Angela Bhagole-Mangre thuis, voor haar Hindoestaanse kunst"
+  },
+  "werkwijze": {
+    "kicker": "Zo werken we samen",
+    "titel": "Van kennismaking tot jullie ja-woord",
+    "intro": "Geen verrassingen, wel verrast worden. Ik neem jullie stap voor stap mee, zodat jullie ontspannen naar de grote dag toe leven.",
+    "stappen": [
+      { "nummer": "01", "titel": "Kennismaken", "tekst": "We beginnen vrijblijvend. Klikt het? Dan weten jullie meteen dat het goed voelt." },
+      { "nummer": "02", "titel": "Jullie verhaal ophalen", "tekst": "In een ontspannen gesprek ontdek ik wie jullie zijn, hoe het begon en wat jullie raakt." },
+      { "nummer": "03", "titel": "Een ceremonie op maat", "tekst": "Ik schrijf een persoonlijke speech en ceremonie. Tot in de details afgestemd op jullie." },
+      { "nummer": "04", "titel": "Jullie grote dag", "tekst": "Ik sta er volledig voor jullie. Met rust, warmte en oog voor elk bijzonder moment." }
+    ],
+    "afbeeldingAlt": "Angela bereidt een persoonlijke trouwceremonie voor"
   },
   "cijfers": [
     { "getal": "490+", "label": "Huwelijken voltrokken" },
@@ -67,23 +82,29 @@
     "intro": "De mooiste terugkoppeling is te horen dat een ceremonie heeft geraakt. Dat mensen het nog lang napraten. Dat het echt klopte.",
     "knop": { "label": "Lees alle lieve woorden", "href": "/lieve-woorden" }
   },
+  "momenten": {
+    "kicker": "Momenten",
+    "titel": "Een glimp van wat ik doe",
+    "intro": "Echte ceremonies, echte tranen, echt gelach. Binnenkort hier de foto's van mijn eigen bruidsparen.",
+    "items": [
+      { "bron": "hands-rings", "alt": "Handen van een bruidspaar tijdens de ringuitwisseling" },
+      { "placeholder": true, "label": "Angela tijdens een ceremonie" },
+      { "bron": "aisle-candles", "alt": "Kaarslicht en bloemen langs het pad" },
+      { "bron": "ring-exchange", "alt": "Intiem moment tijdens de ringuitwisseling" },
+      { "bron": "candles-roses", "alt": "Witte rozen en kaarsen" },
+      { "placeholder": true, "label": "Bruidspaar met Angela" }
+    ]
+  },
   "coaching": {
     "kicker": "Coaching voor BABS'en",
-    "titel": "Met vertrouwen voor het bruidspaar staan",
-    "tekst": "Droom je ervan om BABS te worden? Of sta je binnenkort voor het eerst voor een bruidspaar en wil je meer rust, zelfvertrouwen en verdieping? Ik help je graag om jouw rol met plezier en overtuiging neer te zetten.",
-    "punten": [
-      "Startende buitengewoon ambtenaren",
-      "Gast-BABS'en of BABS voor één dag",
-      "Ceremoniesprekers",
-      "Trouwambtenaren die willen groeien"
-    ],
-    "knop": { "label": "Meer over coaching", "href": "/coaching" },
-    "afbeeldingAlt": "Coaching voor trouwambtenaren"
+    "titel": "Zelf voor het bruidspaar staan?",
+    "tekst": "Droom je ervan om BABS te worden, of wil je meer rust en eigenheid in je ceremonies? Vanuit 490+ huwelijken deel ik graag alles wat ik weet.",
+    "knop": { "label": "Meer over coaching", "href": "/coaching" }
   },
   "cta": {
     "kicker": "Laten we kennismaken",
     "titel": "Klaar om jullie verhaal te vertellen?",
     "tekst": "Hebben jullie vragen, willen jullie kennismaken of samen ontdekken wat bij jullie past? Ik hoor graag van jullie en denk met jullie mee.",
-    "knop": { "label": "Neem contact op", "href": "/contact" }
+    "knop": { "label": "Plan een kennismaking", "href": "/contact" }
   }
 }

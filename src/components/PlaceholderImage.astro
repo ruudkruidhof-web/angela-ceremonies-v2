@@ -1,0 +1,36 @@
+---
+interface Props {
+  label: string;
+  vorm?: 'staand' | 'liggend' | 'vierkant';
+  class?: string;
+}
+const { label, vorm = 'staand', class: extra = '' } = Astro.props;
+const ratio = vorm === 'liggend' ? '3 / 2' : vorm === 'vierkant' ? '1 / 1' : '4 / 5';
+---
+
+<div class:list={['ph-img', extra]} style={`aspect-ratio:${ratio}`} role="img" aria-label={`Foto volgt: ${label}`}>
+  <span class="ph-img-orn" aria-hidden="true">✦</span>
+  <span class="ph-img-tag">Foto volgt</span>
+  <span class="ph-img-label">{label}</span>
+</div>
+
+<style>
+  .ph-img {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    text-align: center;
+    padding: 1.5rem;
+    border-radius: 3px;
+    border: 1px solid var(--gold);
+    background:
+      repeating-linear-gradient(135deg, hsl(36 38% 90% / 0.5) 0 12px, hsl(36 38% 87% / 0.5) 12px 24px),
+      var(--cream-deep);
+    color: var(--brown);
+  }
+  .ph-img-orn { color: var(--gold); font-size: 1.1rem; }
+  .ph-img-tag { font-size: 0.66rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
+  .ph-img-label { font-family: var(--font-display); font-style: italic; font-size: 0.98rem; color: var(--muted); max-width: 24ch; line-height: 1.3; }
+</style>
