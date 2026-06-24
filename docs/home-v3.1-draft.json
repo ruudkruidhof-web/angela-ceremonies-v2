@@ -1,0 +1,103 @@
+{
+  "hero": {
+    "kicker": "Trouwambtenaar & ceremoniespreker · Rotterdam",
+    "titel": "Jullie liefde,",
+    "titelAccent": "in mijn woorden",
+    "subtitel": "Ik ben Angela. Ik maak van jullie ja-woord een ceremonie die voelt alsof we elkaar al jaren kennen.",
+    "rating": "5,0 · 18 lieve woorden",
+    "ratingHref": "/lieve-woorden",
+    "knop": { "label": "Plan een kennismaking", "href": "/contact" },
+    "afbeeldingAlt": "Lachend bruidspaar in een warm veld bij gouden licht"
+  },
+  "statement": {
+    "html": "Geen standaardverhaal, geen afgeraffelde formaliteit. Maar een ceremonie die <em>écht over jullie gaat</em>. Eerlijk, <strong>warm</strong>, persoonlijk en af en toe <strong>een traan van geluk</strong>.",
+    "knop": { "label": "Ontdek mijn aanpak", "href": "/trouwen" }
+  },
+  "video": {
+    "kicker": "Een blik achter de schermen",
+    "titel": "Zo ziet een ceremonie van mij eruit",
+    "intro": "Alles over mijn aanpak, en je ziet me gelijk in actie.",
+    "placeholderLabel": "Korte film van Angela in actie"
+  },
+  "reviewBlocks": [
+    {
+      "bron": "couple-joy",
+      "fotoAlt": "Lachend bruidspaar op hun trouwdag",
+      "quoteHtml": "Jouw betrokkenheid, energie en warmte <em>maakten de ceremonie echt speciaal</em> voor ons en onze gasten. We zijn je enorm dankbaar voor het creëren van zo'n <strong>memorabel moment</strong>.",
+      "naam": "Claire & Theo",
+      "datum": "April 2024"
+    },
+    {
+      "bron": "couple-elegant",
+      "fotoAlt": "Bruidspaar in een innige omhelzing",
+      "quoteHtml": "We hadden niet verwacht dat het zo <em>speciaal en emotioneel</em> zou voelen. Dat is helemaal te danken aan jou en je <strong>prachtige speech</strong>.",
+      "naam": "Reza & Elaha",
+      "datum": "November 2023"
+    }
+  ],
+  "reviewsLink": { "label": "Lees alle lieve woorden", "href": "/lieve-woorden" },
+  "vision": {
+    "kicker": "Mijn aanpak",
+    "titel": "Warmte en oprechtheid, geen clichés",
+    "html": "Jullie hebben besloten om hardop te kiezen voor elkaar. <strong>Het mooiste wat er is.</strong> Laten we daar samen iets van maken dat <em>écht bij jullie past</em>: persoonlijk, ontspannen en met ruimte voor alle emoties. Want na een traan is er altijd weer ruimte voor een lach.",
+    "afbeeldingAlt": "Sfeervolle trouwceremonie met kaarslicht en bloemen"
+  },
+  "craft": {
+    "kicker": "Mijn vak",
+    "titel": "Jullie verhaal vertellen, dat is mijn ding",
+    "html": "Inmiddels heb ik <strong>490+ huwelijken</strong> voltrokken, en nog steeds krijg ik er energie van. Ik luister, schrijf en vertel jullie verhaal op een manier die raakt. <em>Geen standaardtekst, maar woorden die kloppen.</em>",
+    "knop": { "label": "Werkwijze & tarieven", "href": "/tarieven" },
+    "afbeeldingAlt": "Angela bereidt een persoonlijke trouwceremonie voor"
+  },
+  "intro": {
+    "kicker": "Even voorstellen",
+    "titel": "Hi, ik ben",
+    "titelAccent": "Angela",
+    "html": [
+      "Geboren en getogen in Rotterdam, met Hindoestaanse roots en een hart dat sneller gaat kloppen van liefde in al haar vormen. Ik ben gelukkig getrouwd en trotse moeder van twee zonen.",
+      "Sinds 2018 ben ik trouwambtenaar, en eerlijk: <strong>het voelt nooit als werk</strong>. Elk paar is anders, elk verhaal uniek, en juist die diversiteit, cultuur en tradities neem ik met liefde mee. <em>Respect en verbinding staan altijd centraal.</em>"
+    ],
+    "signatuur": "Angela",
+    "knop": { "label": "Lees mijn verhaal", "href": "/over-mij" },
+    "afbeeldingAlt": "Angela Bhagole-Mangre thuis, voor haar Hindoestaanse kunst"
+  },
+  "diensten": {
+    "kicker": "Wat ik voor jullie doe",
+    "titel": "Drie manieren om ja te zeggen",
+    "items": [
+      { "nummer": "01", "titel": "Wettelijk trouwen", "tekst": "Als BABS voltrek ik jullie officiële huwelijk, met de zorg en persoonlijkheid die jullie dag verdient.", "href": "/trouwen#wettelijk" },
+      { "nummer": "02", "titel": "Ceremonieel huwelijk", "tekst": "Een ceremonie zonder wettelijke binding, volledig op maat. Jullie verhaal, jullie woorden, jullie moment.", "href": "/trouwen#ceremonieel" },
+      { "nummer": "03", "titel": "Geloften vernieuwen", "tekst": "Sta opnieuw voor elkaar en vier jullie liefde met een intieme, betekenisvolle herbevestiging.", "href": "/trouwen#geloften" }
+    ]
+  },
+  "coaching": {
+    "kicker": "Coaching voor (aankomende) BABS'en",
+    "titel": "Zelf voor het bruidspaar staan?",
+    "html": "Droom je ervan om BABS te worden, of wil je meer rust, zelfvertrouwen en eigenheid in je ceremonies? Vanuit <strong>490+ huwelijken</strong> deel ik graag alles wat ik weet, zodat jij met plezier en overtuiging voor het bruidspaar staat.",
+    "knop": { "label": "Meer over coaching", "href": "/coaching" },
+    "afbeeldingAlt": "Angela aan het werk aan een ceremonie"
+  },
+  "momenten": {
+    "kicker": "Momenten",
+    "titel": "Een glimp van wat ik doe",
+    "items": [
+      { "bron": "couple-beach", "alt": "Vrolijk bruidspaar bij de kust" },
+      { "placeholder": true, "label": "Angela tijdens een ceremonie" },
+      { "bron": "hands-rings", "alt": "Ringuitwisseling van een bruidspaar" },
+      { "bron": "aisle-candles", "alt": "Kaarslicht en bloemen langs het pad" },
+      { "placeholder": true, "label": "Bruidspaar met Angela" },
+      { "bron": "candles-roses", "alt": "Witte rozen en kaarsen" }
+    ]
+  },
+  "cijfers": [
+    { "getal": "490+", "label": "Huwelijken voltrokken" },
+    { "getal": "2018", "label": "Actief als BABS sinds" },
+    { "getal": "Heel NL", "label": "Werkzaam door heel Nederland" }
+  ],
+  "cta": {
+    "kicker": "Laten we kennismaken",
+    "titelHtml": "Klaar om <em>jullie verhaal</em> te vertellen?",
+    "tekst": "Hebben jullie vragen, willen jullie kennismaken of samen ontdekken wat bij jullie past? Ik hoor graag van jullie en denk met jullie mee.",
+    "knop": { "label": "Plan een kennismaking", "href": "/contact" }
+  }
+}
