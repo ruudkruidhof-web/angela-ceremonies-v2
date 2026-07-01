@@ -1,10 +1,14 @@
 ---
+import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
 import CtaSection from '../components/CtaSection.astro';
 import lw from '../content/teksten/lieve-woorden.json';
 import reviews from '../content/reviews.json';
 import heroImg from '../assets/candles-roses.jpg';
+import featuredImg from '../assets/couple-beach.jpg';
+
+const featured = reviews.find((r) => r.uitgelicht) ?? reviews[0];
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -38,8 +42,21 @@ const jsonLd = {
   />
 
   <section class="section bg-cream">
+    <figure class="wrap review-row reveal">
+      <div class="rr-media">
+        <Image src={featuredImg} alt="Stralend bruidspaar op hun trouwdag" widths={[480, 800, 1100]} sizes="(max-width: 900px) 90vw, 540px" quality={78} format="webp" />
+      </div>
+      <figcaption class="rr-body">
+        <span class="rr-stars" aria-hidden="true">★★★★★</span>
+        <blockquote class="rr-quote">{featured.quote}</blockquote>
+        <p class="rr-cite">{featured.naam} <span class="rr-date">· {featured.datum}</span></p>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="section bg-champagne">
     <div class="wrap">
-      <p class="lw-intro reveal">{lw.intro.tekst}</p>
+      <p class="lw-intro rich reveal" set:html={lw.intro.tekst}></p>
 
       <div class="lw-wall">
         {reviews.map((r, i) => (
@@ -66,6 +83,21 @@ const jsonLd = {
 </Base>
 
 <style>
+  .review-row { display: grid; grid-template-columns: 1.02fr 0.98fr; gap: clamp(2.25rem, 5vw, 4.5rem); align-items: center; margin: 0; }
+  .rr-media { overflow: hidden; border-radius: 3px; box-shadow: var(--shadow-lift); aspect-ratio: 4 / 5; }
+  .rr-media :global(img) { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1); }
+  .review-row:hover .rr-media :global(img) { transform: scale(1.04); }
+  .rr-body { max-width: 40ch; }
+  .rr-stars { color: var(--gold-soft); font-size: 1.05rem; letter-spacing: 0.18em; }
+  .rr-quote { margin: 1.1rem 0 1.6rem; font-family: var(--font-display); font-style: italic; font-weight: 400; font-size: clamp(1.4rem, 1.1rem + 1.4vw, 2.2rem); line-height: 1.4; color: var(--ink); }
+  .rr-cite { font-family: var(--font-display); font-size: 1.2rem; color: var(--gold); }
+  .rr-date { color: var(--muted); font-size: 0.82rem; font-family: var(--font-body); }
+  @media (max-width: 900px) {
+    .review-row { grid-template-columns: 1fr; gap: 2rem; }
+    .rr-media { aspect-ratio: 3 / 2; }
+    .rr-body { max-width: none; }
+  }
+
   .lw-intro {
     text-align: center;
     max-width: 640px;

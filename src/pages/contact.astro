@@ -33,7 +33,7 @@ const jsonLd = {
         <p class="kicker">{c.info.kicker}</p>
         <h2 class="contact-title">{c.info.titel}</h2>
         <span class="rule reveal-rule"></span>
-        <p class="contact-intro">{c.info.tekst}</p>
+        <p class="contact-intro rich" set:html={c.info.tekst}></p>
 
         <ul class="contact-list">
           <li>

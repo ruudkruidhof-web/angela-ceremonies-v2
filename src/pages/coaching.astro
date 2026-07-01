@@ -35,7 +35,7 @@ const jsonLd = {
         <p class="kicker reveal">{c.intro.kicker}</p>
         <h2 class="section-title reveal" style="--reveal-delay:80ms">{c.intro.titel}</h2>
         <span class="rule reveal-rule" style="--reveal-delay:150ms"></span>
-        <p class="prose reveal" style="--reveal-delay:180ms">{c.intro.tekst}</p>
+        <p class="prose rich reveal" style="--reveal-delay:180ms" set:html={c.intro.tekst}></p>
         <p class="intro-note reveal" style="--reveal-delay:260ms">{c.intro.noot}</p>
       </div>
       <div class="reveal" style="--reveal-delay:120ms">

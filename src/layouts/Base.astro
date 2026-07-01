@@ -145,28 +145,41 @@ const ogURL = new URL(ogImage, Astro.site ?? Astro.url.origin).href;
     </style>
 
     <script>
+      import { gsap } from 'gsap';
+      import { ScrollTrigger } from 'gsap/ScrollTrigger';
+      gsap.registerPlugin(ScrollTrigger);
+
       // Re-initialised on every page load AND after each View Transition swap.
       const GA_ID = ''; // TODO: vul Google Analytics ID in (G-XXXXXXX)
 
+      let revealMM: ReturnType<typeof gsap.matchMedia> | undefined;
+
       function initReveal() {
-        const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        const revealEls = document.querySelectorAll('.reveal, .reveal-rule');
-        if (reduce || !('IntersectionObserver' in window)) {
-          revealEls.forEach((el) => el.classList.add('in'));
-          return;
-        }
-        const io = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add('in');
-                io.unobserve(entry.target);
-              }
-            });
-          },
-          { threshold: 0.12, rootMargin: '0px 0px -8% 0px' }
-        );
-        revealEls.forEach((el) => io.observe(el));
+        revealMM?.revert();
+        revealMM = gsap.matchMedia();
+
+        revealMM.add('(prefers-reduced-motion: no-preference)', () => {
+          const batch = ScrollTrigger.batch('.reveal', {
+            start: 'top 88%',
+            once: true,
+            onEnter: (els) =>
+              gsap.to(els, { opacity: 1, y: 0, duration: 1, ease: 'power3.out', stagger: 0.12, overwrite: true }),
+          });
+          const rules = ScrollTrigger.batch('.reveal-rule', {
+            start: 'top 90%',
+            once: true,
+            onEnter: (els) => gsap.to(els, { scaleX: 1, duration: 1.1, ease: 'power3.out', overwrite: true }),
+          });
+          return () => {
+            batch.forEach((t) => t.kill());
+            rules.forEach((t) => t.kill());
+          };
+        });
+
+        revealMM.add('(prefers-reduced-motion: reduce)', () => {
+          gsap.set('.reveal', { opacity: 1, y: 0 });
+          gsap.set('.reveal-rule', { scaleX: 1 });
+        });
       }
 
       function loadGA() {
@@ -201,7 +214,11 @@ const ogURL = new URL(ogImage, Astro.site ?? Astro.url.origin).href;
         bar.querySelector('[data-cookie-decline]')?.addEventListener('click', () => decide('declined'));
       }
 
-      function initAll() { initReveal(); initCookie(); }
+      function initAll() {
+        initReveal();
+        initCookie();
+        ScrollTrigger.refresh();
+      }
       // Bind immediately (covers the first load even if astro:page-load already fired)
       // and again after every View Transition swap.
       if (document.readyState === 'loading') {
@@ -210,6 +227,11 @@ const ogURL = new URL(ogImage, Astro.site ?? Astro.url.origin).href;
         initAll();
       }
       document.addEventListener('astro:page-load', initAll);
+      // Tear down scroll triggers before a View Transition swaps the DOM.
+      document.addEventListener('astro:before-swap', () => {
+        revealMM?.revert();
+        ScrollTrigger.getAll().forEach((t) => t.kill());
+      });
     </script>
   </body>
 </html>

@@ -31,7 +31,7 @@ const {
         <p class="kicker ph-en" style="--d:0ms">{kicker}</p>
         <h1 class="ph-title-cream ph-en" style="--d:90ms">{title}{titleAccent && <>{' '}<em>{titleAccent}</em></>}</h1>
         <span class="rule ph-en-rule" style="--d:200ms"></span>
-        {subtitle && <p class="ph-sub-cream ph-en" style="--d:280ms">{subtitle}</p>}
+        {subtitle && <p class="ph-sub-cream ph-en rich" style="--d:280ms" set:html={subtitle} />}
       </div>
       <div class="ph-portrait-media ph-en-media" style="--d:160ms">
         <div class="ph-portrait-frame">
@@ -51,7 +51,7 @@ const {
     <div class="wrap ph-inner">
       <p class="kicker ph-kicker ph-en" style="--d:120ms">{kicker}</p>
       <h1 class="ph-title ph-en" style="--d:220ms">{title}{titleAccent && <>{' '}<em>{titleAccent}</em></>}</h1>
-      {subtitle && <p class="ph-sub ph-en" style="--d:360ms">{subtitle}</p>}
+      {subtitle && <p class="ph-sub ph-en rich" style="--d:360ms" set:html={subtitle} />}
     </div>
   </section>
 ) : (
@@ -60,7 +60,7 @@ const {
       <p class="kicker ph-en" style="--d:0ms">{kicker}</p>
       <h1 class="ph-title-cream ph-en" style="--d:90ms">{title}{titleAccent && <>{' '}<em>{titleAccent}</em></>}</h1>
       <div class="ornament ph-orn ph-en" style="--d:180ms"><span>✦</span></div>
-      {subtitle && <p class="ph-sub-cream ph-en" style="--d:250ms">{subtitle}</p>}
+      {subtitle && <p class="ph-sub-cream ph-en rich" style="--d:250ms" set:html={subtitle} />}
     </div>
   </section>
 )}
@@ -94,7 +94,7 @@ const {
   .ph-scrim {
     position: absolute; inset: 0; z-index: -1;
     background:
-      linear-gradient(180deg, hsl(27 34% 13% / 0.5) 0%, hsl(28 30% 16% / 0.32) 45%, hsl(26 30% 9% / 0.72) 100%),
+      linear-gradient(180deg, hsl(27 34% 11% / 0.62) 0%, hsl(28 30% 14% / 0.32) 42%, hsl(26 30% 8% / 0.78) 100%),
       linear-gradient(0deg, var(--cream) 0%, transparent 16%);
   }
   .ph-image.tint-warm::after {
@@ -113,6 +113,8 @@ const {
   .ph-title { color: var(--cream); font-size: clamp(2.5rem, 1.8rem + 4vw, 4.75rem); line-height: 1.04; letter-spacing: -0.015em; font-weight: 500; }
   .ph-title em { font-style: italic; color: hsl(38 55% 78%); }
   .ph-sub { margin-top: 1.4rem; font-size: clamp(1.05rem, 1rem + 0.4vw, 1.25rem); font-weight: 300; color: hsl(40 40% 94% / 0.92); max-width: 56ch; }
+  .ph-sub.rich :global(em) { color: hsl(38 55% 80%); font-style: italic; }
+  .ph-sub.rich :global(strong) { color: var(--cream); font-weight: 600; }
 
   /* Cream editorial variant */
   .ph-cream {
@@ -126,6 +128,8 @@ const {
   .ph-title-cream em { font-style: italic; color: var(--gold); }
   .ph-orn { max-width: 90px; margin: 1.8rem auto 0; }
   .ph-sub-cream { margin-top: 1.6rem; font-size: clamp(1.05rem, 1rem + 0.4vw, 1.2rem); color: var(--muted); max-width: 54ch; margin-inline: auto; }
+  .ph-sub-cream.rich :global(em) { color: var(--gold); font-style: italic; }
+  .ph-sub-cream.rich :global(strong) { color: var(--ink); font-weight: 700; }
 
   /* Portrait split variant (Angela beside the headline) */
   .ph-portrait {

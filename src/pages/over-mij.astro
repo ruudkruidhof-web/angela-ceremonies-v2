@@ -42,10 +42,11 @@ const jsonLd = {
         <h2 class="bio-name reveal" style="--reveal-delay:80ms">{o.bio.naam}</h2>
         <p class="bio-role reveal" style="--reveal-delay:120ms">{o.bio.rol}</p>
         <span class="rule reveal-rule" style="--reveal-delay:160ms"></span>
-        <div class="prose">
-          {o.bio.alineas.map((p, i) => <p class="reveal" style={`--reveal-delay:${180 + i * 80}ms`}>{p}</p>)}
+        <div class="prose rich">
+          {o.bio.alineas.map((p, i) => <p class="reveal" style={`--reveal-delay:${180 + i * 80}ms`} set:html={p}></p>)}
         </div>
         <blockquote class="bio-quote reveal">{o.bio.citaat}</blockquote>
+        <p class="bio-signature script reveal" aria-hidden="true">Angela</p>
         <a href={o.bio.profielHref} target="_blank" rel="noopener" class="link-more reveal">{o.bio.profielLabel} <span class="arrow">→</span></a>
       </div>
     </div>
@@ -98,6 +99,7 @@ const jsonLd = {
   .bio-name { font-size: clamp(2rem, 1.5rem + 2vw, 2.9rem); }
   .bio-role { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-top: 0.5rem; }
   .bio-body .rule { margin: 1.5rem 0 1.8rem; }
+  .bio-signature { font-size: 2.6rem; color: var(--gold); line-height: 1; margin: 0.2rem 0 1.4rem; }
   .bio-quote {
     margin: 1.8rem 0;
     padding-left: 1.4rem;
