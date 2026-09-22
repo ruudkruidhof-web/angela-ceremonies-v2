@@ -1,0 +1,31 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import p from '../content/teksten/privacy.json';
+---
+
+<Base title={p.meta.title} description={p.meta.description} canonical="/privacy">
+  <PageHero kicker={p.hero.kicker} title={p.hero.titel} titleAccent={p.hero.titelAccent} subtitle={p.hero.subtitel} />
+
+  <section class="section bg-cream">
+    <div class="wrap wrap-narrow privacy">
+      <p class="privacy-datum">Laatst bijgewerkt: {p.laatstBijgewerkt}</p>
+      {p.secties.map((s) => (
+        <section class="prose">
+          <h2>{s.kop}</h2>
+          {s.alineas?.map((a) => <p>{a}</p>)}
+          {s.lijst && <ul>{s.lijst.map((item) => <li>{item}</li>)}</ul>}
+          {s.alineasNa?.map((a) => <p>{a}</p>)}
+        </section>
+      ))}
+    </div>
+  </section>
+</Base>
+
+<style>
+  .privacy { overflow-wrap: anywhere; }
+  .privacy-datum { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 2rem; }
+  .privacy h2 { font-size: clamp(1.35rem, 1.2rem + 0.6vw, 1.7rem); margin: 2.6rem 0 1rem; }
+  .privacy section:first-of-type h2 { margin-top: 0; }
+  .privacy ul { color: var(--muted); padding-left: 1.2rem; margin: 0 0 1.2rem; display: grid; gap: 0.4rem; }
+</style>

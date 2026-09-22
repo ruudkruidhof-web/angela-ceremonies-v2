@@ -34,7 +34,7 @@ const ogURL = new URL(ogImage, Astro.site ?? Astro.url.origin).href;
     <meta name="theme-color" content="#f6f1e7" />
     <meta name="author" content={site.persoon} />
 
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" href="/fonts/playfair-display-normal.woff2" as="font" type="font/woff2" crossorigin />
 
     <ClientRouter fallback="swap" />
 
@@ -52,8 +52,7 @@ const ogURL = new URL(ogImage, Astro.site ?? Astro.url.origin).href;
 
     {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
 
-    {/* Klantdashboard meetscript — plak hier het exacte snippet van de Sites-pagina (app.haagsebrandmerk.nl) */}
-    {/* <script defer src="DASHBOARD_MEETSCRIPT_URL"></script> */}
+    <script is:inline defer src="https://app.haagsebrandmerk.nl/insights.js" data-site="c2da14c3-0d2f-469f-8e94-3568589de154" data-replay></script>
 
     {/* CMS preview-brug */}
     <script src="https://cms-denhaag.vercel.app/preview-bridge.js" defer></script>
@@ -68,7 +67,7 @@ const ogURL = new URL(ogImage, Astro.site ?? Astro.url.origin).href;
 
     {/* Cookie-consent — Google Analytics laadt pas na akkoord, naast cookieloze Vercel Web Analytics */}
     <div class="cookie" data-cookie hidden>
-      <p>Wij gebruiken cookieloze statistieken en, met jouw akkoord, Google Analytics om de site te verbeteren.</p>
+      <p>Wij gebruiken cookieloze statistieken en, met jouw akkoord, Google Analytics om de site te verbeteren. <a href="/privacy">Privacyverklaring</a></p>
       <div class="cookie-actions">
         <button type="button" data-cookie-decline class="cookie-btn ghost">Alleen noodzakelijk</button>
         <button type="button" data-cookie-accept class="cookie-btn">Akkoord</button>
@@ -95,6 +94,7 @@ const ogURL = new URL(ogImage, Astro.site ?? Astro.url.origin).href;
         gap: 1.25rem;
         flex-wrap: wrap;
       }
+      .cookie p a { color: inherit; }
       .cookie p { font-size: 0.82rem; line-height: 1.6; color: var(--muted); flex: 1 1 240px; margin: 0; }
       .cookie-actions { display: flex; gap: 0.6rem; }
       .cookie-btn {
@@ -118,7 +118,7 @@ const ogURL = new URL(ogImage, Astro.site ?? Astro.url.origin).href;
 
     <script>
       // Re-initialised on every page load AND after each View Transition swap.
-      const GA_ID = ''; // TODO: vul Google Analytics ID in (G-XXXXXXX)
+      const GA_ID = 'G-E9VJ29ZFM5';
 
       function initReveal() {
         const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;

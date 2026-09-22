@@ -1,0 +1,30 @@
+{
+  "meta": {
+    "title": "Hindoestaanse Bruidsbeurs | Angela Ceremonies",
+    "description": "Leuk dat we elkaar hebben ontmoet op de Hindoestaanse Bruidsbeurs! Ontdek de diensten van Angela Ceremonies voor jullie trouwdag."
+  },
+  "hero": {
+    "kicker": "Hindoestaanse Bruidsbeurs",
+    "titel": "Wat fijn dat we elkaar",
+    "titelAccent": "hebben ontmoet!",
+    "subtitel": "Bedankt dat je langskwam bij mijn stand op de Hindoestaanse Bruidsbeurs. Het was een plezier om met je te praten over jullie grote dag. Ik hoop dat ik je heb kunnen inspireren!"
+  },
+  "ontdek": {
+    "titel": "Ontdek meer",
+    "intro": "Benieuwd wat ik voor jullie kan betekenen? Bekijk de pagina's hieronder voor meer informatie.",
+    "links": [
+      { "titel": "Trouwen", "tekst": "Alles over mijn persoonlijke huwelijksceremonies", "href": "/trouwen" },
+      { "titel": "Ceremonieel trouwen", "tekst": "Een ceremonie zonder wettelijke binding, volledig op maat", "href": "/ceremonieel-trouwen" },
+      { "titel": "Tarieven", "tekst": "Transparante tarieven en pakketten", "href": "/tarieven" },
+      { "titel": "Over mij", "tekst": "Leer mij beter kennen als jullie trouwambtenaar", "href": "/over-mij" },
+      { "titel": "Lieve woorden", "tekst": "Wat andere stellen over mij zeggen", "href": "/lieve-woorden" },
+      { "titel": "Trouwen op Curaçao", "tekst": "Trouwen of verblijven op Curaçao", "href": "/trouwlocatie" }
+    ]
+  },
+  "cta": {
+    "titel": "Laten we kennismaken",
+    "tekst": "Heb je vragen of wil je een vrijblijvend kennismakingsgesprek inplannen? Ik hoor graag van je!",
+    "knopLabel": "Neem contact op",
+    "knopHref": "/contact"
+  }
+}
