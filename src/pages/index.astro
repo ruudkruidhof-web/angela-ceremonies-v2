@@ -292,8 +292,8 @@ const blockB = home.reviewBlocks[1];
   .hero-title span { display: block; }
   .hero-title em { font-style: italic; color: hsl(38 62% 80%); }
   .hero-sub { margin-top: 1.4rem; font-size: clamp(1.05rem, 1rem + 0.35vw, 1.25rem); line-height: 1.6; color: var(--cream); max-width: 38ch; }
-  .hero-cta { display: inline-flex; align-items: center; gap: 0.8rem; margin-top: 2rem; min-height: 56px; padding: 0 1.8rem; background: var(--cream); color: var(--ink); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; border-radius: 2px; box-shadow: 0 10px 30px hsl(26 40% 4% / 0.35); transition: background 0.35s ease, color 0.35s ease, transform 0.35s ease; }
-  .hero-cta:hover { background: var(--gold-soft); transform: translateY(-2px); }
+  .hero-cta { display: inline-flex; align-items: center; gap: 0.8rem; margin-top: 2rem; min-height: 56px; padding: 0 1.8rem; background: var(--cream); color: var(--ink); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; border-radius: 2px; box-shadow: 0 10px 30px hsl(26 40% 4% / 0.35); transition: background 0.35s ease, color 0.35s ease, translate 0.35s ease; }
+  .hero-cta:hover { background: var(--gold-soft); translate: 0 -2px; }
   .hero-cta:focus-visible { outline: 2px solid var(--cream); outline-offset: 4px; }
   .hero-cta .arrow { transition: transform 0.35s ease; }
   .hero-cta:hover .arrow { transform: translateX(4px); }
@@ -443,8 +443,11 @@ const blockB = home.reviewBlocks[1];
     .gallery-bleed { grid-template-columns: repeat(2, 1fr); }
   }
   @media (max-width: 720px) {
-    .hero { padding-bottom: 2rem; }
+    .hero { padding-bottom: 6rem; }
     .hero-media :global(img), .hero-video { object-position: var(--focus-m); }
+    .hero-shade { background:
+        linear-gradient(180deg, hsl(26 30% 6% / 0.55) 0%, transparent 16%),
+        linear-gradient(0deg, hsl(26 32% 6% / 0.92) 0%, hsl(26 32% 6% / 0.78) 40%, hsl(26 32% 6% / 0.35) 62%, transparent 78%); }
     .hero-inner { flex-direction: column-reverse; align-items: stretch; gap: 1.6rem; }
     .hero-credits { display: flex; flex-wrap: wrap; gap: 0.2rem 1rem; text-align: left; font-size: 0.7rem; letter-spacing: 0.18em; line-height: 1.6; }
     .hero-cta { display: flex; justify-content: center; }

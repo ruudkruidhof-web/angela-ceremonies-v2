@@ -17,10 +17,10 @@
     "beeld": {
       "alt": "Bruidspaar voorhoofd aan voorhoofd in het tegenlicht van een kas vol planten",
       "focus": "62% 50%",
-      "focusMobiel": "58% 50%"
+      "focusMobiel": "68% 50%"
     },
     "video": {
-      "desktop": "/video/hero-kas-1280.mp4",
+      "desktop": "/video/hero-kas-1920.mp4",
       "mobiel": "/video/hero-kas-960.mp4"
     }
   },
