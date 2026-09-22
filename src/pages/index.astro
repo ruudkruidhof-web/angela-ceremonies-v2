@@ -14,6 +14,7 @@ import coupleBeach from '../assets/couple-beach.jpg';
 import angelaCandid from '../assets/angela-candid.jpg';
 import angelaWerk from '../assets/angela-werk.png';
 import angelaToga from '../assets/angela-toga.jpg';
+import angelaWarm from '../assets/angela-warm.jpg';
 import visionImg from '../assets/ring-exchange.jpg';
 import handsImg from '../assets/hands-rings.jpg';
 import aisleImg from '../assets/aisle-candles.jpg';
@@ -28,6 +29,8 @@ const gallery: Record<string, ImageMetadata> = {
   'hands-rings': handsImg,
   'aisle-candles': aisleImg,
   'candles-roses': candlesRoses,
+  'angela-toga': angelaToga,
+  'angela-warm': angelaWarm,
 };
 
 const jsonLd = {
@@ -214,6 +217,7 @@ const blockB = home.reviewBlocks[1];
     </div>
   </section>
 
+  {home.video.toon && (
   <section class="video-section">
     <div class="wrap">
       <div class="sec-head reveal">
@@ -228,6 +232,7 @@ const blockB = home.reviewBlocks[1];
       </div>
     </div>
   </section>
+  )}
 
   <section class="stats">
     <div class="wrap stats-grid">

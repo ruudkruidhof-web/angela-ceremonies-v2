@@ -27,7 +27,7 @@ const year = 2026;
 
   <div class="wrap footer-base">
     <p>&copy; {year} Angela Ceremonies. Alle rechten voorbehouden.</p>
-    <p>KvK Rotterdam · Trouwambtenaar &amp; ceremoniespreker</p>
+    <p><a href="/privacy">Privacyverklaring</a> · <a href="https://haagsebrandmerk.nl">Website door Haagse Brandmerk</a></p>
   </div>
 </footer>
 
@@ -84,6 +84,8 @@ const year = 2026;
     font-size: 0.78rem;
     color: hsl(40 14% 58%);
   }
+  .footer-base a { color: inherit; text-decoration: none; transition: color 0.3s ease; }
+  .footer-base a:hover { color: var(--cream); }
   @media (max-width: 720px) {
     .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
   }

@@ -1,0 +1,44 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaSection from '../components/CtaSection.astro';
+import b from '../content/teksten/hindoestaanse-bruidsbeurs.json';
+import angelaWarm from '../assets/angela-warm.jpg';
+---
+
+<Base title={b.meta.title} description={b.meta.description} canonical="/hindoestaanse-bruidsbeurs">
+  <PageHero
+    kicker={b.hero.kicker}
+    title={b.hero.titel}
+    titleAccent={b.hero.titelAccent}
+    subtitle={b.hero.subtitel}
+    portrait={angelaWarm}
+    portraitAlt="Angela Bhagole-Mangre, trouwambtenaar en ceremoniespreker"
+    portraitPosition="50% 18%"
+  />
+
+  <section class="section bg-cream">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2 class="section-title">{b.ontdek.titel}</h2>
+        <p class="lead">{b.ontdek.intro}</p>
+      </div>
+      <div class="cards-3 beurs-links">
+        {b.ontdek.links.map((l) => (
+          <a href={l.href} class="num-card reveal">
+            <h3>{l.titel}</h3>
+            <p>{l.tekst}</p>
+            <span class="beurs-pijl" aria-hidden="true">→</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CtaSection title={b.cta.titel} text={b.cta.tekst} buttonLabel={b.cta.knopLabel} buttonHref={b.cta.knopHref} />
+</Base>
+
+<style>
+  .beurs-links a { color: inherit; text-decoration: none; }
+  .beurs-pijl { color: var(--gold); margin-top: auto; }
+</style>

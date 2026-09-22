@@ -1,0 +1,98 @@
+{
+  "meta": {
+    "title": "Privacyverklaring | Angela Ceremonies",
+    "description": "Hoe Angela Ceremonies omgaat met je persoonsgegevens: welke gegevens ik verwerk, waarvoor, hoe lang en welke rechten je hebt volgens de AVG."
+  },
+  "hero": {
+    "kicker": "Privacy",
+    "titel": "Privacy",
+    "titelAccent": "verklaring",
+    "subtitel": "Ik ga zorgvuldig om met jullie gegevens. Hier lees je welke persoonsgegevens ik verwerk, waarvoor en welke rechten je hebt."
+  },
+  "laatstBijgewerkt": "22 september 2026",
+  "secties": [
+    {
+      "kop": "Wie is verantwoordelijk",
+      "alineas": [
+        "Angela Ceremonies is de onderneming van Angela Bhagole-Mangre, trouwambtenaar en ceremoniespreker in Rotterdam. Ik ben verantwoordelijk voor de verwerking van persoonsgegevens zoals beschreven in deze privacyverklaring. Je bereikt me via:"
+      ],
+      "lijst": [
+        "E-mail: angela.bhagole@gmail.com",
+        "Telefoon: +31 6 248 97 676"
+      ]
+    },
+    {
+      "kop": "Welke gegevens ik verwerk",
+      "alineas": [
+        "Ik verwerk persoonsgegevens die je zelf aan me geeft, bijvoorbeeld via het contactformulier, per e-mail, WhatsApp of telefoon. Het gaat om:"
+      ],
+      "lijst": [
+        "Voor- en achternaam van jullie allebei",
+        "E-mailadres en telefoonnummer",
+        "Wat je me vertelt over jullie trouwdag, zoals datum, locatie en wensen voor de ceremonie",
+        "Technische gegevens die ontstaan bij een bezoek aan de website, zoals de pagina's die je bekijkt en het type apparaat"
+      ]
+    },
+    {
+      "kop": "Waarvoor ik ze gebruik",
+      "lijst": [
+        "Om te reageren op je vraag of aanvraag en een kennismaking te plannen",
+        "Om jullie ceremonie voor te bereiden en uit te voeren",
+        "Om de website te verbeteren aan de hand van bezoekstatistieken"
+      ],
+      "alineasNa": [
+        "De grondslag is de uitvoering van onze afspraken of het nemen van stappen op jouw verzoek daarvoor, mijn gerechtvaardigd belang bij een goede website en dienstverlening, en voor Google Analytics jouw toestemming. Die toestemming kun je altijd weer intrekken."
+      ]
+    },
+    {
+      "kop": "Hoe lang ik ze bewaar",
+      "alineas": [
+        "Ik bewaar je gegevens niet langer dan nodig. Een aanvraag die niet tot een ceremonie leidt, bewaar ik maximaal 12 maanden. Gegevens die bij een ceremonie horen bewaar ik zolang dat nodig is voor de afspraken en daarna zolang de wet dat voor de administratie vraagt, meestal zeven jaar."
+      ]
+    },
+    {
+      "kop": "Met wie ik ze deel",
+      "alineas": [
+        "Ik verkoop je gegevens nooit. Ik deel ze alleen als dat nodig is voor onze afspraken of omdat de wet dat vraagt. Partijen die gegevens namens mij verwerken zijn:"
+      ],
+      "lijst": [
+        "Haagse Brandmerk, de bouwer en beheerder van deze website, dat formulierberichten verwerkt en het meetsysteem levert",
+        "Vercel, de hostingpartij van de website",
+        "Google, voor e-mail en, als je daarvoor kiest, Google Analytics"
+      ]
+    },
+    {
+      "kop": "Het contactformulier",
+      "alineas": [
+        "Stuur je een bericht via het formulier, dan verwerkt Haagse Brandmerk dat in mijn opdracht en stuurt het per e-mail naar mij door. Als vangnet, voor het geval een e-mail niet aankomt, wordt het bericht maximaal 90 dagen bewaard op servers binnen de Europese Unie en daarna automatisch gewist.",
+        "Om spam tegen te houden controleert Cloudflare Turnstile of het formulier door een mens wordt ingevuld. Die controle gebruikt geen cookies die je over websites heen volgen."
+      ]
+    },
+    {
+      "kop": "Cookies en meten",
+      "alineas": [
+        "Google Analytics laadt alleen als je daar in de cookiemelding akkoord voor geeft, met ingekorte IP-adressen. Daarnaast meet ik het gebruik van de website op een privacyvriendelijke manier met het meetsysteem van Haagse Brandmerk. Dat werkt zonder cookies en houdt bij welke pagina's worden bekeken, waar wordt geklikt en via welk kanaal bezoekers binnenkomen.",
+        "Van een bezoek kan een sessieweergave worden vastgelegd: een reconstructie van wat er tijdens het bezoek op het scherm gebeurde. Alles wat je in een formulier invult wordt al in je eigen browser onleesbaar gemaakt en komt nooit in de weergave terecht. Sessieweergaven zijn niet gekoppeld aan je naam of e-mailadres, alleen zichtbaar voor mij en mijn websitebeheerder, en worden na 30 dagen verwijderd.",
+        "Het meetsysteem bewaart een herkenningscode in de lokale opslag van je browser, zodat opeenvolgende pagina's als één bezoek tellen. Wil je dat niet, wis dan de websitegegevens voor deze site in je browser. Het meetsysteem respecteert ook de 'Do Not Track'-instelling van je browser."
+      ]
+    },
+    {
+      "kop": "Je rechten",
+      "alineas": [
+        "Volgens de AVG heb je het recht om je gegevens in te zien, te laten corrigeren of verwijderen, de verwerking te laten beperken, bezwaar te maken en je gegevens over te laten dragen. Mail je verzoek naar angela.bhagole@gmail.com; ik reageer binnen een maand."
+      ]
+    },
+    {
+      "kop": "Een klacht",
+      "alineas": [
+        "Ben je niet tevreden over hoe ik met je gegevens omga, laat het me dan eerst weten, dan lossen we het samen op. Je hebt daarnaast altijd het recht een klacht in te dienen bij de Autoriteit Persoonsgegevens via autoriteitpersoonsgegevens.nl."
+      ]
+    },
+    {
+      "kop": "Wijzigingen",
+      "alineas": [
+        "Deze privacyverklaring kan veranderen, bijvoorbeeld als de website verandert. De actuele versie staat altijd op deze pagina, met bovenaan de datum van de laatste wijziging."
+      ]
+    }
+  ]
+}

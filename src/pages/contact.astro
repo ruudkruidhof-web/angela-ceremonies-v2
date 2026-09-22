@@ -62,7 +62,7 @@ const jsonLd = {
         <h2 class="form-title">{c.formulier.titel}</h2>
         <p class="form-intro">{c.formulier.intro}</p>
 
-        <form class="contact-form" data-hb-lead data-contact-form>
+        <form class="contact-form" data-hb-form="hbf_0dfe80a4dd0ed935d4bdb9b5" data-hb-lead data-contact-form>
           <div class="field-row">
             <label class="field">
               <span>Voornaam</span>
@@ -87,7 +87,10 @@ const jsonLd = {
             <span>Bericht</span>
             <textarea name="bericht" rows="5" required placeholder="Vertel iets over jullie trouwdag, wensen of vragen..."></textarea>
           </label>
+          <input type="text" name="company" class="field-company" tabindex="-1" autocomplete="off" aria-hidden="true" />
+          <div class="cf-turnstile" data-sitekey="0x4AAAAAAFAXqZ8GdG-36PZw"></div>
           <button type="submit" class="btn btn-gold form-submit">{c.formulier.knopLabel} <span class="arrow">→</span></button>
+          <p class="form-melding" data-hb-melding role="status"></p>
         </form>
 
         <div class="form-success" data-form-success hidden>
@@ -147,6 +150,9 @@ const jsonLd = {
   }
   .field textarea { resize: vertical; }
   .form-submit { margin-top: 0.6rem; align-self: flex-start; }
+  .field-company { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+  .form-melding { font-size: 0.92rem; color: var(--brown); margin: 0; }
+  .form-melding:empty { display: none; }
 
   .form-success { text-align: center; padding: clamp(2rem, 5vw, 3.5rem) 1rem; }
   .success-orn { display: block; font-size: 1.6rem; color: var(--gold); margin-bottom: 1rem; }
@@ -161,30 +167,52 @@ const jsonLd = {
   }
 </style>
 
+<script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
 <script>
   function initContactForm() {
     const form = document.querySelector('[data-contact-form]') as HTMLFormElement | null;
     if (!form || form.dataset.bound) return;
     form.dataset.bound = 'true';
     const success = document.querySelector('[data-form-success]') as HTMLElement | null;
-    form.addEventListener('submit', function (e) {
+    const melding = form.querySelector('[data-hb-melding]') as HTMLElement;
+    const knop = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+    // Na een View Transition is api.js al geladen en rendert hij de widget niet opnieuw vanzelf.
+    const widget = form.querySelector('.cf-turnstile') as HTMLElement;
+    const ts = (window as any).turnstile;
+    if (ts && !widget.childElementCount) ts.render(widget);
+
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
       if (!form.reportValidity()) return;
-      var data = new FormData(form);
-      var naam = (data.get('voornaam') || '') + ' ' + (data.get('achternaam') || '');
-      var lines = [
-        'Naam: ' + naam.trim(),
-        'E-mail: ' + (data.get('email') || ''),
-        'Telefoon: ' + (data.get('telefoon') || '-'),
-        '',
-        (data.get('bericht') || ''),
-      ];
-      var subject = 'Aanvraag via website - ' + naam.trim();
-      var mailto = 'mailto:angela.bhagole@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(lines.join('\n'));
-      // Open the visitor's mail client as a no-backend fallback; the dashboard lead-tracker also reads this [data-hb-lead] form.
-      window.location.href = mailto;
-      form.hidden = true;
-      if (success) success.hidden = false;
+      knop.disabled = true;
+      melding.textContent = 'Versturen...';
+
+      const data: Record<string, unknown> = Object.fromEntries(new FormData(form));
+      data._sleutel = form.dataset.hbForm;
+      for (const label of form.querySelectorAll('label')) {
+        const veld = label.querySelector('input, textarea');
+        const tekst = label.querySelector('span')?.firstChild?.textContent?.trim();
+        if (veld && (veld as HTMLInputElement).name && tekst) data['_label_' + (veld as HTMLInputElement).name] = tekst;
+      }
+
+      try {
+        const res = await fetch('https://app.haagsebrandmerk.nl/api/formulieren/inzending', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+        const uit = await res.json();
+        if (!uit.ok) throw new Error(uit.fout);
+        form.reset();
+        form.hidden = true;
+        if (success) success.hidden = false;
+      } catch {
+        melding.textContent = 'Er ging iets mis bij het versturen. Mail naar angela.bhagole@gmail.com of bel +31 6 248 97 676.';
+        (window as any).turnstile?.reset();
+      } finally {
+        knop.disabled = false;
+      }
     });
   }
 
