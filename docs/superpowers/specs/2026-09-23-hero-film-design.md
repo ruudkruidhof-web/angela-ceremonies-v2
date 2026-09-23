@@ -72,3 +72,13 @@ velden `rating` en `ratingHref`. Niets hardcoded in de template.
 - Contrast gemeten met computed styles plus pixelsampling op het beeld.
 - LCP is de poster; de video start pas daarna.
 - Eerst op branch `hero-film` met Vercel-preview. Pas na akkoord van Ruud naar `main`.
+
+## Bijstelling na de eerste preview (23 september 2026)
+
+Ruud zag op de preview geen beweging en een onscherp beeld. Gemeten: de eerste loop veranderde gemiddeld minder dan 1 op 255 per pixel, omdat Kling met hetzelfde begin- en eindbeeld nauwelijks beweegt. En de poster van 2528px werd op retina bijna twee keer opgerekt.
+
+- Nieuwe clip in de 4K-stand van Kling 3.0 met alleen een beginbeeld (4388x1888), en daarvan een naadloze loop door vooruit en daarna achteruit te spelen (10 s). Beweging gemeten rond 6 op 255.
+- Poster is het eerste frame van die clip, dus pixel voor pixel gelijk aan de start van de video.
+- Mobiel krijgt een eigen staande uitsnede rond het stel, als poster (via `<picture>`) en als video.
+- Codering met ffmpeg uit `imageio-ffmpeg`: WebM (VP9) plus MP4 (H.264) met lichte verscherping. Desktop 1,1 MB WebM en 2,1 MB MP4, mobiel 0,8 MB WebM en 1,1 MB MP4.
+- `sizes` op de poster is `max(100vw, 252vh)`, omdat het brede beeld met `cover` breder wordt getoond dan het scherm.
