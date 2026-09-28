@@ -63,9 +63,25 @@ De CMS-preview-brug staat in `Base.astro` (`cms-denhaag.vercel.app/preview-bridg
 
 Per pagina: meta + Open Graph + JSON-LD (Service / Person / Review / FAQPage). `@astrojs/sitemap` genereert de sitemap; `robots.txt` en `llms.txt` staan in `public/`. Cookie-consent in `Base.astro` laadt Google Analytics pas ná akkoord, naast cookieloze Vercel Web Analytics.
 
+## Stand van zaken (28 september 2026)
+
+**Live:** V3.1 (Charlotte de Moel-richting) plus de filmische hero draait op https://angelaceremonies.com via Vercel-project `angela-ceremonies-v2`, gedeployd vanaf `main` in deze map. Deze map is de bron van waarheid; de mappen in `~/Case studies/angela-ceremonies*` zijn alleen ontwerpstudies. DNS staat bij Wix (A `@` en `www` naar `76.76.21.21`, SPF `-all`, DMARC `p=reject`); Wix kan geen CAA.
+
+**Achtergrond:** op 22 september 2026 claimde een vreemde GitHub Pages-repo het domein (DNS wees naar GitHub zonder verificatie) en zette er gokspam op. Hersteld; livegangrapport in `../06 Livegang/`.
+
+**Al geregeld:** formulier naar het HB-endpoint met Turnstile (sitesleutel `hbf_0dfe80a4dd0ed935d4bdb9b5`, ontvanger Angela), meetscript met sessieopname (dashboard-site `c2da14c3-0d2f-469f-8e94-3568589de154`, voorlopig onder Ruuds account), GA `G-E9VJ29ZFM5` na consent, privacyverklaring, `/hindoestaanse-bruidsbeurs`, security-headers en `security.txt`, lettertypen zelf gehost.
+
+**Hero:** ontwerp en plan in `docs/superpowers/`. Poster is het eerste frame van een 4K-clip (Higgsfield, Kling 3.0), video als naadloze loop (vooruit en daarna achteruit) in `public/video/`, eigen staande uitsnede voor mobiel. Bronbeelden in `../02 Beeld/hero-film-2026-09-23/`.
+
+**Lessen:**
+- Kling met hetzelfde begin- en eindbeeld beweegt nauwelijks. Geef alleen een beginbeeld en maak de loop zelf met ffmpeg (`split`, `reverse`, `concat`).
+- Meet beweging en scherpte, kijk niet alleen: gemiddeld pixelverschil tussen frames, en een schermafdruk op `scale: device`.
+- Geen ffmpeg of Homebrew op deze Mac: gebruik `pip install imageio-ffmpeg` in een venv (levert x264, VP9, AV1).
+- De Chromium van Playwright speelt geen H.264. Video-QA via de Playwright-MCP (echte Chrome).
+- Brede posters met `object-fit: cover` hebben een `sizes` nodig die de echte weergavebreedte geeft (`max(100vw, 252vh)`), anders kiest de browser een te kleine versie.
+
+**Volgende sessie:** Instagram-foto's van Angela verwerken (rechten van fotografen en portretrecht van stellen eerst regelen, liefst originelen van Angela zelf) en de beste hero kiezen op basis van haar eigen beeld. Ook open: klantaccount voor Angela, formuliertest (bewust uitgesteld), Search Console-sitemap, cookiebalk op mobiel valt over de hero-knop.
+
 ## Openstaande TODO's (vóór echt productie-compleet)
 
-- **Google Analytics ID** invullen: `GA_ID` in het `<script>` van `Base.astro`.
-- **Dashboard-meetscript** plakken in de `<head>` van `Base.astro` (placeholder-comment staat er). Bron: Sites-pagina van app.haagsebrandmerk.nl.
-- **Contactformulier:** werkt nu via een `mailto`-fallback (opent mailclient) en is gemarkeerd met `data-hb-lead` voor de dashboard-leadtracker. Eventueel koppelen aan een form-endpoint.
 - Pexels-sfeerbeelden zijn tijdelijk tot de echte fotoshoot; vervangbaar in `src/assets` + `src/content`.
