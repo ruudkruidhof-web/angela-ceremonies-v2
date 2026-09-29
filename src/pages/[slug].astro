@@ -4,17 +4,13 @@ import PageHero from '../components/PageHero.astro';
 import CtaSection from '../components/CtaSection.astro';
 import paginas from '../content/seo-paginas.json';
 import { foto } from '../lib/fotos';
-import kostenImg from '../assets/ring-exchange.jpg';
-
-const kostenHero = { src: kostenImg, alt: 'Intiem moment tijdens de ringuitwisseling', pos: '50% 45%' };
 
 export function getStaticPaths() {
   return paginas.map((p) => ({ params: { slug: p.slug }, props: { p } }));
 }
 
 const { p } = Astro.props;
-const beeld = (p.hero as { beeld?: { bron: string; focus: string } }).beeld;
-const hero = beeld ? { ...foto(beeld.bron), pos: beeld.focus } : kostenHero;
+const hero = { ...foto(p.hero.beeld.bron), pos: p.hero.beeld.focus };
 
 const jsonLd: Record<string, unknown>[] = [
   {
@@ -43,15 +39,15 @@ if ('faq' in p && Array.isArray(p.faq) && p.faq.length) {
 }
 ---
 
-<Base title={p.meta.title} description={p.meta.description} canonical={`/${p.slug}`} jsonLd={jsonLd}>
+<Base title={p.meta.title} description={p.meta.description} canonical={`/${p.slug}`} jsonLd={jsonLd} darkHero>
   <PageHero
     kicker={p.hero.kicker}
     title={p.hero.titel}
     titleAccent={p.hero.titelAccent}
     subtitle={p.hero.subtitel}
-    image={hero?.src}
-    imageAlt={hero?.alt}
-    objectPosition={hero?.pos}
+    image={hero.src}
+    imageAlt={hero.alt}
+    objectPosition={hero.pos}
   />
 
   {p.sections.map((s: any, i: number) => (

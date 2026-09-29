@@ -45,7 +45,7 @@ const {
 ) : image ? (
   <section class:list={['ph', 'ph-image', `tint-${tint}`]}>
     <div class="ph-media">
-      <Image src={image} alt={imageAlt} widths={[768, 1280, 1920]} sizes="100vw" quality={72} format="webp" fetchpriority="high" loading="eager" style={`object-position:${objectPosition}`} />
+      <Image src={image} alt={imageAlt} widths={[768, 1280, 1920, 2560]} sizes="108vw" quality={76} format="webp" fetchpriority="high" loading="eager" style={`object-position:${objectPosition}`} />
     </div>
     <div class="ph-scrim"></div>
     <div class="wrap ph-inner">
@@ -88,6 +88,9 @@ const {
     isolation: isolate;
     padding-bottom: clamp(3rem, 6vw, 5rem);
     padding-top: 120px;
+  }
+  @media (min-width: 881px) {
+    .ph-image { min-height: clamp(560px, 76vh, 820px); }
   }
   .ph-media { position: absolute; inset: 0; z-index: -2; }
   .ph-media :global(img) { width: 100%; height: 100%; object-fit: cover; }

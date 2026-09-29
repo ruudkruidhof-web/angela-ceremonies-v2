@@ -53,7 +53,7 @@
       "subtitel": "Op zoek naar een persoonlijke trouwambtenaar in Den Haag? Angela Ceremonies verzorgt liefdevolle huwelijksceremonies door heel Den Haag en omgeving.",
       "beeld": {
         "bron": "zichtenburg-bruidspaar",
-        "focus": "50% 30%"
+        "focus": "50% 8%"
       }
     },
     "sections": [
@@ -94,7 +94,7 @@
       "subtitel": "Een Buitengewoon Ambtenaar van de Burgerlijke Stand inhuren voor jullie trouwdag.",
       "beeld": {
         "bron": "angela-microfoon",
-        "focus": "50% 35%"
+        "focus": "50% 10%"
       }
     },
     "sections": [
@@ -154,7 +154,7 @@
       "subtitel": "Een ceremonie zonder wettelijke binding, volledig op maat.",
       "beeld": {
         "bron": "zichtenburg-felicitatie",
-        "focus": "55% 35%"
+        "focus": "55% 12%"
       }
     },
     "sections": [
@@ -216,7 +216,11 @@
       "kicker": "Tarieven & kosten",
       "titel": "Wat kost een",
       "titelAccent": "trouwambtenaar?",
-      "subtitel": "Een eerlijk overzicht van de kosten voor een eigen trouwambtenaar."
+      "subtitel": "Een eerlijk overzicht van de kosten voor een eigen trouwambtenaar.",
+      "beeld": {
+        "bron": "wereldmuseum-angela-lach",
+        "focus": "50% 45%"
+      }
     },
     "sections": [
       {

@@ -193,8 +193,8 @@ const ogURL = new URL(ogImage, Astro.site ?? Astro.url.origin).href;
           });
           const heroImg = document.querySelector<HTMLElement>('.ph-media img');
           const heroParallax = heroImg
-            ? gsap.fromTo(heroImg, { scale: 1.12, yPercent: -3 }, {
-                yPercent: 5,
+            ? gsap.fromTo(heroImg, { scale: 1.08, yPercent: -2 }, {
+                yPercent: 3,
                 ease: 'none',
                 scrollTrigger: { trigger: heroImg.closest('section'), start: 'top top', end: 'bottom top', scrub: true },
               })
