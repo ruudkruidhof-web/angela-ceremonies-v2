@@ -54,8 +54,15 @@ const ogURL = new URL(ogImage, Astro.site ?? Astro.url.origin).href;
 
     <script is:inline defer src="https://app.haagsebrandmerk.nl/insights.js" data-site="c2da14c3-0d2f-469f-8e94-3568589de154" data-replay></script>
 
-    {/* CMS preview-brug */}
-    <script src="https://cms-denhaag.vercel.app/preview-bridge.js" defer></script>
+    {/* CMS preview-brug, alleen nodig als de site in de CMS-iframe draait */}
+    <script is:inline>
+      if (window.self !== window.top) {
+        const brug = document.createElement('script');
+        brug.src = 'https://cms-denhaag.vercel.app/preview-bridge.js';
+        brug.defer = true;
+        document.head.appendChild(brug);
+      }
+    </script>
   </head>
   <body>
     <a href="#main" class="visually-hidden">Naar de inhoud</a>
