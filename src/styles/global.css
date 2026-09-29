@@ -251,6 +251,10 @@ img { display: block; max-width: 100%; }
 .link-more .arrow { transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); }
 .link-more:hover .arrow { transform: translateX(5px); }
 
+@media (max-width: 880px) {
+  .link-more { padding-block: 0.8rem; background-position: 0 calc(100% - 0.55rem); }
+}
+
 /* Photos zoom in slowly and warm up under the pointer */
 :is([data-img-reveal], .bg-frame, .loc-frame, .tb-frame) img {
   transition: scale 1.2s cubic-bezier(0.22, 1, 0.36, 1), filter 1.2s ease;

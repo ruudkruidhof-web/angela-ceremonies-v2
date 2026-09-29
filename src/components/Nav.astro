@@ -59,6 +59,7 @@ const isActive = (href: string) => pathname === href || pathname === href + '/';
     display: flex;
     align-items: baseline;
     gap: 0.5rem;
+    padding-block: 0.25rem;
     text-decoration: none;
     color: var(--cream);
     transition: color 0.5s ease;
@@ -136,33 +137,36 @@ const isActive = (href: string) => pathname === href || pathname === href + '/';
   }
   .nav-cta:hover, .nav-cta-mini:hover { border-color: var(--gold-soft); color: var(--ink); }
   .nav-cta:hover::before, .nav-cta-mini:hover::before { transform: scaleY(1); }
-  .nav-cta-mini { display: none; padding: 0.6rem 0.9rem; font-size: 0.66rem; }
+  .nav-cta-mini { display: none; flex: none; align-items: center; min-height: 44px; padding: 0 0.8rem; font-size: 0.66rem; }
 
   /* Scrolled / solid state */
-  .nav.solid {
+  .nav.solid, .nav.open {
     background: hsl(40 40% 97% / 0.86);
     backdrop-filter: saturate(140%) blur(14px);
     box-shadow: 0 1px 0 hsl(34 24% 85% / 0.8);
   }
   .nav.solid .brand,
+  .nav.open .brand,
   .nav.solid .nav-link { color: var(--brown); }
-  .nav.solid .brand-name { color: var(--ink); }
-  .nav.solid .nav-cta, .nav.solid .nav-cta-mini { color: var(--cream); background: var(--ink); border-color: var(--ink); }
+  .nav.solid .brand-name, .nav.open .brand-name { color: var(--ink); }
+  .nav.solid .nav-cta, .nav.solid .nav-cta-mini, .nav.open .nav-cta-mini { color: var(--cream); background: var(--ink); border-color: var(--ink); }
   .nav.solid .nav-cta:hover, .nav.solid .nav-cta-mini:hover { color: var(--ink); border-color: var(--gold-soft); }
-  .nav.solid .nav-toggle span { background: var(--ink); }
+  .nav.solid .nav-toggle span, .nav.open .nav-toggle span { background: var(--ink); }
 
   .nav-toggle {
     display: none;
     flex-direction: column;
     gap: 5px;
-    width: 30px;
-    height: 30px;
+    flex: none;
+    width: 44px;
+    height: 44px;
+    margin-right: -8px;
     justify-content: center;
     align-items: flex-end;
     background: none;
     border: 0;
     cursor: pointer;
-    padding: 0;
+    padding: 0 8px 0 0;
   }
   .nav-toggle span {
     display: block;
@@ -208,6 +212,14 @@ const isActive = (href: string) => pathname === href || pathname === href + '/';
     .nav-cta-mini { display: inline-flex; margin-left: auto; }
     .nav-toggle { display: flex; }
   }
+  @media (max-width: 420px) {
+    .nav-inner { gap: 0.6rem; }
+    .brand { gap: 0.4rem; }
+    .brand-sub { letter-spacing: 0.2em; }
+  }
+  @media (max-width: 370px) {
+    .brand-sub { display: none; }
+  }
 </style>
 
 <script>
@@ -233,13 +245,25 @@ const isActive = (href: string) => pathname === href || pathname === href + '/';
       window.addEventListener('scroll', onScroll, { passive: true, signal });
     }
 
-    toggle?.addEventListener('click', () => {
-      const open = nav.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', String(open));
-      if (!drawer) return;
-      if (open) { drawer.hidden = false; }
-      else { setTimeout(() => (drawer.hidden = true), 10); }
+    const zetOpen = (open: boolean) => {
+      nav.classList.toggle('open', open);
+      toggle?.setAttribute('aria-expanded', String(open));
+      toggle?.setAttribute('aria-label', open ? 'Menu sluiten' : 'Menu openen');
+      document.documentElement.style.overflow = open ? 'hidden' : '';
+      if (drawer) drawer.hidden = !open;
+    };
+
+    toggle?.addEventListener('click', () => zetOpen(!nav.classList.contains('open')), { signal });
+    drawer?.addEventListener('click', (e) => {
+      if ((e.target as HTMLElement).closest('a')) zetOpen(false);
     }, { signal });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && nav.classList.contains('open')) {
+        zetOpen(false);
+        toggle?.focus();
+      }
+    }, { signal });
+    signal.addEventListener('abort', () => { document.documentElement.style.overflow = ''; });
   }
 
   document.addEventListener('astro:page-load', initNav);
