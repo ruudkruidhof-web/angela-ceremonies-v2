@@ -10,7 +10,7 @@ import { foto } from '../lib/fotos';
 import geloftenImg from '../assets/ring-exchange.jpg';
 
 const heroFoto = foto(t.hero.beeld.bron);
-const typeImages: Record<string, { src: ImageMetadata; alt: string; focus?: string; fotograaf?: string }> = {
+const typeImages: Record<string, { src: ImageMetadata; alt: string; focus?: string; fotograaf?: string; watermerk?: boolean }> = {
   ...Object.fromEntries(
     Object.entries(t.types.beelden).map(([anchor, b]) => [anchor, { ...foto(b.bron), focus: b.focus }]),
   ),
@@ -63,7 +63,7 @@ const jsonLd = {
           <div class="type-media reveal">
             <div class="type-frame" data-img-reveal>
               <Image src={typeImages[item.anchor].src} alt={typeImages[item.anchor].alt} widths={[400, 640, 880, 1100]} sizes="(max-width: 880px) 90vw, 420px" quality={78} format="webp" style={typeImages[item.anchor].focus ? `object-position:${typeImages[item.anchor].focus}` : undefined} />
-              {typeImages[item.anchor].fotograaf && <Credit naam={typeImages[item.anchor].fotograaf} />}
+              {typeImages[item.anchor].fotograaf && !typeImages[item.anchor].watermerk && <Credit naam={typeImages[item.anchor].fotograaf} />}
             </div>
             <span class="type-num" aria-hidden="true">{item.nummer}</span>
           </div>

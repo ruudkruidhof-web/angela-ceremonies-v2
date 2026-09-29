@@ -114,7 +114,7 @@ const blockB = home.reviewBlocks[1];
     <div class="wrap overlap">
       <div class="overlap-media" data-img-reveal>
         <Image src={visionFoto.src} alt={visionFoto.alt} widths={[600, 1000, 1400, 1800]} sizes="(max-width: 900px) 92vw, 680px" quality={80} format="webp" style={`object-position:${home.vision.beeld.focus}`} />
-        <Credit naam={visionFoto.fotograaf} />
+        {!visionFoto.watermerk && <Credit naam={visionFoto.fotograaf} />}
       </div>
       <div class="overlap-panel reveal">
         <p class="kicker kicker-gold">{home.vision.kicker}</p>
@@ -128,7 +128,7 @@ const blockB = home.reviewBlocks[1];
     <figure class="wrap review-row">
       <div class="rr-media" data-img-reveal>
         <Image src={reviewFotos[0].src} alt={reviewFotos[0].alt} widths={[480, 800, 1100, 1400]} sizes="(max-width: 900px) 90vw, 540px" quality={80} format="webp" style={`object-position:${blockA.focus}`} />
-        <Credit naam={reviewFotos[0].fotograaf} />
+        {!reviewFotos[0].watermerk && <Credit naam={reviewFotos[0].fotograaf} />}
       </div>
       <figcaption class="rr-body reveal">
         <span class="rr-stars" aria-hidden="true">★★★★★</span>
@@ -155,7 +155,7 @@ const blockB = home.reviewBlocks[1];
           <li class:list={['tb-item', `tb-${item.formaat}`]}>
             <div class="tb-frame">
               <Image src={item.foto.src} alt={item.foto.alt} widths={item.formaat === 'breed' ? [640, 1000, 1400] : [400, 640, 900]} sizes={item.formaat === 'breed' ? '(max-width: 720px) 86vw, 46vw' : '(max-width: 720px) 62vw, 24vw'} quality={80} format="webp" style={`object-position:${item.focus}`} />
-              <Credit naam={item.foto.fotograaf} />
+              {!item.foto.watermerk && <Credit naam={item.foto.fotograaf} />}
             </div>
             <div class="tb-caption">
               <span class="tb-num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
@@ -212,7 +212,7 @@ const blockB = home.reviewBlocks[1];
     <figure class="wrap review-row review-row-rev">
       <div class="rr-media" data-img-reveal>
         <Image src={reviewFotos[1].src} alt={reviewFotos[1].alt} widths={[480, 800, 1100, 1400]} sizes="(max-width: 900px) 90vw, 540px" quality={80} format="webp" style={`object-position:${blockB.focus}`} />
-        <Credit naam={reviewFotos[1].fotograaf} />
+        {!reviewFotos[1].watermerk && <Credit naam={reviewFotos[1].fotograaf} />}
       </div>
       <figcaption class="rr-body reveal">
         <span class="rr-stars" aria-hidden="true">★★★★★</span>
@@ -227,7 +227,7 @@ const blockB = home.reviewBlocks[1];
     <div class="wrap cf-grid">
       <div class="cf-media" data-img-reveal>
         <Image src={coachingFoto.src} alt={coachingFoto.alt} widths={[480, 760, 1000, 1300]} sizes="(max-width: 900px) 90vw, 480px" quality={80} format="webp" style={`object-position:${home.coaching.beeld.focus}`} />
-        <Credit naam={coachingFoto.fotograaf} />
+        {!coachingFoto.watermerk && <Credit naam={coachingFoto.fotograaf} />}
       </div>
       <div class="cf-body reveal">
         <p class="kicker kicker-gold">{home.coaching.kicker}</p>
@@ -306,7 +306,7 @@ const blockB = home.reviewBlocks[1];
   .hero-title em { font-style: italic; color: hsl(38 62% 80%); }
   .hero-line { overflow: hidden; padding: 0.08em 0.24em 0.16em 0.14em; margin: -0.08em -0.24em -0.16em -0.14em; }
   .js .hl { transform: translateY(112%); }
-  .hero-foto { position: absolute; right: max(var(--gutter), calc((100vw - var(--maxw)) / 2 + var(--gutter))); bottom: 0.9rem; font-size: 0.6rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: hsl(40 40% 97% / 0.55); }
+  .hero-foto { position: absolute; right: max(var(--gutter), calc((100vw - var(--maxw)) / 2 + var(--gutter))); bottom: 0.9rem; font-size: 0.6rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: hsl(40 40% 97% / 0.7); text-shadow: 0 1px 10px hsl(26 40% 4% / 0.7); }
   .hero-sub { margin-top: 1.4rem; font-size: clamp(1.05rem, 1rem + 0.35vw, 1.25rem); line-height: 1.6; color: var(--cream); max-width: 38ch; }
   .hero-cta { display: inline-flex; align-items: center; gap: 0.8rem; margin-top: 2rem; min-height: 56px; padding: 0 1.8rem; background: var(--cream); color: var(--ink); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; border-radius: 2px; box-shadow: 0 10px 30px hsl(26 40% 4% / 0.35); transition: background 0.35s ease, color 0.35s ease, translate 0.35s ease; }
   .hero-cta:hover { background: var(--gold-soft); translate: 0 -2px; }
@@ -355,7 +355,6 @@ const blockB = home.reviewBlocks[1];
   .overlap { display: grid; grid-template-columns: 1.12fr 0.88fr; align-items: center; }
   .overlap-media { position: relative; grid-column: 1; grid-row: 1; z-index: 1; overflow: hidden; border-radius: 3px; box-shadow: var(--shadow-lift); aspect-ratio: 4 / 3; }
   .overlap-media :global(img) { width: 100%; height: 100%; object-fit: cover; }
-  .overlap-media :global(.ph-img) { height: 100%; }
   .overlap-panel { grid-column: 2; grid-row: 1; z-index: 2; margin-left: -22%; background: var(--ink); color: var(--cream); padding: clamp(2.25rem, 4.5vw, 4rem); border-radius: 3px; box-shadow: var(--shadow-lift); border: 1px solid hsl(36 30% 50% / 0.22); }
   .overlap-panel .kicker-gold { margin-bottom: 1rem; }
   .overlap-title { color: var(--cream); font-weight: 400; font-size: clamp(1.8rem, 1.3rem + 1.9vw, 2.8rem); line-height: 1.12; margin-bottom: 1.4rem; }

@@ -8,14 +8,15 @@ export interface Foto {
   alt: string;
   fotograaf: string;
   fotograafHref?: string;
+  watermerk: boolean;
 }
 
 export function foto(sleutel: string): Foto {
   const bestand = bestanden[`../assets/instagram/${sleutel}.jpg`];
-  const info = (data.beelden as Record<string, { fotograaf: string; alt: string }>)[sleutel];
+  const info = (data.beelden as Record<string, { fotograaf: string; alt: string; watermerk?: boolean }>)[sleutel];
   if (!bestand || !info) throw new Error(`Onbekende foto: ${sleutel}`);
   const maker = (data.fotografen as Record<string, { naam: string; href?: string }>)[info.fotograaf];
-  return { src: bestand.default, alt: info.alt, fotograaf: maker.naam, fotograafHref: maker.href };
+  return { src: bestand.default, alt: info.alt, fotograaf: maker.naam, fotograafHref: maker.href, watermerk: Boolean(info.watermerk) };
 }
 
 export const fotografen = Object.values(data.fotografen as Record<string, { naam: string; href?: string }>);

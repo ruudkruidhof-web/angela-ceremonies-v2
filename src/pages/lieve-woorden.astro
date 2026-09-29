@@ -49,7 +49,7 @@ const jsonLd = {
     <figure class="wrap review-row reveal">
       <div class="rr-media" data-img-reveal>
         <Image src={uitgelichtFoto.src} alt={uitgelichtFoto.alt} widths={[480, 800, 1100, 1400]} sizes="(max-width: 900px) 90vw, 540px" quality={80} format="webp" style={`object-position:${lw.uitgelicht.focus}`} />
-        <Credit naam={uitgelichtFoto.fotograaf} />
+        {!uitgelichtFoto.watermerk && <Credit naam={uitgelichtFoto.fotograaf} />}
       </div>
       <figcaption class="rr-body">
         <span class="rr-stars" aria-hidden="true">★★★★★</span>

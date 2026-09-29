@@ -89,7 +89,7 @@ const jsonLd = {
           <figure class:list={['scherm', `scherm-${i + 1}`]} data-parallax={i === 1 ? '-10' : i === 2 ? '8' : undefined}>
             <div class="scherm-frame" data-img-reveal>
               <Image src={item.foto.src} alt={item.foto.alt} widths={i === 0 ? [640, 1000, 1400] : [400, 640, 900]} sizes={i === 0 ? '(max-width: 880px) 92vw, 560px' : '(max-width: 880px) 45vw, 300px'} quality={80} format="webp" style={`object-position:${item.focus}`} />
-              <Credit naam={item.foto.fotograaf} />
+              {!item.foto.watermerk && <Credit naam={item.foto.fotograaf} />}
             </div>
             <figcaption class="scherm-tekst">{item.tekst}</figcaption>
           </figure>

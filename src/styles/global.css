@@ -223,7 +223,7 @@ img { display: block; max-width: 100%; }
 .link-more .arrow { transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); }
 .link-more:hover .arrow { transform: translateX(5px); }
 
-/* Scroll reveal — hidden only when JS is active; GSAP animates them in.
+/* Scroll reveal, hidden only when JS is active; GSAP animates them in.
    No-JS users keep everything visible; reduced-motion shows them instantly. */
 .js .reveal {
   opacity: 0;

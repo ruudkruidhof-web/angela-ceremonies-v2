@@ -1,33 +1,113 @@
 {
   "fotografen": {
-    "merel": { "naam": "Merel Shoot It", "href": "https://www.instagram.com/merelshootit/" },
-    "katfilms": { "naam": "KAT Films" },
-    "for": { "naam": "FoR Fotografia", "href": "https://www.instagram.com/fotografia.pb/" },
-    "angela": { "naam": "Angela" }
+    "merel": {
+      "naam": "Merel Shoot It",
+      "href": "https://www.instagram.com/merelshootit/"
+    },
+    "katfilms": {
+      "naam": "KAT Films"
+    },
+    "for": {
+      "naam": "FoR Fotografia",
+      "href": "https://www.instagram.com/fotografia.pb/"
+    },
+    "angela": {
+      "naam": "Angela"
+    }
   },
   "beelden": {
-    "wereldmuseum-zaal": { "fotograaf": "merel", "alt": "Ceremonie in een lichte zaal van het Wereldmuseum Rotterdam, met gasten, een vleugel en een rode loper" },
-    "wereldmuseum-akte": { "fotograaf": "merel", "alt": "Angela tekent de huwelijksakte terwijl het bruidspaar achter haar toekijkt" },
-    "wereldmuseum-angela-lach": { "fotograaf": "merel", "alt": "Angela in toga lacht achter de lessenaar tijdens een ceremonie" },
-    "wereldmuseum-ceremonie": { "fotograaf": "merel", "alt": "Angela spreekt het bruidspaar toe in het Wereldmuseum Rotterdam, familie luistert aan de zijkant" },
-    "wereldmuseum-speech": { "fotograaf": "merel", "alt": "Angela houdt haar speech naast de vleugel, het bruidspaar op de voorgrond" },
-    "wereldmuseum-bruidspaar": { "fotograaf": "merel", "alt": "Angela samen met het stralende bruidspaar na de ceremonie" },
-    "zichtenburg-ceremonie": { "fotograaf": "katfilms", "alt": "Bruidspaar onder een bloemenboog en kroonluchter op Zichtenburg in Den Haag, familie kijkt toe" },
-    "zichtenburg-bruidspaar": { "fotograaf": "katfilms", "alt": "Lachend bruidspaar in groen pak en witte jurk tijdens de ceremonie" },
-    "zichtenburg-akte": { "fotograaf": "katfilms", "alt": "De bruidegom tekent, Angela kijkt in toga met gevouwen handen toe" },
-    "zichtenburg-omhelzing": { "fotograaf": "katfilms", "alt": "Angela omhelst de bruid na het ja-woord" },
-    "zichtenburg-felicitatie": { "fotograaf": "katfilms", "alt": "Angela feliciteert het bruidspaar voor de bloemenboog" },
-    "heerlijkheid-toga": { "fotograaf": "angela", "alt": "Angela's handen tegen haar blauwe toga, tussen het hoge gras van Park de Heerlijkheid" },
-    "angela-microfoon": { "fotograaf": "for", "alt": "Angela spreekt met microfoon achter de lessenaar" },
-    "angela-ondertekening": { "fotograaf": "for", "alt": "Angela tekent de akte, het bruidspaar staat achter haar" },
-    "angela-felicitatie": { "fotograaf": "for", "alt": "Angela reikt het trouwboekje uit aan de bruid" },
-    "binnentuin-fontein": { "fotograaf": "angela", "alt": "Binnentuin met fontein en klimop tegen rode bakstenen gevels" },
-    "krijtbord-liefde": { "fotograaf": "angela", "alt": "Krijtbord met de tekst: vandaag heb ik zin in een kopje gezelligheid en een lepeltje liefde" },
-    "buitenplaats-gevel": { "fotograaf": "angela", "alt": "Gevel van een historische buitenplaats" },
-    "toga-klaar": { "fotograaf": "angela", "alt": "Angela's toga hangt klaar over een stoel in een historische trouwzaal" },
-    "buitenplaats-trouwzaal": { "fotograaf": "angela", "alt": "Lege trouwzaal met stoelen op visgraatparket, klaar voor de ceremonie" },
-    "burgerzaal-schouw": { "fotograaf": "angela", "alt": "Marmeren schouw met klok in het stadhuis van Rotterdam" },
-    "burgerzaal-zaal": { "fotograaf": "angela", "alt": "De Burgerzaal van het stadhuis van Rotterdam met rijen stoelen onder glas-in-lood" },
-    "angela-buiten": { "fotograaf": "angela", "alt": "Angela lacht in de zon voor een buitenlocatie" }
+    "wereldmuseum-zaal": {
+      "fotograaf": "merel",
+      "alt": "Ceremonie in een lichte zaal van het Wereldmuseum Rotterdam, met gasten, een vleugel en een rode loper"
+    },
+    "wereldmuseum-akte": {
+      "fotograaf": "merel",
+      "alt": "Angela tekent de huwelijksakte terwijl het bruidspaar achter haar toekijkt"
+    },
+    "wereldmuseum-angela-lach": {
+      "fotograaf": "merel",
+      "alt": "Angela in toga lacht achter de lessenaar tijdens een ceremonie"
+    },
+    "wereldmuseum-ceremonie": {
+      "fotograaf": "merel",
+      "alt": "Angela spreekt het bruidspaar toe in het Wereldmuseum Rotterdam, familie luistert aan de zijkant"
+    },
+    "wereldmuseum-speech": {
+      "fotograaf": "merel",
+      "alt": "Angela houdt haar speech naast de vleugel, het bruidspaar op de voorgrond"
+    },
+    "wereldmuseum-bruidspaar": {
+      "fotograaf": "merel",
+      "alt": "Angela samen met het stralende bruidspaar na de ceremonie"
+    },
+    "zichtenburg-ceremonie": {
+      "fotograaf": "katfilms",
+      "alt": "Bruidspaar onder een bloemenboog en kroonluchter op Zichtenburg in Den Haag, familie kijkt toe",
+      "watermerk": true
+    },
+    "zichtenburg-bruidspaar": {
+      "fotograaf": "katfilms",
+      "alt": "Lachend bruidspaar in groen pak en witte jurk tijdens de ceremonie",
+      "watermerk": true
+    },
+    "zichtenburg-akte": {
+      "fotograaf": "katfilms",
+      "alt": "De bruidegom tekent, Angela kijkt in toga met gevouwen handen toe",
+      "watermerk": true
+    },
+    "zichtenburg-omhelzing": {
+      "fotograaf": "katfilms",
+      "alt": "Angela omhelst de bruid na het ja-woord",
+      "watermerk": true
+    },
+    "zichtenburg-felicitatie": {
+      "fotograaf": "katfilms",
+      "alt": "Angela feliciteert het bruidspaar voor de bloemenboog",
+      "watermerk": true
+    },
+    "heerlijkheid-toga": {
+      "fotograaf": "angela",
+      "alt": "Angela's handen tegen haar blauwe toga, tussen het hoge gras van Park de Heerlijkheid"
+    },
+    "angela-microfoon": {
+      "fotograaf": "for",
+      "alt": "Angela spreekt met microfoon achter de lessenaar"
+    },
+    "angela-ondertekening": {
+      "fotograaf": "for",
+      "alt": "Angela tekent de akte, het bruidspaar staat achter haar"
+    },
+    "angela-felicitatie": {
+      "fotograaf": "for",
+      "alt": "Angela reikt het trouwboekje uit aan de bruid"
+    },
+    "krijtbord-liefde": {
+      "fotograaf": "angela",
+      "alt": "Krijtbord met de tekst: vandaag heb ik zin in een kopje gezelligheid en een lepeltje liefde"
+    },
+    "buitenplaats-gevel": {
+      "fotograaf": "angela",
+      "alt": "Gevel van een historische buitenplaats"
+    },
+    "toga-klaar": {
+      "fotograaf": "angela",
+      "alt": "Angela's toga hangt klaar over een stoel in een historische trouwzaal"
+    },
+    "buitenplaats-trouwzaal": {
+      "fotograaf": "angela",
+      "alt": "Lege trouwzaal met stoelen op visgraatparket, klaar voor de ceremonie"
+    },
+    "burgerzaal-schouw": {
+      "fotograaf": "angela",
+      "alt": "Marmeren schouw met klok in het stadhuis van Rotterdam"
+    },
+    "burgerzaal-zaal": {
+      "fotograaf": "angela",
+      "alt": "De Burgerzaal van het stadhuis van Rotterdam met rijen stoelen onder glas-in-lood"
+    },
+    "angela-buiten": {
+      "fotograaf": "angela",
+      "alt": "Angela lacht in de zon voor een buitenlocatie"
+    }
   }
 }

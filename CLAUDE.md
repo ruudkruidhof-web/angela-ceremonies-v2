@@ -46,8 +46,8 @@ De CMS-preview-brug staat in `Base.astro` (`cms-denhaag.vercel.app/preview-bridg
 - **Type:** Playfair Display (display) + Mulish (body), zelf-gehost via `@font-face` in `global.css`.
 - **Kleur:** warm crème/champagne, gedempt antiekgoud, warmbruin/ink. Tokens als CSS-variabelen in `:root`.
 - **Heroes (`PageHero.astro`):** drie modi: `image` (full-bleed sfeerbeeld, `tint="warm"|"cool"`), `portrait` (Angela naast de titel, voor persoonlijke pagina's), of crème-editorial (geen beeld). Zet `darkHero` op `Base` bij een donkere beeld-hero; anders staat de nav meteen solid.
-- **Fotografie:** echte foto's. Angela's eigen portretten (`angela-warm`, `angela-candid`, `angela-werk`, `angela-bureau`, `angela-toga`) op de persoonlijke pagina's; sfeerbeelden voor ceremonie-pagina's. Geen AI-stock.
-- **Animatie:** scroll-reveals (`.reveal` / `.reveal-rule`, IntersectionObserver), hero-entree (`.ph-en`), subtiele parallax, reviews-carousel. Alles respecteert `prefers-reduced-motion`.
+- **Fotografie:** echte foto's. Angela's eigen portretten (`angela-warm`, `angela-candid`, `angela-werk`, `angela-bureau`, `angela-toga`) op de persoonlijke pagina's; haar Instagram-beelden via `foto()` uit `src/lib/fotos.ts`. Geen AI-stock.
+- **Animatie:** GSAP (ScrollTrigger, SplitText) voor reveals (`.reveal`, `.reveal-rule`, `[data-img-reveal]`, `[data-parallax]`), hero-entree en het trouwboek; CSS voor `.ph-en`. Alles respecteert `prefers-reduced-motion`.
 - **Paginaovergangen:** Astro View Transitions (`<ClientRouter>`).
 
 ## Conventies & valkuilen
@@ -63,25 +63,28 @@ De CMS-preview-brug staat in `Base.astro` (`cms-denhaag.vercel.app/preview-bridg
 
 Per pagina: meta + Open Graph + JSON-LD (Service / Person / Review / FAQPage). `@astrojs/sitemap` genereert de sitemap; `robots.txt` en `llms.txt` staan in `public/`. Cookie-consent in `Base.astro` laadt Google Analytics pas ná akkoord, naast cookieloze Vercel Web Analytics.
 
-## Stand van zaken (28 september 2026)
+## Stand van zaken (29 september 2026)
 
-**Live:** V3.1 (Charlotte de Moel-richting) plus de filmische hero draait op https://angelaceremonies.com via Vercel-project `angela-ceremonies-v2`, gedeployd vanaf `main` in deze map. Deze map is de bron van waarheid; de mappen in `~/Case studies/angela-ceremonies*` zijn alleen ontwerpstudies. DNS staat bij Wix (A `@` en `www` naar `76.76.21.21`, SPF `-all`, DMARC `p=reject`); Wix kan geen CAA.
+**Live:** V3.1 met de kas-hero op https://angelaceremonies.com (branch `main`, Vercel-project `angela-ceremonies-v2`). Deze map is de bron van waarheid; de mappen in `~/Case studies/angela-ceremonies*` zijn alleen ontwerpstudies. DNS staat bij Wix (A `@` en `www` naar `76.76.21.21`, SPF `-all`, DMARC `p=reject`); Wix kan geen CAA.
 
-**Achtergrond:** op 22 september 2026 claimde een vreemde GitHub Pages-repo het domein (DNS wees naar GitHub zonder verificatie) en zette er gokspam op. Hersteld; livegangrapport in `../06 Livegang/`.
+**Branch `instagram-fotos` (preview, nog niet op productie):** Angela's eigen Instagram-beelden in de hele site.
+- Alle 37 beelden van @angela_ceremonies in de hoogste resolutie die Instagram levert staan in `../02 Beeld/instagram-2026-09-29/origineel` (met `instagram.json`: bijschriften, datums). Opgeknapt met `opknappen.py` (OpenCV EDSR-superresolutie, lichte CLAHE, zachte verscherping), naar de site gezet met `naar-site.py` in `src/assets/instagram/`.
+- Beeldkeuze is content: `src/content/fotos.json` (alt, fotograaf, `watermerk`) en per pagina een `beeld: { bron, focus }` in de JSON. `src/lib/fotos.ts` levert `foto(sleutel)`. Credit per foto via `Credit.astro`, behalve bij een zichtbaar watermerk; alle fotografen staan in de footer.
+- Homepage: hero is een filmische montage (`../02 Beeld/hero-wereldmuseum-2026-09-29/`, `montage.py` + `shots.json`, `afronden.py`): een Kling-shot met vaste camera van de Wereldmuseum-foto, daarna Ken Burns over echte foto's, één grading, overvloeiers, naadloze loop. Nieuw horizontaal "trouwboek" (GSAP-pin op desktop, swipe op mobiel). Over mij kreeg "Achter de schermen".
+- GSAP: titelmasker en scroll-fade in de hero, woord-voor-woord statement (SplitText), tellers, clip-path-onthulling voor elk `[data-img-reveal]`, `[data-parallax]`, parallax op paginaheroes. Alles via `gsap.matchMedia` met reduced-motion.
 
-**Al geregeld:** formulier naar het HB-endpoint met Turnstile (sitesleutel `hbf_0dfe80a4dd0ed935d4bdb9b5`, ontvanger Angela), meetscript met sessieopname (dashboard-site `c2da14c3-0d2f-469f-8e94-3568589de154`, voorlopig onder Ruuds account), GA `G-E9VJ29ZFM5` na consent, privacyverklaring, `/hindoestaanse-bruidsbeurs`, security-headers en `security.txt`, lettertypen zelf gehost.
-
-**Hero:** ontwerp en plan in `docs/superpowers/`. Poster is het eerste frame van een 4K-clip (Higgsfield, Kling 3.0), video als naadloze loop (vooruit en daarna achteruit) in `public/video/`, eigen staande uitsnede voor mobiel. Bronbeelden in `../02 Beeld/hero-film-2026-09-23/`.
+**Voor productie nodig (juridisch):** toestemming van de fotografen (Merel Shoot It, KAT Films, FoR Fotografia) en van de stellen die herkenbaar of bij naam in beeld zijn (Devika & Shivam, Leonardo & Evelien), liefst via Angela. Vraag KAT Films om versies zonder watermerk. De namen "Merel Shoot It" en "FoR Fotografia" zijn afgeleid van hun Instagram-handle en watermerk.
 
 **Lessen:**
-- Kling met hetzelfde begin- en eindbeeld beweegt nauwelijks. Geef alleen een beginbeeld en maak de loop zelf met ffmpeg (`split`, `reverse`, `concat`).
-- Meet beweging en scherpte, kijk niet alleen: gemiddeld pixelverschil tussen frames, en een schermafdruk op `scale: device`.
-- Geen ffmpeg of Homebrew op deze Mac: gebruik `pip install imageio-ffmpeg` in een venv (levert x264, VP9, AV1).
-- De Chromium van Playwright speelt geen H.264. Video-QA via de Playwright-MCP (echte Chrome).
-- Brede posters met `object-fit: cover` hebben een `sizes` nodig die de echte weergavebreedte geeft (`max(100vw, 252vh)`), anders kiest de browser een te kleine versie.
+- De Higgsfield/ByteDance-opschaler is generatief en verandert gezichten (Angela werd een ander persoon). Voor echte mensen alleen getrouwe opschaling (EDSR via `opencv-contrib`).
+- Kling beweegt de camera tenzij je expliciet "locked-off, no zoom, pan or tilt" vraagt; zonder dat zwaait een heen-en-terug-loop. Meet beweging in een stilstaand hoekje van het beeld, niet alleen gemiddeld.
+- Gezichten liever niet door AI laten animeren: Ken Burns over de echte foto houdt ze exact.
+- Een echte stel-foto naast de review van een ánder stel suggereert dat zij die review schreven. Bij reviews alleen beelden van Angela zelf of zonder herkenbaar stel.
+- Kling met hetzelfde begin- en eindbeeld beweegt nauwelijks; geen ffmpeg of Homebrew op deze Mac (gebruik `../02 Beeld/venv` met imageio-ffmpeg); Playwright-Chromium speelt geen H.264, video-QA via de Playwright-MCP.
+- Brede posters met `object-fit: cover` hebben een `sizes` nodig die de echte weergavebreedte geeft (`max(100vw, 178vh)` bij 16:9).
 
-**Volgende sessie:** Instagram-foto's van Angela verwerken (rechten van fotografen en portretrecht van stellen eerst regelen, liefst originelen van Angela zelf) en de beste hero kiezen op basis van haar eigen beeld. Ook open: klantaccount voor Angela, formuliertest (bewust uitgesteld), Search Console-sitemap, cookiebalk op mobiel valt over de hero-knop.
+**Ook nog open:** klantaccount voor Angela, formuliertest (bewust uitgesteld), Search Console-sitemap, cookiebalk op mobiel valt over de hero-knop.
 
 ## Openstaande TODO's (vóór echt productie-compleet)
 
-- Pexels-sfeerbeelden zijn tijdelijk tot de echte fotoshoot; vervangbaar in `src/assets` + `src/content`.
+- Nog één Pexels-sfeerbeeld (`ring-exchange.jpg`, geloften vernieuwen en kostenpagina) en de Curaçao-beelden op `/trouwlocatie`; vervangen zodra er eigen beeld is.
