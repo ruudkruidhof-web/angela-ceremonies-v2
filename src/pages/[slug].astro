@@ -3,27 +3,18 @@ import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
 import CtaSection from '../components/CtaSection.astro';
 import paginas from '../content/seo-paginas.json';
-import type { ImageMetadata } from 'astro';
-import rotterdamImg from '../assets/hero-ceremony.jpg';
-import denhaagImg from '../assets/aisle-candles.jpg';
-import babsImg from '../assets/hands-rings.jpg';
-import ceremonieelImg from '../assets/candles-roses.jpg';
+import { foto } from '../lib/fotos';
 import kostenImg from '../assets/ring-exchange.jpg';
 
-const heroImages: Record<string, { src: ImageMetadata; alt: string; pos: string }> = {
-  'trouwambtenaar-rotterdam': { src: rotterdamImg, alt: 'Warme kaarslicht-setting bij een trouwceremonie', pos: '50% 60%' },
-  'trouwambtenaar-den-haag': { src: denhaagImg, alt: 'Kaarsen en bloemen bij een ceremonie', pos: '50% 50%' },
-  'babs-inhuren': { src: babsImg, alt: 'Handen van een bruidspaar tijdens de ringuitwisseling', pos: '50% 40%' },
-  'ceremonieel-trouwen': { src: ceremonieelImg, alt: 'Witte rozen en kaarsen bij een ceremonie', pos: '50% 45%' },
-  'trouwambtenaar-kosten': { src: kostenImg, alt: 'Intiem moment tijdens de ringuitwisseling', pos: '50% 45%' },
-};
+const kostenHero = { src: kostenImg, alt: 'Intiem moment tijdens de ringuitwisseling', pos: '50% 45%', fotograaf: undefined };
 
 export function getStaticPaths() {
   return paginas.map((p) => ({ params: { slug: p.slug }, props: { p } }));
 }
 
 const { p } = Astro.props;
-const hero = heroImages[p.slug];
+const beeld = (p.hero as { beeld?: { bron: string; focus: string } }).beeld;
+const hero = beeld ? { ...foto(beeld.bron), pos: beeld.focus } : kostenHero;
 
 const jsonLd: Record<string, unknown>[] = [
   {
@@ -61,6 +52,7 @@ if ('faq' in p && Array.isArray(p.faq) && p.faq.length) {
     image={hero?.src}
     imageAlt={hero?.alt}
     objectPosition={hero?.pos}
+    credit={hero?.fotograaf}
   />
 
   {p.sections.map((s: any, i: number) => (

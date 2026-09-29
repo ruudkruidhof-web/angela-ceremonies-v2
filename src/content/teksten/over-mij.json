@@ -27,15 +27,57 @@
     "kicker": "Waar ik voor sta",
     "titel": "Mijn waarden",
     "items": [
-      { "titel": "Liefdevol", "tekst": "Ik benader elk stel met oprechte warmte en zorg. Jullie ceremonie is meer dan een taak; het is een voorrecht." },
-      { "titel": "Persoonlijk", "tekst": "Geen standaardverhalen. Ik neem de tijd om jullie echt te leren kennen en jullie unieke verhaal te vertellen." },
-      { "titel": "Verbindend", "tekst": "Met respect voor diversiteit en cultuur zorg ik voor een ceremonie die mensen samenbrengt." }
+      {
+        "titel": "Liefdevol",
+        "tekst": "Ik benader elk stel met oprechte warmte en zorg. Jullie ceremonie is meer dan een taak; het is een voorrecht."
+      },
+      {
+        "titel": "Persoonlijk",
+        "tekst": "Geen standaardverhalen. Ik neem de tijd om jullie echt te leren kennen en jullie unieke verhaal te vertellen."
+      },
+      {
+        "titel": "Verbindend",
+        "tekst": "Met respect voor diversiteit en cultuur zorg ik voor een ceremonie die mensen samenbrengt."
+      }
     ]
   },
+  "schermen": {
+    "kicker": "Achter de schermen",
+    "titel": "Zo ziet mijn werk",
+    "titelAccent": "er echt uit",
+    "intro": "Van de Burgerzaal in Rotterdam tot een buitenceremonie bij 31 graden. Een kijkje achter de schermen, zoals ik het zelf deel op Instagram.",
+    "items": [
+      {
+        "bron": "angela-buiten",
+        "focus": "8% 70%",
+        "tekst": "Buitenceremonie bij 31 graden. Als begeleidende BABS mocht ik heerlijk in de schaduw zitten."
+      },
+      {
+        "bron": "krijtbord-liefde",
+        "focus": "50% 40%",
+        "tekst": "Vandaag heb ik zin in een kopje gezelligheid en een lepeltje liefde."
+      },
+      {
+        "bron": "burgerzaal-schouw",
+        "focus": "50% 45%",
+        "tekst": "Het stadhuis van Rotterdam, een van de meest bijzondere trouwlocaties van de stad."
+      }
+    ],
+    "instagramLabel": "Volg mij op Instagram"
+  },
   "cijfers": [
-    { "getal": "490+", "label": "Huwelijken voltrokken" },
-    { "getal": "Sinds 2018", "label": "Actief als BABS" },
-    { "getal": "Heel NL", "label": "Werkzaam door heel Nederland" }
+    {
+      "getal": "490+",
+      "label": "Huwelijken voltrokken"
+    },
+    {
+      "getal": "Sinds 2018",
+      "label": "Actief als BABS"
+    },
+    {
+      "getal": "Heel NL",
+      "label": "Werkzaam door heel Nederland"
+    }
   ],
   "cta": {
     "kicker": "Laten we kennismaken",

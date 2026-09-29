@@ -7,7 +7,11 @@
     "kicker": "Ervaringen",
     "titel": "Lieve",
     "titelAccent": "woorden",
-    "subtitel": "Wat bruidsparen vertellen over <em>hun ceremonie</em>."
+    "subtitel": "Wat bruidsparen vertellen over <em>hun ceremonie</em>.",
+    "beeld": {
+      "bron": "wereldmuseum-speech",
+      "focus": "50% 30%"
+    }
   },
   "intro": {
     "tekst": "De mooiste terugkoppeling is te horen dat een ceremonie <em>heeft geraakt</em>. Dat mensen het nog lang napraten. Dat het echt klopte. <strong>Dat is waarvoor ik dit doe.</strong>"
@@ -18,5 +22,9 @@
     "tekst": "Neem contact op en ontdek wat Angela Ceremonies voor jullie kan betekenen.",
     "knopLabel": "Neem contact op",
     "knopHref": "/contact"
+  },
+  "uitgelicht": {
+    "bron": "angela-felicitatie",
+    "focus": "45% 40%"
   }
 }

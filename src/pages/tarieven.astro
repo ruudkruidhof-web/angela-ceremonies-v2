@@ -3,7 +3,7 @@ import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
 import CtaSection from '../components/CtaSection.astro';
 import t from '../content/teksten/tarieven.json';
-import heroImg from '../assets/hero-ceremony.jpg';
+import { foto } from '../lib/fotos';
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -20,6 +20,7 @@ const jsonLd = {
     description: 'Een persoonlijke ceremonie, volledig afgestemd op jullie verhaal.',
   },
 };
+const heroFoto = foto(t.hero.beeld.bron);
 ---
 
 <Base title={t.meta.title} description={t.meta.description} canonical="/tarieven" jsonLd={jsonLd}>
@@ -28,9 +29,10 @@ const jsonLd = {
     title={t.hero.titel}
     titleAccent={t.hero.titelAccent}
     subtitle={t.hero.subtitel}
-    image={heroImg}
-    imageAlt="Warme kaarslicht-setting bij een trouwceremonie"
-    objectPosition="50% 60%"
+    image={heroFoto.src}
+    imageAlt={heroFoto.alt}
+    objectPosition={t.hero.beeld.focus}
+    credit={heroFoto.fotograaf}
   />
 
   <section class="section bg-cream">

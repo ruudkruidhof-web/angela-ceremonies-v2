@@ -168,15 +168,46 @@ const ogURL = new URL(ogImage, Astro.site ?? Astro.url.origin).href;
             once: true,
             onEnter: (els) => gsap.to(els, { scaleX: 1, duration: 1.1, ease: 'power3.out', overwrite: true }),
           });
+          const frames = gsap.utils.toArray<HTMLElement>('[data-img-reveal]').map((frame) => {
+            const img = frame.querySelector('img');
+            const tl = gsap.timeline({ scrollTrigger: { trigger: frame, start: 'top 86%', once: true } });
+            tl.fromTo(frame, { clipPath: 'inset(9% 7% 9% 7%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.5, ease: 'expo.out' });
+            if (img) {
+              tl.fromTo(img, { scale: 1.16, transition: 'none' }, { scale: 1, duration: 1.9, ease: 'expo.out', clearProps: 'transform,transition' }, 0);
+            }
+            return tl;
+          });
+          const heroImg = document.querySelector<HTMLElement>('.ph-media img');
+          const heroParallax = heroImg
+            ? gsap.fromTo(heroImg, { scale: 1.12, yPercent: -3 }, {
+                yPercent: 5,
+                ease: 'none',
+                scrollTrigger: { trigger: heroImg.closest('section'), start: 'top top', end: 'bottom top', scrub: true },
+              })
+            : undefined;
           return () => {
             batch.forEach((t) => t.kill());
             rules.forEach((t) => t.kill());
+            frames.forEach((t) => t.kill());
+            heroParallax?.kill();
           };
+        });
+
+        revealMM.add('(min-width: 881px) and (prefers-reduced-motion: no-preference)', () => {
+          gsap.utils.toArray<HTMLElement>('[data-parallax]').forEach((el) => {
+            const shift = parseFloat(el.dataset.parallax ?? '0');
+            gsap.fromTo(el, { yPercent: -shift / 2 }, {
+              yPercent: shift / 2,
+              ease: 'none',
+              scrollTrigger: { trigger: el, start: 'top bottom', end: 'bottom top', scrub: true },
+            });
+          });
         });
 
         revealMM.add('(prefers-reduced-motion: reduce)', () => {
           gsap.set('.reveal', { opacity: 1, y: 0 });
           gsap.set('.reveal-rule', { scaleX: 1 });
+          gsap.set('[data-img-reveal]', { clipPath: 'none' });
         });
       }
 

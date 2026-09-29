@@ -5,14 +5,15 @@ import CtaSection from '../components/CtaSection.astro';
 import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
 import t from '../content/teksten/trouwen.json';
-import heroImg from '../assets/hands-rings.jpg';
-import wettelijkImg from '../assets/hero-ceremony.jpg';
-import ceremonieelImg from '../assets/aisle-candles.jpg';
+import Credit from '../components/Credit.astro';
+import { foto } from '../lib/fotos';
 import geloftenImg from '../assets/ring-exchange.jpg';
 
-const typeImages: Record<string, { src: ImageMetadata; alt: string }> = {
-  wettelijk: { src: wettelijkImg, alt: 'Warme kaarslicht-setting bij een wettelijke trouwceremonie' },
-  ceremonieel: { src: ceremonieelImg, alt: 'Sfeervolle ceremonie met kaarsen en bloemen' },
+const heroFoto = foto(t.hero.beeld.bron);
+const typeImages: Record<string, { src: ImageMetadata; alt: string; focus?: string; fotograaf?: string }> = {
+  ...Object.fromEntries(
+    Object.entries(t.types.beelden).map(([anchor, b]) => [anchor, { ...foto(b.bron), focus: b.focus }]),
+  ),
   geloften: { src: geloftenImg, alt: 'Paar dat elkaar opnieuw de ringen geeft' },
 };
 
@@ -33,9 +34,10 @@ const jsonLd = {
     title={t.hero.titel}
     titleAccent={t.hero.titelAccent}
     subtitle={t.hero.subtitel}
-    image={heroImg}
-    imageAlt={t.hero.afbeeldingAlt}
-    objectPosition="50% 40%"
+    image={heroFoto.src}
+    imageAlt={heroFoto.alt}
+    objectPosition={t.hero.beeld.focus}
+    credit={heroFoto.fotograaf}
   />
 
   <section class="section bg-cream">
@@ -59,8 +61,9 @@ const jsonLd = {
       <div class="wrap type-block" id={item.anchor}>
         <div class:list={['split type-split', { reverse: i % 2 === 1 }]}>
           <div class="type-media reveal">
-            <div class="type-frame">
-              <Image src={typeImages[item.anchor].src} alt={typeImages[item.anchor].alt} widths={[400, 640, 880]} sizes="(max-width: 880px) 90vw, 420px" quality={74} format="webp" />
+            <div class="type-frame" data-img-reveal>
+              <Image src={typeImages[item.anchor].src} alt={typeImages[item.anchor].alt} widths={[400, 640, 880, 1100]} sizes="(max-width: 880px) 90vw, 420px" quality={78} format="webp" style={typeImages[item.anchor].focus ? `object-position:${typeImages[item.anchor].focus}` : undefined} />
+              {typeImages[item.anchor].fotograaf && <Credit naam={typeImages[item.anchor].fotograaf} />}
             </div>
             <span class="type-num" aria-hidden="true">{item.nummer}</span>
           </div>
@@ -111,7 +114,7 @@ const jsonLd = {
   .type-split { grid-template-columns: 0.82fr 1fr; align-items: center; }
   .type-split.reverse { grid-template-columns: 1fr 0.82fr; }
   .type-media { position: relative; }
-  .type-frame { overflow: hidden; border-radius: 3px; box-shadow: var(--shadow-lift); aspect-ratio: 4 / 5; }
+  .type-frame { position: relative; overflow: hidden; border-radius: 3px; box-shadow: var(--shadow-lift); aspect-ratio: 4 / 5; }
   .type-frame :global(img) { width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1); }
   .type-media:hover .type-frame :global(img) { transform: scale(1.04); }
   .type-num {

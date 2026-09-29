@@ -1,5 +1,8 @@
 ---
 import site from '../content/site.json';
+import { fotografen } from '../lib/fotos';
+
+const makers = fotografen.filter((f) => f.naam !== 'Angela');
 const year = 2026;
 ---
 
@@ -27,6 +30,9 @@ const year = 2026;
 
   <div class="wrap footer-base">
     <p>&copy; {year} Angela Ceremonies. Alle rechten voorbehouden.</p>
+    <p class="footer-foto">Fotografie {makers.map((f, i) => (
+      <>{i > 0 && ', '}{f.href ? <a href={f.href} target="_blank" rel="noopener">{f.naam}</a> : f.naam}</>
+    ))} en Angela zelf</p>
     <p><a href="/privacy">Privacyverklaring</a> · <a href="https://haagsebrandmerk.nl">Website door Haagse Brandmerk</a></p>
   </div>
 </footer>

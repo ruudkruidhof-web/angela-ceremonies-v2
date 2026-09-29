@@ -7,7 +7,11 @@
     "kicker": "Tarieven",
     "titel": "Transparant en",
     "titelAccent": "persoonlijk",
-    "subtitel": "Heldere tarieven, met alle ruimte voor <em>jullie persoonlijke wensen</em>."
+    "subtitel": "Heldere tarieven, met alle ruimte voor <em>jullie persoonlijke wensen</em>.",
+    "beeld": {
+      "bron": "binnentuin-fontein",
+      "focus": "50% 55%"
+    }
   },
   "pakketten": {
     "kicker": "Pakketten",

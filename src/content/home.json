@@ -15,14 +15,16 @@
       "490+ stellen"
     ],
     "beeld": {
-      "alt": "Bruidspaar voorhoofd aan voorhoofd in het tegenlicht van een kas vol planten",
-      "focus": "62% 50%"
+      "bron": "wereldmuseum-ceremonie",
+      "focus": "12% 50%",
+      "focusMobiel": "50% 50%",
+      "credit": "Beeld Merel Shoot It, KAT Films en Angela"
     },
     "video": {
-      "desktop": "/video/hero-kas-2560.mp4",
-      "desktopWebm": "/video/hero-kas-2560.webm",
-      "mobiel": "/video/hero-kas-mobiel.mp4",
-      "mobielWebm": "/video/hero-kas-mobiel.webm"
+      "desktop": "/video/hero-wereldmuseum-2560.mp4",
+      "desktopWebm": "/video/hero-wereldmuseum-2560.webm",
+      "mobiel": "/video/hero-wereldmuseum-mobiel.mp4",
+      "mobielWebm": "/video/hero-wereldmuseum-mobiel.webm"
     }
   },
   "statement": {
@@ -41,18 +43,18 @@
   },
   "reviewBlocks": [
     {
-      "bron": "couple-hero",
-      "fotoAlt": "Lachend bruidspaar in een warm veld bij gouden licht",
+      "bron": "angela-microfoon",
       "quoteHtml": "Jouw betrokkenheid, energie en warmte <em>maakten de ceremonie echt speciaal</em> voor ons en onze gasten. We zijn je enorm dankbaar voor het creëren van zo'n <strong>memorabel moment</strong>.",
       "naam": "Claire & Theo",
-      "datum": "April 2024"
+      "datum": "April 2024",
+      "focus": "50% 40%"
     },
     {
-      "bron": "couple-elegant",
-      "fotoAlt": "Bruidspaar in een innige omhelzing",
+      "bron": "wereldmuseum-angela-lach",
       "quoteHtml": "We hadden niet verwacht dat het zo <em>speciaal en emotioneel</em> zou voelen. Dat is helemaal te danken aan jou en je <strong>prachtige speech</strong>.",
       "naam": "Reza & Elaha",
-      "datum": "November 2023"
+      "datum": "November 2023",
+      "focus": "18% 45%"
     }
   ],
   "reviewsLink": {
@@ -63,7 +65,10 @@
     "kicker": "Mijn aanpak",
     "titel": "Warmte en oprechtheid, geen clichés",
     "html": "Jullie hebben besloten om hardop te kiezen voor elkaar. <strong>Het mooiste wat er is.</strong> Laten we daar samen iets van maken dat <em>écht bij jullie past</em>: persoonlijk, ontspannen en met ruimte voor alle emoties. Want na een traan is er altijd weer ruimte voor een lach.",
-    "afbeeldingAlt": "Innig moment van een bruidspaar tijdens de ceremonie"
+    "beeld": {
+      "bron": "wereldmuseum-akte",
+      "focus": "50% 35%"
+    }
   },
   "craft": {
     "kicker": "Mijn vak",
@@ -122,37 +127,10 @@
       "label": "Meer over coaching",
       "href": "/coaching"
     },
-    "afbeeldingAlt": "Angela in toga tijdens een ceremonie"
-  },
-  "momenten": {
-    "kicker": "Momenten",
-    "titel": "Een glimp van wat ik doe",
-    "items": [
-      {
-        "bron": "couple-beach",
-        "alt": "Vrolijk bruidspaar bij de kust"
-      },
-      {
-        "bron": "angela-toga",
-        "alt": "Angela Bhagole-Mangre in toga als trouwambtenaar"
-      },
-      {
-        "bron": "hands-rings",
-        "alt": "Ringuitwisseling van een bruidspaar"
-      },
-      {
-        "bron": "aisle-candles",
-        "alt": "Kaarslicht en bloemen langs het pad"
-      },
-      {
-        "bron": "angela-warm",
-        "alt": "Angela Bhagole-Mangre met een warme lach"
-      },
-      {
-        "bron": "candles-roses",
-        "alt": "Witte rozen en kaarsen"
-      }
-    ]
+    "beeld": {
+      "bron": "toga-klaar",
+      "focus": "50% 55%"
+    }
   },
   "cijfers": [
     {
@@ -176,5 +154,66 @@
       "label": "Plan een kennismaking",
       "href": "/contact"
     }
+  },
+  "trouwboek": {
+    "kicker": "Uit mijn trouwboek",
+    "titel": "Dagen die ik",
+    "titelAccent": "niet vergeet",
+    "intro": "Van een buitenplaats in Den Haag tot de Burgerzaal van Rotterdam. Een paar ceremonies die ik de afgelopen maanden mocht voltrekken.",
+    "items": [
+      {
+        "bron": "zichtenburg-ceremonie",
+        "formaat": "breed",
+        "focus": "50% 55%",
+        "plaats": "Zichtenburg, Den Haag",
+        "titel": "Devika & Shivam",
+        "tekst": "Een dag vol warmte, traditie en onvergetelijke momenten."
+      },
+      {
+        "bron": "zichtenburg-omhelzing",
+        "formaat": "staand",
+        "focus": "50% 40%",
+        "plaats": "Na het ja-woord"
+      },
+      {
+        "bron": "wereldmuseum-bruidspaar",
+        "formaat": "staand",
+        "focus": "55% 40%",
+        "plaats": "Wereldmuseum, Rotterdam",
+        "titel": "Leonardo & Evelien",
+        "tekst": "Omringd door familie en vrienden, met tranen van geluk."
+      },
+      {
+        "bron": "wereldmuseum-speech",
+        "formaat": "breed",
+        "focus": "50% 45%",
+        "plaats": "Jullie verhaal, hardop verteld"
+      },
+      {
+        "bron": "burgerzaal-zaal",
+        "formaat": "staand",
+        "focus": "50% 50%",
+        "plaats": "Stadhuis, Rotterdam",
+        "titel": "De Burgerzaal",
+        "tekst": "Liefde, elegantie en historie in elk detail."
+      },
+      {
+        "bron": "heerlijkheid-toga",
+        "formaat": "breed",
+        "focus": "50% 50%",
+        "plaats": "Park de Heerlijkheid, Rotterdam",
+        "titel": "Toga en 29 graden",
+        "tekst": "Tussen het groen van Rotterdam, in de volle zon."
+      },
+      {
+        "bron": "krijtbord-liefde",
+        "formaat": "staand",
+        "focus": "50% 45%",
+        "plaats": "Achter de schermen",
+        "titel": "Een lepeltje liefde",
+        "tekst": "Vandaag heb ik zin in een kopje gezelligheid en een lepeltje liefde."
+      }
+    ],
+    "instagramLabel": "Meer op Instagram"
   }
 }

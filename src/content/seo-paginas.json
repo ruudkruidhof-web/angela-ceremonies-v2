@@ -9,7 +9,11 @@
       "kicker": "Trouwambtenaar",
       "titel": "Trouwambtenaar",
       "titelAccent": "Rotterdam",
-      "subtitel": "Op zoek naar een persoonlijke trouwambtenaar in Rotterdam? Angela Ceremonies verzorgt liefdevolle huwelijksceremonies door heel Rotterdam en omgeving."
+      "subtitel": "Op zoek naar een persoonlijke trouwambtenaar in Rotterdam? Angela Ceremonies verzorgt liefdevolle huwelijksceremonies door heel Rotterdam en omgeving.",
+      "beeld": {
+        "bron": "burgerzaal-zaal",
+        "focus": "50% 62%"
+      }
     },
     "sections": [
       {
@@ -46,7 +50,11 @@
       "kicker": "Trouwambtenaar",
       "titel": "Trouwambtenaar",
       "titelAccent": "Den Haag",
-      "subtitel": "Op zoek naar een persoonlijke trouwambtenaar in Den Haag? Angela Ceremonies verzorgt liefdevolle huwelijksceremonies door heel Den Haag en omgeving."
+      "subtitel": "Op zoek naar een persoonlijke trouwambtenaar in Den Haag? Angela Ceremonies verzorgt liefdevolle huwelijksceremonies door heel Den Haag en omgeving.",
+      "beeld": {
+        "bron": "zichtenburg-ceremonie",
+        "focus": "50% 40%"
+      }
     },
     "sections": [
       {
@@ -83,7 +91,11 @@
       "kicker": "BABS inhuren",
       "titel": "Een eigen BABS",
       "titelAccent": "voor jullie dag",
-      "subtitel": "Een Buitengewoon Ambtenaar van de Burgerlijke Stand inhuren voor jullie trouwdag."
+      "subtitel": "Een Buitengewoon Ambtenaar van de Burgerlijke Stand inhuren voor jullie trouwdag.",
+      "beeld": {
+        "bron": "angela-microfoon",
+        "focus": "50% 35%"
+      }
     },
     "sections": [
       {
@@ -102,12 +114,24 @@
           "Ceremonie op maat, ik schrijf een unieke ceremonie die bij jullie past",
           "Jullie trouwdag, een ceremonie om nooit te vergeten"
         ],
-        "buttons": [{ "label": "Bekijk tarieven", "href": "/tarieven", "variant": "outline" }]
+        "buttons": [
+          {
+            "label": "Bekijk tarieven",
+            "href": "/tarieven",
+            "variant": "outline"
+          }
+        ]
       }
     ],
     "faq": [
-      { "vraag": "Wat is een BABS?", "antwoord": "Een BABS is een Buitengewoon Ambtenaar van de Burgerlijke Stand. Dit is een persoon die bevoegd is om huwelijken wettelijk te voltrekken, vaak speciaal aangesteld voor jullie trouwdag." },
-      { "vraag": "Hoe werkt het inhuren van een BABS?", "antwoord": "Het begint met een vrijblijvend kennismakingsgesprek, gevolgd door een persoonlijk interview over jullie liefdesverhaal, waarna een ceremonie op maat wordt geschreven voor jullie trouwdag." }
+      {
+        "vraag": "Wat is een BABS?",
+        "antwoord": "Een BABS is een Buitengewoon Ambtenaar van de Burgerlijke Stand. Dit is een persoon die bevoegd is om huwelijken wettelijk te voltrekken, vaak speciaal aangesteld voor jullie trouwdag."
+      },
+      {
+        "vraag": "Hoe werkt het inhuren van een BABS?",
+        "antwoord": "Het begint met een vrijblijvend kennismakingsgesprek, gevolgd door een persoonlijk interview over jullie liefdesverhaal, waarna een ceremonie op maat wordt geschreven voor jullie trouwdag."
+      }
     ],
     "cta": {
       "kicker": "Kennismaken",
@@ -127,7 +151,11 @@
       "kicker": "Ceremonieel trouwen",
       "titel": "Ceremonieel",
       "titelAccent": "trouwen",
-      "subtitel": "Een ceremonie zonder wettelijke binding, volledig op maat."
+      "subtitel": "Een ceremonie zonder wettelijke binding, volledig op maat.",
+      "beeld": {
+        "bron": "zichtenburg-felicitatie",
+        "focus": "55% 35%"
+      }
     },
     "sections": [
       {
@@ -141,16 +169,34 @@
       {
         "heading": "De voordelen van ceremonieel trouwen",
         "cards": [
-          { "titel": "Volledige vrijheid", "tekst": "Geen standaardteksten of verplichte rituelen. Jullie bepalen wat er gezegd en gedaan wordt." },
-          { "titel": "Locatie naar keuze", "tekst": "Trouw waar jullie willen: in jullie tuin, op het strand, in een kasteel of op een boot." },
-          { "titel": "Persoonlijk verhaal", "tekst": "Ik schrijf een ceremonie die écht over jullie gaat, op basis van jullie liefdesverhaal." },
-          { "titel": "Geen haast", "tekst": "De ceremonie duurt precies zo lang als nodig. Er is ruimte voor emotie, geloften en rituelen." }
+          {
+            "titel": "Volledige vrijheid",
+            "tekst": "Geen standaardteksten of verplichte rituelen. Jullie bepalen wat er gezegd en gedaan wordt."
+          },
+          {
+            "titel": "Locatie naar keuze",
+            "tekst": "Trouw waar jullie willen: in jullie tuin, op het strand, in een kasteel of op een boot."
+          },
+          {
+            "titel": "Persoonlijk verhaal",
+            "tekst": "Ik schrijf een ceremonie die écht over jullie gaat, op basis van jullie liefdesverhaal."
+          },
+          {
+            "titel": "Geen haast",
+            "tekst": "De ceremonie duurt precies zo lang als nodig. Er is ruimte voor emotie, geloften en rituelen."
+          }
         ]
       }
     ],
     "faq": [
-      { "vraag": "Wat is ceremonieel trouwen?", "antwoord": "Ceremonieel trouwen is een huwelijksceremonie zonder wettelijke binding. Het is een prachtige manier om jullie liefde te vieren op een manier die volledig bij jullie past." },
-      { "vraag": "Wat zijn de voordelen van ceremonieel trouwen?", "antwoord": "Volledige vrijheid in vorm en inhoud, vrije locatiekeuze, een persoonlijk verhaal en geen tijdsdruk. De ceremonie duurt precies zo lang als nodig." }
+      {
+        "vraag": "Wat is ceremonieel trouwen?",
+        "antwoord": "Ceremonieel trouwen is een huwelijksceremonie zonder wettelijke binding. Het is een prachtige manier om jullie liefde te vieren op een manier die volledig bij jullie past."
+      },
+      {
+        "vraag": "Wat zijn de voordelen van ceremonieel trouwen?",
+        "antwoord": "Volledige vrijheid in vorm en inhoud, vrije locatiekeuze, een persoonlijk verhaal en geen tijdsdruk. De ceremonie duurt precies zo lang als nodig."
+      }
     ],
     "cta": {
       "kicker": "Kennismaken",
@@ -193,14 +239,28 @@
           "Reiskosten binnen Nederland"
         ],
         "buttons": [
-          { "label": "Bekijk de tarieven", "href": "/tarieven", "variant": "gold" },
-          { "label": "Vraag een offerte aan", "href": "/contact", "variant": "outline" }
+          {
+            "label": "Bekijk de tarieven",
+            "href": "/tarieven",
+            "variant": "gold"
+          },
+          {
+            "label": "Vraag een offerte aan",
+            "href": "/contact",
+            "variant": "outline"
+          }
         ]
       }
     ],
     "faq": [
-      { "vraag": "Wat kost een trouwambtenaar?", "antwoord": "De gemiddelde kosten voor een eigen trouwambtenaar in Nederland liggen tussen de €500 en €1.200, afhankelijk van de ervaring, het pakket en eventuele reiskosten." },
-      { "vraag": "Wat zit er bij de prijs inbegrepen?", "antwoord": "Bij Angela Ceremonies zijn de tarieven inclusief: kennismakingsgesprek, persoonlijk interview, op maat geschreven ceremonie, voorbereiding, de ceremonie zelf, aanwezigheid voor en na, en reiskosten binnen Nederland." }
+      {
+        "vraag": "Wat kost een trouwambtenaar?",
+        "antwoord": "De gemiddelde kosten voor een eigen trouwambtenaar in Nederland liggen tussen de €500 en €1.200, afhankelijk van de ervaring, het pakket en eventuele reiskosten."
+      },
+      {
+        "vraag": "Wat zit er bij de prijs inbegrepen?",
+        "antwoord": "Bij Angela Ceremonies zijn de tarieven inclusief: kennismakingsgesprek, persoonlijk interview, op maat geschreven ceremonie, voorbereiding, de ceremonie zelf, aanwezigheid voor en na, en reiskosten binnen Nederland."
+      }
     ],
     "cta": {
       "kicker": "Transparant",

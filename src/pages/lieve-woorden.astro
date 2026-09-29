@@ -5,8 +5,11 @@ import PageHero from '../components/PageHero.astro';
 import CtaSection from '../components/CtaSection.astro';
 import lw from '../content/teksten/lieve-woorden.json';
 import reviews from '../content/reviews.json';
-import heroImg from '../assets/candles-roses.jpg';
-import featuredImg from '../assets/couple-beach.jpg';
+import Credit from '../components/Credit.astro';
+import { foto } from '../lib/fotos';
+
+const heroFoto = foto(lw.hero.beeld.bron);
+const uitgelichtFoto = foto(lw.uitgelicht.bron);
 
 const featured = reviews.find((r) => r.uitgelicht) ?? reviews[0];
 
@@ -36,15 +39,17 @@ const jsonLd = {
     title={lw.hero.titel}
     titleAccent={lw.hero.titelAccent}
     subtitle={lw.hero.subtitel}
-    image={heroImg}
-    imageAlt="Witte rozen en kaarsen bij een ceremonie"
-    objectPosition="50% 45%"
+    image={heroFoto.src}
+    imageAlt={heroFoto.alt}
+    objectPosition={lw.hero.beeld.focus}
+    credit={heroFoto.fotograaf}
   />
 
   <section class="section bg-cream">
     <figure class="wrap review-row reveal">
-      <div class="rr-media">
-        <Image src={featuredImg} alt="Stralend bruidspaar op hun trouwdag" widths={[480, 800, 1100]} sizes="(max-width: 900px) 90vw, 540px" quality={78} format="webp" />
+      <div class="rr-media" data-img-reveal>
+        <Image src={uitgelichtFoto.src} alt={uitgelichtFoto.alt} widths={[480, 800, 1100, 1400]} sizes="(max-width: 900px) 90vw, 540px" quality={80} format="webp" style={`object-position:${lw.uitgelicht.focus}`} />
+        <Credit naam={uitgelichtFoto.fotograaf} />
       </div>
       <figcaption class="rr-body">
         <span class="rr-stars" aria-hidden="true">★★★★★</span>
@@ -83,8 +88,8 @@ const jsonLd = {
 </Base>
 
 <style>
-  .review-row { display: grid; grid-template-columns: 1.02fr 0.98fr; gap: clamp(2.25rem, 5vw, 4.5rem); align-items: center; margin: 0; }
-  .rr-media { overflow: hidden; border-radius: 3px; box-shadow: var(--shadow-lift); aspect-ratio: 4 / 5; }
+  .review-row { display: grid; grid-template-columns: 1.02fr 0.98fr; gap: clamp(2.25rem, 5vw, 4.5rem); align-items: center; margin: 0 auto; }
+  .rr-media { position: relative; overflow: hidden; border-radius: 3px; box-shadow: var(--shadow-lift); aspect-ratio: 4 / 5; }
   .rr-media :global(img) { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1); }
   .review-row:hover .rr-media :global(img) { transform: scale(1.04); }
   .rr-body { max-width: 40ch; }

@@ -233,6 +233,9 @@ img { display: block; max-width: 100%; }
 .js .reveal-rule {
   transform: scaleX(0);
 }
+@media (prefers-reduced-motion: no-preference) {
+  .js [data-img-reveal] { clip-path: inset(9% 7% 9% 7%); }
+}
 
 @media (prefers-reduced-motion: reduce) {
   .js .reveal, .js .reveal-rule {

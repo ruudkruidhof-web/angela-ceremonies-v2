@@ -6,6 +6,11 @@ import PageHero from '../components/PageHero.astro';
 import o from '../content/teksten/over-mij.json';
 import angelaImg from '../assets/angela-toga.jpg';
 import angelaWarm from '../assets/angela-warm.jpg';
+import Credit from '../components/Credit.astro';
+import site from '../content/site.json';
+import { foto } from '../lib/fotos';
+
+const schermen = o.schermen.items.map((item) => ({ ...item, foto: foto(item.bron) }));
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -70,6 +75,30 @@ const jsonLd = {
     </div>
   </section>
 
+  <section class="section bg-cream schermen">
+    <div class="wrap">
+      <div class="schermen-head">
+        <div class="reveal">
+          <p class="kicker">{o.schermen.kicker}</p>
+          <h2 class="section-title schermen-title">{o.schermen.titel} <em>{o.schermen.titelAccent}</em></h2>
+        </div>
+        <p class="schermen-intro reveal">{o.schermen.intro}</p>
+      </div>
+      <div class="schermen-grid">
+        {schermen.map((item, i) => (
+          <figure class:list={['scherm', `scherm-${i + 1}`]} data-parallax={i === 1 ? '-10' : i === 2 ? '8' : undefined}>
+            <div class="scherm-frame" data-img-reveal>
+              <Image src={item.foto.src} alt={item.foto.alt} widths={i === 0 ? [640, 1000, 1400] : [400, 640, 900]} sizes={i === 0 ? '(max-width: 880px) 92vw, 560px' : '(max-width: 880px) 45vw, 300px'} quality={80} format="webp" style={`object-position:${item.focus}`} />
+              <Credit naam={item.foto.fotograaf} />
+            </div>
+            <figcaption class="scherm-tekst">{item.tekst}</figcaption>
+          </figure>
+        ))}
+      </div>
+      <a href={site.instagram} target="_blank" rel="noopener" class="link-more schermen-insta reveal">{o.schermen.instagramLabel} <span class="arrow" aria-hidden="true">→</span></a>
+    </div>
+  </section>
+
   <section class="stats-band">
     <div class="wrap stats-grid">
       {o.cijfers.map((stat) => (
@@ -91,6 +120,27 @@ const jsonLd = {
 </Base>
 
 <style>
+  .schermen-head { display: grid; grid-template-columns: 1fr 0.9fr; gap: 1.5rem 4rem; align-items: end; margin-bottom: clamp(2.5rem, 5vw, 4rem); }
+  .schermen-head .kicker { margin-bottom: 0.9rem; }
+  .schermen-title { font-weight: 400; }
+  .schermen-title em { font-style: italic; color: var(--gold); }
+  .schermen-intro { color: var(--muted); line-height: 1.8; max-width: 44ch; }
+  .schermen-grid { display: grid; grid-template-columns: 1.55fr 1fr 1fr; gap: clamp(1.25rem, 3vw, 2.5rem); align-items: start; }
+  .scherm { margin: 0; }
+  .scherm-2 { margin-top: clamp(3rem, 8vw, 7rem); }
+  .scherm-3 { margin-top: clamp(1rem, 3vw, 2.5rem); }
+  .scherm-frame { position: relative; overflow: hidden; border-radius: 3px; box-shadow: var(--shadow-lift); aspect-ratio: 3 / 4; }
+  .scherm-1 .scherm-frame { aspect-ratio: 4 / 5; }
+  .scherm-frame :global(img) { width: 100%; height: 100%; object-fit: cover; }
+  .scherm-tekst { margin-top: 1rem; font-family: var(--font-display); font-style: italic; font-size: 1.05rem; line-height: 1.5; color: var(--ink); max-width: 32ch; }
+  .schermen-insta { margin-top: clamp(2.5rem, 5vw, 3.5rem); }
+  @media (max-width: 880px) {
+    .schermen-head { grid-template-columns: 1fr; }
+    .schermen-grid { grid-template-columns: 1fr 1fr; }
+    .scherm-1 { grid-column: 1 / -1; }
+    .scherm-2, .scherm-3 { margin-top: 0; }
+  }
+
   .bio-media { position: relative; }
   .bio-frame { overflow: hidden; border-radius: 3px; box-shadow: var(--shadow-lift); aspect-ratio: 4 / 5; }
   .bio-frame :global(img) { width: 100%; height: 100%; object-fit: cover; object-position: center 22%; }

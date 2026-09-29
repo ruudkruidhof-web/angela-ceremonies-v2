@@ -8,7 +8,10 @@
     "titel": "Een ceremonie die écht",
     "titelAccent": "over jullie gaat",
     "subtitel": "Wettelijk, ceremonieel of een <em>herbevestiging van jullie geloften</em>.",
-    "afbeeldingAlt": "Handen van een bruidspaar tijdens de ringuitwisseling"
+    "beeld": {
+      "bron": "wereldmuseum-zaal",
+      "focus": "50% 45%"
+    }
   },
   "intro": {
     "kicker": "Welkom",
@@ -46,15 +49,37 @@
           "Een geloftenvernieuwing is een intiem, betekenisvol moment. Ik begeleid jullie bij het vormgeven van deze bijzondere herbevestiging van jullie liefde en toewijding."
         ]
       }
-    ]
+    ],
+    "beelden": {
+      "wettelijk": {
+        "bron": "angela-ondertekening",
+        "focus": "50% 40%"
+      },
+      "ceremonieel": {
+        "bron": "zichtenburg-bruidspaar",
+        "focus": "50% 35%"
+      }
+    }
   },
   "aanpak": {
     "kicker": "Hoe ik werk",
     "titel": "Onze samenwerking",
     "stappen": [
-      { "nummer": "01", "titel": "Kennismaking", "tekst": "We beginnen met een vrijblijvend kennismakingsgesprek. Ik leer jullie kennen, jullie verhaal, jullie wensen." },
-      { "nummer": "02", "titel": "Op maat gemaakt", "tekst": "Op basis van jullie verhaal schrijf ik een persoonlijke ceremonie. We stemmen alles zorgvuldig op jullie af." },
-      { "nummer": "03", "titel": "Jullie dag", "tekst": "Op jullie trouwdag ben ik volledig aanwezig. Met rust, warmte en aandacht voor elk bijzonder moment." }
+      {
+        "nummer": "01",
+        "titel": "Kennismaking",
+        "tekst": "We beginnen met een vrijblijvend kennismakingsgesprek. Ik leer jullie kennen, jullie verhaal, jullie wensen."
+      },
+      {
+        "nummer": "02",
+        "titel": "Op maat gemaakt",
+        "tekst": "Op basis van jullie verhaal schrijf ik een persoonlijke ceremonie. We stemmen alles zorgvuldig op jullie af."
+      },
+      {
+        "nummer": "03",
+        "titel": "Jullie dag",
+        "tekst": "Op jullie trouwdag ben ik volledig aanwezig. Met rust, warmte en aandacht voor elk bijzonder moment."
+      }
     ]
   },
   "cta": {
