@@ -76,7 +76,7 @@ Per pagina: meta + Open Graph + JSON-LD (Service / Person / Review / FAQPage). `
 - GSAP: titelmasker en scroll-fade in de hero, woord-voor-woord statement (SplitText), tellers, clip-path-onthulling voor elk `[data-img-reveal]`, `[data-parallax]`, parallax op paginaheroes (schaal 1.08). Alles via `gsap.matchMedia` met reduced-motion.
 - Paginaheroes: `darkHero` op elke pagina met een beeldhero (transparante navigatie), beeldhero op desktop `clamp(560px, 76vh, 820px)` hoog, focus per pagina afgesteld.
 
-**Voor productie nodig (juridisch):** toestemming van de fotografen (Merel Shoot It, KAT Films, FoR Fotografia) en van de stellen die herkenbaar of bij naam in beeld zijn (Devika & Shivam, Leonardo & Evelien), liefst via Angela. Vraag KAT Films om versies zonder watermerk. De namen "Merel Shoot It" en "FoR Fotografia" zijn afgeleid van hun Instagram-handle en watermerk.
+**Juridisch nog open (Ruud zette bewust live zonder):** toestemming van de fotografen (Merel Shoot It, KAT Films, FoR Fotografia) en van de stellen die herkenbaar of bij naam in beeld zijn (Devika & Shivam, Leonardo & Evelien), liefst via Angela. Vraag KAT Films om versies zonder watermerk. De namen "Merel Shoot It" en "FoR Fotografia" zijn afgeleid van hun Instagram-handle en watermerk.
 
 **Lessen:**
 - De Higgsfield/ByteDance-opschaler is generatief en verandert gezichten (Angela werd een ander persoon). Voor echte mensen alleen getrouwe opschaling (EDSR via `opencv-contrib`).
