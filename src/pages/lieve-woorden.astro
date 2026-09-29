@@ -87,8 +87,7 @@ const jsonLd = {
 <style>
   .review-row { display: grid; grid-template-columns: 1.02fr 0.98fr; gap: clamp(2.25rem, 5vw, 4.5rem); align-items: center; margin: 0 auto; }
   .rr-media { position: relative; overflow: hidden; border-radius: 3px; box-shadow: var(--shadow-lift); aspect-ratio: 4 / 5; }
-  .rr-media :global(img) { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1); }
-  .review-row:hover .rr-media :global(img) { transform: scale(1.04); }
+  .rr-media :global(img) { width: 100%; height: 100%; object-fit: cover; }
   .rr-body { max-width: 40ch; }
   .rr-stars { color: var(--gold-soft); font-size: 1.05rem; letter-spacing: 0.18em; }
   .rr-quote { margin: 1.1rem 0 1.6rem; font-family: var(--font-display); font-style: italic; font-weight: 400; font-size: clamp(1.4rem, 1.1rem + 1.4vw, 2.2rem); line-height: 1.4; color: var(--ink); }
@@ -119,7 +118,9 @@ const jsonLd = {
     border: 1px solid var(--line);
     border-radius: 3px;
     box-shadow: var(--shadow-soft);
+    transition: translate 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s ease, border-color 0.5s ease;
   }
+  .lw-card:hover { translate: 0 -4px; box-shadow: var(--shadow-lift); border-color: hsl(36 40% 75%); }
   .lw-card:nth-child(4n) { border-top: 2px solid var(--gold); }
   .lw-mark { font-family: var(--font-display); font-size: 2.4rem; line-height: 0.4; color: var(--gold); margin-bottom: 1rem; opacity: 0.7; }
   .lw-quote { margin: 0 0 1.25rem; color: var(--brown); font-size: 0.98rem; line-height: 1.65; }

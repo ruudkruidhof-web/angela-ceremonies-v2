@@ -90,6 +90,8 @@ const heroFoto = foto(t.hero.beeld.bron);
     flex-direction: column;
     box-shadow: var(--shadow-soft);
   }
+  .price-card { transition: translate 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s ease, border-color 0.5s ease; }
+  .price-card:hover { translate: 0 -6px; box-shadow: var(--shadow-lift); border-color: hsl(36 40% 72%); }
   .price-card.featured { border-color: hsl(36 40% 72%); box-shadow: var(--shadow-lift); }
   .price-flag {
     position: absolute;

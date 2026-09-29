@@ -138,11 +138,11 @@
     },
     {
       "getal": "2018",
-      "label": "Actief als BABS sinds"
+      "label": "Trouwambtenaar sinds"
     },
     {
       "getal": "Heel NL",
-      "label": "Werkzaam door heel Nederland"
+      "label": "Waar jullie ook trouwen"
     }
   ],
   "cta": {
@@ -172,7 +172,9 @@
         "bron": "zichtenburg-omhelzing",
         "formaat": "staand",
         "focus": "50% 40%",
-        "plaats": "Na het ja-woord"
+        "plaats": "Zichtenburg, Den Haag",
+        "titel": "Na het ja-woord",
+        "tekst": "Eén omhelzing, en alle spanning valt weg."
       },
       {
         "bron": "wereldmuseum-bruidspaar",
@@ -186,7 +188,9 @@
         "bron": "wereldmuseum-speech",
         "formaat": "breed",
         "focus": "50% 45%",
-        "plaats": "Jullie verhaal, hardop verteld"
+        "plaats": "Wereldmuseum, Rotterdam",
+        "titel": "Jullie verhaal, hardop",
+        "tekst": "Naast de vleugel vertel ik wie jullie samen zijn."
       },
       {
         "bron": "burgerzaal-zaal",
@@ -210,9 +214,21 @@
         "focus": "50% 45%",
         "plaats": "Achter de schermen",
         "titel": "Een lepeltje liefde",
-        "tekst": "Vandaag heb ik zin in een kopje gezelligheid en een lepeltje liefde."
+        "tekst": "Zin in een kopje gezelligheid en een lepeltje liefde."
       }
     ],
     "instagramLabel": "Meer op Instagram"
-  }
+  },
+  "marquee": [
+    "Wettelijk trouwen",
+    "Rotterdam",
+    "Ceremonieel huwelijk",
+    "Den Haag",
+    "Geloften vernieuwen",
+    "Wereldmuseum",
+    "Hindoestaanse bruiloften",
+    "Zichtenburg",
+    "Burgerzaal",
+    "Heel Nederland"
+  ]
 }

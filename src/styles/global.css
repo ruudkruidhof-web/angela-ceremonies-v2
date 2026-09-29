@@ -159,10 +159,15 @@ img { display: block; max-width: 100%; }
   letter-spacing: 0.1em;
 }
 
-/* Buttons */
+/* Buttons: a fill rises from below on hover; `translate` stays free for the lift, `transform` for the magnetic pull */
 .btn {
   --bg: var(--brown);
   --fg: var(--cream);
+  --fill: var(--gold);
+  --fill-fg: var(--ink);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
@@ -178,57 +183,96 @@ img { display: block; max-width: 100%; }
   border: 1px solid var(--bg);
   border-radius: 2px;
   cursor: pointer;
-  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.4s ease, color 0.4s ease, box-shadow 0.4s ease;
+  transition: translate 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), color 0.45s ease, border-color 0.45s ease, box-shadow 0.4s ease;
 }
-.btn:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-soft);
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--fill);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
 }
+.btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
 .btn .arrow { transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); }
-.btn:hover .arrow { transform: translateX(4px); }
+@media (hover: hover) {
+  .btn:hover {
+    color: var(--fill-fg);
+    border-color: var(--fill);
+    translate: 0 -2px;
+    box-shadow: var(--shadow-soft);
+  }
+  .btn:hover::before { transform: scaleY(1); }
+  .btn:hover .arrow { transform: translateX(4px); }
+}
 
 .btn-ghost {
   --bg: transparent;
   --fg: var(--cream);
+  --fill: var(--cream);
   border-color: hsl(40 40% 97% / 0.55);
   backdrop-filter: blur(2px);
 }
-.btn-ghost:hover { background: hsl(40 40% 97% / 0.1); }
 
 .btn-gold {
   --bg: var(--gold);
   --fg: hsl(26 30% 14%);
+  --fill: var(--ink);
+  --fill-fg: var(--cream);
   border-color: var(--gold);
 }
 
 .btn-outline {
   --bg: transparent;
   --fg: var(--brown);
+  --fill: var(--ink);
+  --fill-fg: var(--cream);
   border-color: var(--line);
 }
-.btn-outline:hover { border-color: var(--gold); color: var(--ink); }
 
-/* Text link with animated underline */
+/* Text links draw their underline from the left */
 .link-more {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
+  padding-bottom: 0.3rem;
   font-size: 0.74rem;
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--gold);
   text-decoration: none;
+  background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat;
+  transition: background-size 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
+.link-more:hover { background-size: 100% 1px; }
 .link-more .arrow { transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); }
 .link-more:hover .arrow { transform: translateX(5px); }
 
+/* Photos zoom in slowly and warm up under the pointer */
+:is([data-img-reveal], .bg-frame, .loc-frame, .tb-frame) img {
+  transition: scale 1.2s cubic-bezier(0.22, 1, 0.36, 1), filter 1.2s ease;
+}
+:is([data-img-reveal], .bg-frame, .loc-frame) {
+  transition: box-shadow 0.8s ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  :is([data-img-reveal], .bg-frame, .loc-frame, .tb-frame):hover img {
+    scale: 1.045;
+    filter: sepia(0.14) saturate(1.1) brightness(1.03);
+  }
+  :is([data-img-reveal], .bg-frame, .loc-frame):hover {
+    box-shadow: 0 2px 4px hsl(26 30% 20% / 0.04), 0 26px 60px -22px hsl(34 60% 38% / 0.42);
+  }
+}
+
 /* Scroll reveal, hidden only when JS is active; GSAP animates them in.
    No-JS users keep everything visible; reduced-motion shows them instantly. */
-.js .reveal {
+.js .reveal:not(.is-shown) {
   opacity: 0;
   transform: translateY(26px);
-  will-change: opacity, transform;
 }
 .js .reveal-rule {
   transform: scaleX(0);
@@ -305,9 +349,9 @@ img { display: block; max-width: 100%; }
   display: flex;
   flex-direction: column;
   gap: 0.85rem;
-  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s ease, border-color 0.5s ease;
+  transition: translate 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s ease, border-color 0.5s ease;
 }
-.num-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lift); border-color: hsl(36 40% 75%); }
+.num-card:hover { translate: 0 -6px; box-shadow: var(--shadow-lift); border-color: hsl(36 40% 75%); }
 .num-card .num { font-family: var(--font-display); font-style: italic; font-size: 1.05rem; color: var(--gold); letter-spacing: 0.05em; }
 .num-card h3 { font-size: 1.4rem; }
 .num-card p { color: var(--muted); font-size: 0.98rem; }
@@ -319,9 +363,9 @@ img { display: block; max-width: 100%; }
   border-radius: 3px;
   padding: clamp(1.75rem, 3vw, 2.6rem);
   text-align: center;
-  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s ease;
+  transition: translate 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s ease;
 }
-.value-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lift); }
+.value-card:hover { translate: 0 -6px; box-shadow: var(--shadow-lift); }
 .value-orn { display: block; color: var(--gold); font-size: 1.3rem; margin-bottom: 1rem; }
 .value-card h3 { font-size: 1.4rem; margin-bottom: 0.7rem; }
 .value-card p { color: var(--muted); font-size: 0.98rem; }

@@ -70,8 +70,10 @@ const year = 2026;
     text-decoration: none;
     font-size: 0.95rem;
     width: fit-content;
-    transition: color 0.3s ease;
+    background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat;
+    transition: color 0.3s ease, background-size 0.5s cubic-bezier(0.22, 1, 0.36, 1);
   }
+  .footer-col a:hover { background-size: 100% 1px; }
   .footer-col a:hover { color: var(--cream); }
   .footer-city { font-size: 0.95rem; color: hsl(40 18% 64%); }
   .footer-base {

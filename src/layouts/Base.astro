@@ -152,6 +152,12 @@ const ogURL = new URL(ogImage, Astro.site ?? Astro.url.origin).href;
 
       let revealMM: ReturnType<typeof gsap.matchMedia> | undefined;
 
+      // GSAP leaves inline transform/translate behind, which would block the CSS hover lifts.
+      function toonDefinitief(els: Element[]) {
+        els.forEach((el) => el.classList.add('is-shown'));
+        gsap.set(els, { clearProps: 'opacity,transform,translate' });
+      }
+
       function initReveal() {
         revealMM?.revert();
         revealMM = gsap.matchMedia();
@@ -161,7 +167,15 @@ const ogURL = new URL(ogImage, Astro.site ?? Astro.url.origin).href;
             start: 'top 88%',
             once: true,
             onEnter: (els) =>
-              gsap.to(els, { opacity: 1, y: 0, duration: 1, ease: 'power3.out', stagger: 0.12, overwrite: true }),
+              gsap.to(els, {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: 'power3.out',
+                stagger: 0.12,
+                overwrite: true,
+                onComplete: () => toonDefinitief(els),
+              }),
           });
           const rules = ScrollTrigger.batch('.reveal-rule', {
             start: 'top 90%',
@@ -205,9 +219,30 @@ const ogURL = new URL(ogImage, Astro.site ?? Astro.url.origin).href;
         });
 
         revealMM.add('(prefers-reduced-motion: reduce)', () => {
-          gsap.set('.reveal', { opacity: 1, y: 0 });
+          toonDefinitief(gsap.utils.toArray('.reveal'));
           gsap.set('.reveal-rule', { scaleX: 1 });
           gsap.set('[data-img-reveal]', { clipPath: 'none' });
+        });
+      }
+
+      let magnetMM: ReturnType<typeof gsap.matchMedia> | undefined;
+
+      function initMagnetic() {
+        magnetMM?.revert();
+        magnetMM = gsap.matchMedia();
+        magnetMM.add('(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)', () => {
+          const abort = new AbortController();
+          gsap.utils.toArray<HTMLElement>('.hero-cta, .nav-cta, .btn-gold').forEach((el) => {
+            const xTo = gsap.quickTo(el, 'x', { duration: 0.6, ease: 'power3.out' });
+            const yTo = gsap.quickTo(el, 'y', { duration: 0.6, ease: 'power3.out' });
+            el.addEventListener('pointermove', (e) => {
+              const r = el.getBoundingClientRect();
+              xTo(gsap.utils.clamp(-10, 10, (e.clientX - r.left - r.width / 2) * 0.2));
+              yTo(gsap.utils.clamp(-6, 6, (e.clientY - r.top - r.height / 2) * 0.3));
+            }, { signal: abort.signal });
+            el.addEventListener('pointerleave', () => { xTo(0); yTo(0); }, { signal: abort.signal });
+          });
+          return () => abort.abort();
         });
       }
 
@@ -245,6 +280,7 @@ const ogURL = new URL(ogImage, Astro.site ?? Astro.url.origin).href;
 
       function initAll() {
         initReveal();
+        initMagnetic();
         initCookie();
         ScrollTrigger.refresh();
       }
@@ -259,6 +295,7 @@ const ogURL = new URL(ogImage, Astro.site ?? Astro.url.origin).href;
       // Tear down scroll triggers before a View Transition swaps the DOM.
       document.addEventListener('astro:before-swap', () => {
         revealMM?.revert();
+        magnetMM?.revert();
         ScrollTrigger.getAll().forEach((t) => t.kill());
       });
     </script>
