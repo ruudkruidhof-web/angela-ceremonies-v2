@@ -5,7 +5,6 @@ import home from '../content/home.json';
 import reviews from '../content/reviews.json';
 import site from '../content/site.json';
 
-import Credit from '../components/Credit.astro';
 import { foto } from '../lib/fotos';
 
 import heroImg from '../assets/hero-wereldmuseum.jpg';
@@ -80,7 +79,6 @@ const blockB = home.reviewBlocks[1];
         <li><a href={home.hero.ratingHref}><span aria-hidden="true">★</span> {home.hero.rating}</a></li>
       </ul>
     </div>
-    <span class="hero-foto">{home.hero.beeld.credit}</span>
   </section>
 
   <section class="section bg-cream statement" id="statement">
@@ -114,7 +112,6 @@ const blockB = home.reviewBlocks[1];
     <div class="wrap overlap">
       <div class="overlap-media" data-img-reveal>
         <Image src={visionFoto.src} alt={visionFoto.alt} widths={[600, 1000, 1400, 1800]} sizes="(max-width: 900px) 92vw, 680px" quality={80} format="webp" style={`object-position:${home.vision.beeld.focus}`} />
-        {!visionFoto.watermerk && <Credit naam={visionFoto.fotograaf} />}
       </div>
       <div class="overlap-panel reveal">
         <p class="kicker kicker-gold">{home.vision.kicker}</p>
@@ -128,7 +125,6 @@ const blockB = home.reviewBlocks[1];
     <figure class="wrap review-row">
       <div class="rr-media" data-img-reveal>
         <Image src={reviewFotos[0].src} alt={reviewFotos[0].alt} widths={[480, 800, 1100, 1400]} sizes="(max-width: 900px) 90vw, 540px" quality={80} format="webp" style={`object-position:${blockA.focus}`} />
-        {!reviewFotos[0].watermerk && <Credit naam={reviewFotos[0].fotograaf} />}
       </div>
       <figcaption class="rr-body reveal">
         <span class="rr-stars" aria-hidden="true">★★★★★</span>
@@ -155,7 +151,6 @@ const blockB = home.reviewBlocks[1];
           <li class:list={['tb-item', `tb-${item.formaat}`]}>
             <div class="tb-frame">
               <Image src={item.foto.src} alt={item.foto.alt} widths={item.formaat === 'breed' ? [640, 1000, 1400] : [400, 640, 900]} sizes={item.formaat === 'breed' ? '(max-width: 720px) 86vw, 46vw' : '(max-width: 720px) 62vw, 24vw'} quality={80} format="webp" style={`object-position:${item.focus}`} />
-              {!item.foto.watermerk && <Credit naam={item.foto.fotograaf} />}
             </div>
             <div class="tb-caption">
               <span class="tb-num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
@@ -212,7 +207,6 @@ const blockB = home.reviewBlocks[1];
     <figure class="wrap review-row review-row-rev">
       <div class="rr-media" data-img-reveal>
         <Image src={reviewFotos[1].src} alt={reviewFotos[1].alt} widths={[480, 800, 1100, 1400]} sizes="(max-width: 900px) 90vw, 540px" quality={80} format="webp" style={`object-position:${blockB.focus}`} />
-        {!reviewFotos[1].watermerk && <Credit naam={reviewFotos[1].fotograaf} />}
       </div>
       <figcaption class="rr-body reveal">
         <span class="rr-stars" aria-hidden="true">★★★★★</span>
@@ -227,7 +221,6 @@ const blockB = home.reviewBlocks[1];
     <div class="wrap cf-grid">
       <div class="cf-media" data-img-reveal>
         <Image src={coachingFoto.src} alt={coachingFoto.alt} widths={[480, 760, 1000, 1300]} sizes="(max-width: 900px) 90vw, 480px" quality={80} format="webp" style={`object-position:${home.coaching.beeld.focus}`} />
-        {!coachingFoto.watermerk && <Credit naam={coachingFoto.fotograaf} />}
       </div>
       <div class="cf-body reveal">
         <p class="kicker kicker-gold">{home.coaching.kicker}</p>
@@ -306,7 +299,6 @@ const blockB = home.reviewBlocks[1];
   .hero-title em { font-style: italic; color: hsl(38 62% 80%); }
   .hero-line { overflow: hidden; padding: 0.08em 0.24em 0.16em 0.14em; margin: -0.08em -0.24em -0.16em -0.14em; }
   .js .hl { transform: translateY(112%); }
-  .hero-foto { position: absolute; right: max(var(--gutter), calc((100vw - var(--maxw)) / 2 + var(--gutter))); bottom: 0.9rem; font-size: 0.6rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: hsl(40 40% 97% / 0.7); text-shadow: 0 1px 10px hsl(26 40% 4% / 0.7); }
   .hero-sub { margin-top: 1.4rem; font-size: clamp(1.05rem, 1rem + 0.35vw, 1.25rem); line-height: 1.6; color: var(--cream); max-width: 38ch; }
   .hero-cta { display: inline-flex; align-items: center; gap: 0.8rem; margin-top: 2rem; min-height: 56px; padding: 0 1.8rem; background: var(--cream); color: var(--ink); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; border-radius: 2px; box-shadow: 0 10px 30px hsl(26 40% 4% / 0.35); transition: background 0.35s ease, color 0.35s ease, translate 0.35s ease; }
   .hero-cta:hover { background: var(--gold-soft); translate: 0 -2px; }
@@ -480,8 +472,7 @@ const blockB = home.reviewBlocks[1];
   @media (max-width: 720px) {
     .hero { padding-bottom: 6rem; }
     .hero-media :global(img), .hero-video { object-position: var(--focus-mobiel); }
-    .hero-foto { top: 5.4rem; bottom: auto; }
-    .hero-shade { background:
+      .hero-shade { background:
         linear-gradient(180deg, hsl(26 30% 6% / 0.55) 0%, transparent 16%),
         linear-gradient(0deg, hsl(26 32% 6% / 0.92) 0%, hsl(26 32% 6% / 0.78) 40%, hsl(26 32% 6% / 0.35) 62%, transparent 78%); }
     .hero-inner { flex-direction: column-reverse; align-items: stretch; gap: 1.6rem; }

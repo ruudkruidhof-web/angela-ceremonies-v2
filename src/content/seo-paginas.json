@@ -37,7 +37,7 @@
       "titel": "Een trouwambtenaar in Rotterdam?",
       "tekst": "Plan een vrijblijvend kennismakingsgesprek. Ik denk graag met jullie mee.",
       "knopLabel": "Neem contact op",
-      "knopHref": "/contact"
+      "knopHref": "/contact#formulier"
     }
   },
   {
@@ -52,8 +52,8 @@
       "titelAccent": "Den Haag",
       "subtitel": "Op zoek naar een persoonlijke trouwambtenaar in Den Haag? Angela Ceremonies verzorgt liefdevolle huwelijksceremonies door heel Den Haag en omgeving.",
       "beeld": {
-        "bron": "zichtenburg-ceremonie",
-        "focus": "50% 40%"
+        "bron": "zichtenburg-bruidspaar",
+        "focus": "50% 30%"
       }
     },
     "sections": [
@@ -78,7 +78,7 @@
       "titel": "Een trouwambtenaar in Den Haag?",
       "tekst": "Plan een vrijblijvend kennismakingsgesprek. Ik denk graag met jullie mee.",
       "knopLabel": "Neem contact op",
-      "knopHref": "/contact"
+      "knopHref": "/contact#formulier"
     }
   },
   {
@@ -138,7 +138,7 @@
       "titel": "Een BABS inhuren?",
       "tekst": "Benieuwd wat ik voor jullie kan betekenen? Plan een vrijblijvend kennismakingsgesprek.",
       "knopLabel": "Neem contact op",
-      "knopHref": "/contact"
+      "knopHref": "/contact#formulier"
     }
   },
   {
@@ -203,7 +203,7 @@
       "titel": "Benieuwd naar de mogelijkheden?",
       "tekst": "Laten we vrijblijvend kennismaken en ontdekken wat bij jullie past.",
       "knopLabel": "Vrijblijvend kennismaken",
-      "knopHref": "/contact"
+      "knopHref": "/contact#formulier"
     }
   },
   {
@@ -246,7 +246,7 @@
           },
           {
             "label": "Vraag een offerte aan",
-            "href": "/contact",
+            "href": "/contact#formulier",
             "variant": "outline"
           }
         ]

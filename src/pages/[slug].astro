@@ -6,7 +6,7 @@ import paginas from '../content/seo-paginas.json';
 import { foto } from '../lib/fotos';
 import kostenImg from '../assets/ring-exchange.jpg';
 
-const kostenHero = { src: kostenImg, alt: 'Intiem moment tijdens de ringuitwisseling', pos: '50% 45%', fotograaf: undefined, watermerk: false };
+const kostenHero = { src: kostenImg, alt: 'Intiem moment tijdens de ringuitwisseling', pos: '50% 45%' };
 
 export function getStaticPaths() {
   return paginas.map((p) => ({ params: { slug: p.slug }, props: { p } }));
@@ -52,7 +52,6 @@ if ('faq' in p && Array.isArray(p.faq) && p.faq.length) {
     image={hero?.src}
     imageAlt={hero?.alt}
     objectPosition={hero?.pos}
-    credit={hero && !hero.watermerk ? hero.fotograaf : undefined}
   />
 
   {p.sections.map((s: any, i: number) => (

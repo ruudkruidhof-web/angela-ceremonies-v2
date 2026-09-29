@@ -18,5 +18,3 @@ export function foto(sleutel: string): Foto {
   const maker = (data.fotografen as Record<string, { naam: string; href?: string }>)[info.fotograaf];
   return { src: bestand.default, alt: info.alt, fotograaf: maker.naam, fotograafHref: maker.href, watermerk: Boolean(info.watermerk) };
 }
-
-export const fotografen = Object.values(data.fotografen as Record<string, { naam: string; href?: string }>);

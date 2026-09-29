@@ -9,8 +9,8 @@
     "titelAccent": "persoonlijk",
     "subtitel": "Heldere tarieven, met alle ruimte voor <em>jullie persoonlijke wensen</em>.",
     "beeld": {
-      "bron": "heerlijkheid-toga",
-      "focus": "58% 50%"
+      "bron": "zichtenburg-ceremonie",
+      "focus": "50% 38%"
     }
   },
   "pakketten": {
@@ -32,7 +32,7 @@
           "Een ontspannen en persoonlijke ceremonie met humor"
         ],
         "knopLabel": "Kennismaken? Neem contact op",
-        "knopHref": "/contact"
+        "knopHref": "/contact#formulier"
       },
       {
         "label": "Extra ondersteuning",
@@ -50,7 +50,7 @@
           "Overige wensen in overleg"
         ],
         "knopLabel": "Neem contact op",
-        "knopHref": "/contact"
+        "knopHref": "/contact#formulier"
       }
     ]
   },
@@ -63,7 +63,7 @@
     "titel": "Vragen over de tarieven?",
     "tekst": "Neem gerust contact op. Ik denk graag met jullie mee over wat het beste bij jullie past.",
     "knopLabel": "Neem contact op",
-    "knopHref": "/contact",
+    "knopHref": "/contact#formulier",
     "noot": "Algemene voorwaarden zijn op aanvraag beschikbaar."
   }
 }

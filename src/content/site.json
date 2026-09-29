@@ -15,7 +15,6 @@
     { "label": "Tarieven", "href": "/tarieven" },
     { "label": "Coaching", "href": "/coaching" },
     { "label": "Lieve woorden", "href": "/lieve-woorden" },
-    { "label": "Over mij", "href": "/over-mij" },
-    { "label": "Contact", "href": "/contact" }
+    { "label": "Over mij", "href": "/over-mij" }
   ]
 }

@@ -22,8 +22,8 @@ const isActive = (href: string) => pathname === href || pathname === href + '/';
       ))}
     </nav>
 
-    <a href="/contact" class="nav-cta">Plan een kennismaking</a>
-    <a href="/contact" class="nav-cta-mini">Kennismaken</a>
+    <a href="/contact#formulier" class="nav-cta">Plan een kennismaking</a>
+    <a href="/contact#formulier" class="nav-cta-mini">Kennismaken</a>
 
     <button class="nav-toggle" type="button" aria-label="Menu openen" aria-expanded="false" data-toggle>
       <span></span><span></span>
@@ -35,7 +35,7 @@ const isActive = (href: string) => pathname === href || pathname === href + '/';
       {site.nav.map((item) => (
         <a href={item.href} class="drawer-link">{item.label}</a>
       ))}
-      <a href="/contact" class="drawer-link drawer-cta">Plan een kennismaking</a>
+      <a href="/contact#formulier" class="drawer-link drawer-cta">Plan een kennismaking</a>
     </nav>
   </div>
 </header>

@@ -19,9 +19,12 @@
       "Mijn werk is meer dan een functie, <strong>het is mijn passie</strong>. Elk bruidspaar en elk verhaal is uniek. Het is telkens weer bijzonder om aanwezig te mogen zijn bij het moment waarop twee mensen <em>bewust en vol vertrouwen voor elkaar kiezen</em>."
     ],
     "citaat": "Liefde kent geen grenzen en verdient een ceremonie die daarbij past.",
-    "afbeeldingAlt": "Angela Bhagole-Mangre, trouwambtenaar en ceremoniespreker, in toga",
     "profielLabel": "Bekijk mijn profiel op AlleTrouwambtenaren.nl",
-    "profielHref": "https://alletrouwambtenaren.nl/babs/hindoestaanse-trouwambtenaar-angela/"
+    "profielHref": "https://alletrouwambtenaren.nl/babs/hindoestaanse-trouwambtenaar-angela/",
+    "beeld": {
+      "bron": "wereldmuseum-angela-lach",
+      "focus": "16% 45%"
+    }
   },
   "waarden": {
     "kicker": "Waar ik voor sta",
@@ -84,6 +87,6 @@
     "titel": "Benieuwd of het klikt?",
     "tekst": "Ik vertel graag meer over mezelf en hoe ik jullie ceremonie kan begeleiden.",
     "knopLabel": "Neem contact op",
-    "knopHref": "/contact"
+    "knopHref": "/contact#formulier"
   }
 }

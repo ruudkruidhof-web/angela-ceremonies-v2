@@ -7,7 +7,7 @@
     "ratingHref": "/lieve-woorden",
     "knop": {
       "label": "Plan een kennismaking",
-      "href": "/contact"
+      "href": "/contact#formulier"
     },
     "aftiteling": [
       "Rotterdam",
@@ -17,8 +17,7 @@
     "beeld": {
       "bron": "wereldmuseum-ceremonie",
       "focus": "50% 50%",
-      "focusMobiel": "50% 50%",
-      "credit": "Beeld Merel Shoot It, KAT Films en Angela"
+      "focusMobiel": "50% 50%"
     },
     "video": {
       "desktop": "/video/hero-wereldmuseum-2560.mp4",
@@ -43,18 +42,18 @@
   },
   "reviewBlocks": [
     {
-      "bron": "angela-microfoon",
+      "bron": "burgerzaal-zaal",
       "quoteHtml": "Jouw betrokkenheid, energie en warmte <em>maakten de ceremonie echt speciaal</em> voor ons en onze gasten. We zijn je enorm dankbaar voor het creëren van zo'n <strong>memorabel moment</strong>.",
       "naam": "Claire & Theo",
       "datum": "April 2024",
-      "focus": "50% 40%"
+      "focus": "50% 62%"
     },
     {
-      "bron": "wereldmuseum-angela-lach",
+      "bron": "buitenplaats-trouwzaal",
       "quoteHtml": "We hadden niet verwacht dat het zo <em>speciaal en emotioneel</em> zou voelen. Dat is helemaal te danken aan jou en je <strong>prachtige speech</strong>.",
       "naam": "Reza & Elaha",
       "datum": "November 2023",
-      "focus": "18% 45%"
+      "focus": "50% 58%"
     }
   ],
   "reviewsLink": {
@@ -152,7 +151,7 @@
     "tekst": "Hebben jullie vragen, willen jullie kennismaken of samen ontdekken wat bij jullie past? Ik hoor graag van jullie en denk met jullie mee.",
     "knop": {
       "label": "Plan een kennismaking",
-      "href": "/contact"
+      "href": "/contact#formulier"
     }
   },
   "trouwboek": {

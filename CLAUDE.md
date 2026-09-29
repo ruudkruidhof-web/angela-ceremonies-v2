@@ -83,6 +83,16 @@ Per pagina: meta + Open Graph + JSON-LD (Service / Person / Review / FAQPage). `
 - Kling met hetzelfde begin- en eindbeeld beweegt nauwelijks; geen ffmpeg of Homebrew op deze Mac (gebruik `../02 Beeld/venv` met imageio-ffmpeg); Playwright-Chromium speelt geen H.264, video-QA via de Playwright-MCP.
 - Brede posters met `object-fit: cover` hebben een `sizes` nodig die de echte weergavebreedte geeft (`max(100vw, 178vh)` bij 16:9).
 
+**Feedback Ruud 29 september 2026, gedaan:** alle fotocredits weg (hero, overlays, footer; fotograafdata blijft in `fotos.json` voor de rechten), reviews Claire & Theo en Reza & Elaha met sfeerbeeld zonder mensen, tarieven-hero Zichtenburg, Den Haag-hero Zichtenburg-bruidspaar, Over mij-bio nu Angela lachend achter de lessenaar, Contact uit het menu, alle kennismakingsknoppen (ook coaching, die een mailtje opende) naar `/contact#formulier`, formulier compacter en past in één viewport (gemeten 1440x900, 1280x720, 390x700), pagina scrollt zelf naar het formulier.
+
+**Feedback Ruud, nog te doen (in deze volgorde):**
+1. Cijfers (490+, 2018, heel NL) direct onder "Hi, ik ben Angela" en opnieuw ontwerpen met karakter; nu te standaard. Idee: donkere band met grote gouden italic cijfers, tellers, en een marquee van diensten/plaatsen die op scrollsnelheid reageert.
+2. Trouwboek moet altijd volledig in één viewport passen (ook 1280x720 en 1366x768; onderschriften vielen weg) en professioneler: elke kaart een titel en tekst, teller "01 / 07", strakkere uitlijning. Hoogte afleiden van `100svh` min kop en onderschrift.
+3. Hover-interacties door de hele site: knoppen met vulling, links met tekenende onderstreping, beelden zoom plus warme gloed, kaarten tillen, magnetische CTA's (alleen `pointer: fine`).
+4. Alle paginaheroes en uitsneden nalopen op rare zooms (Ruud noemde tarieven; trouwen vindt hij heel goed).
+
+**Daarna: livegang (opdracht Ruud).** Alles naar productie, met de volledige `/pre-livegang`-check over de hele site: formulier echt verzonden en zichtbaar in het dashboard, security-baseline, klantaccount voor Angela in het dashboard, SEO per pagina (titels, descriptions, canonicals, JSON-LD, sitemap, robots, llms.txt, Search Console), en een complete mobile-first-ronde op 390 breed. Let op: Ruud weet dat toestemming van fotografen en stellen nog niet binnen is en besluit zelf om live te gaan.
+
 **Ook nog open:** klantaccount voor Angela, formuliertest (bewust uitgesteld), Search Console-sitemap, cookiebalk op mobiel valt over de hero-knop.
 
 ## Openstaande TODO's (vóór echt productie-compleet)

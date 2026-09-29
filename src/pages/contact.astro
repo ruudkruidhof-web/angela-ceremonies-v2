@@ -58,7 +58,7 @@ const jsonLd = {
         </ul>
       </aside>
 
-      <div class="contact-form-wrap reveal" style="--reveal-delay:120ms">
+      <div class="contact-form-wrap" id="formulier">
         <h2 class="form-title">{c.formulier.titel}</h2>
         <p class="form-intro">{c.formulier.intro}</p>
 
@@ -85,7 +85,7 @@ const jsonLd = {
           </div>
           <label class="field">
             <span>Bericht</span>
-            <textarea name="bericht" rows="5" required placeholder="Vertel iets over jullie trouwdag, wensen of vragen..."></textarea>
+            <textarea name="bericht" rows="3" required placeholder="Vertel iets over jullie trouwdag, wensen of vragen..."></textarea>
           </label>
           <input type="text" name="company" class="field-company" tabindex="-1" autocomplete="off" aria-hidden="true" />
           <div class="cf-turnstile" data-sitekey="0x4AAAAAAFAXqZ8GdG-36PZw"></div>
@@ -121,14 +121,15 @@ const jsonLd = {
     background: var(--white);
     border: 1px solid var(--line);
     border-radius: 4px;
-    padding: clamp(1.75rem, 4vw, 3rem);
+    padding: clamp(1.25rem, 2.6vw, 1.9rem);
     box-shadow: var(--shadow-soft);
+    scroll-margin-top: 96px;
   }
-  .form-title { font-size: 1.6rem; }
-  .form-intro { color: var(--muted); margin: 0.6rem 0 1.8rem; font-size: 0.97rem; }
-  .contact-form { display: flex; flex-direction: column; gap: 1.1rem; }
-  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; }
-  .field { display: flex; flex-direction: column; gap: 0.45rem; }
+  .form-title { font-size: 1.5rem; }
+  .form-intro { color: var(--muted); margin: 0.4rem 0 1.25rem; font-size: 0.97rem; }
+  .contact-form { display: flex; flex-direction: column; gap: 0.8rem; }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+  .field { display: flex; flex-direction: column; gap: 0.35rem; }
   .field span { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; color: var(--brown); }
   .field span em { font-style: normal; font-weight: 400; color: var(--muted); }
   .field input, .field textarea {
@@ -138,7 +139,7 @@ const jsonLd = {
     background: var(--cream);
     border: 1px solid var(--line);
     border-radius: 3px;
-    padding: 0.8rem 0.95rem;
+    padding: 0.7rem 0.9rem;
     transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
   }
   .field input::placeholder, .field textarea::placeholder { color: hsl(26 12% 56%); }
@@ -149,7 +150,7 @@ const jsonLd = {
     box-shadow: 0 0 0 3px hsl(36 40% 47% / 0.12);
   }
   .field textarea { resize: vertical; }
-  .form-submit { margin-top: 0.6rem; align-self: flex-start; }
+  .form-submit { margin-top: 0.3rem; align-self: flex-start; }
   .field-company { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
   .form-melding { font-size: 0.92rem; color: var(--brown); margin: 0; }
   .form-melding:empty { display: none; }
@@ -163,6 +164,10 @@ const jsonLd = {
     .contact-grid { grid-template-columns: 1fr; }
   }
   @media (max-width: 520px) {
+    .form-intro { margin-bottom: 1rem; font-size: 0.92rem; }
+    .field input, .field textarea { padding: 0.65rem 0.8rem; }
+  }
+  @media (max-width: 359px) {
     .field-row { grid-template-columns: 1fr; }
   }
 </style>
@@ -216,5 +221,15 @@ const jsonLd = {
     });
   }
 
-  document.addEventListener('astro:page-load', initContactForm);
+  function scrollNaarFormulier() {
+    if (location.hash !== '#formulier') return;
+    const doel = document.getElementById('formulier');
+    if (!doel) return;
+    requestAnimationFrame(() => requestAnimationFrame(() => doel.scrollIntoView({ block: 'start', behavior: 'instant' })));
+  }
+
+  document.addEventListener('astro:page-load', () => {
+    initContactForm();
+    scrollNaarFormulier();
+  });
 </script>
