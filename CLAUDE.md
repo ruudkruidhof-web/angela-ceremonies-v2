@@ -65,13 +65,16 @@ Per pagina: meta + Open Graph + JSON-LD (Service / Person / Review / FAQPage). `
 
 ## Stand van zaken (29 september 2026)
 
-**Live:** V3.1 met de kas-hero op https://angelaceremonies.com (branch `main`, Vercel-project `angela-ceremonies-v2`). Deze map is de bron van waarheid; de mappen in `~/Case studies/angela-ceremonies*` zijn alleen ontwerpstudies. DNS staat bij Wix (A `@` en `www` naar `76.76.21.21`, SPF `-all`, DMARC `p=reject`); Wix kan geen CAA.
+**Live (29 september 2026, commit `12b9a7d` op `main`):** de volledige Instagram-update, dus Angela's eigen beeld in de hele site, de filmische hero, het trouwboek en de feedbackrondes hieronder. Vercel-project `angela-ceremonies-v2`. Deze map is de bron van waarheid; de mappen in `~/Case studies/angela-ceremonies*` zijn alleen ontwerpstudies. DNS staat bij Wix (A `@` en `www` naar `76.76.21.21`, SPF `-all`, DMARC `p=reject`); Wix kan geen CAA en geen DNSSEC. `HANDOFF.md` is verouderd (stand juni), deze file is leidend.
 
-**Branch `instagram-fotos` (preview, nog niet op productie):** Angela's eigen Instagram-beelden in de hele site.
+**Wat de Instagram-update bevat:**
 - Alle 37 beelden van @angela_ceremonies in de hoogste resolutie die Instagram levert staan in `../02 Beeld/instagram-2026-09-29/origineel` (met `instagram.json`: bijschriften, datums). Opgeknapt met `opknappen.py` (OpenCV EDSR-superresolutie, lichte CLAHE, zachte verscherping), naar de site gezet met `naar-site.py` in `src/assets/instagram/`.
-- Beeldkeuze is content: `src/content/fotos.json` (alt, fotograaf, `watermerk`) en per pagina een `beeld: { bron, focus }` in de JSON. `src/lib/fotos.ts` levert `foto(sleutel)`. Credit per foto via `Credit.astro`, behalve bij een zichtbaar watermerk; alle fotografen staan in de footer.
-- Homepage: hero is een filmische montage (`../02 Beeld/hero-wereldmuseum-2026-09-29/`, `montage.py` + `shots.json`, `afronden.py`): een Kling-shot met vaste camera van de Wereldmuseum-foto, daarna Ken Burns over echte foto's, één grading, overvloeiers, naadloze loop. Nieuw horizontaal "trouwboek" (GSAP-pin op desktop, swipe op mobiel). Over mij kreeg "Achter de schermen".
-- GSAP: titelmasker en scroll-fade in de hero, woord-voor-woord statement (SplitText), tellers, clip-path-onthulling voor elk `[data-img-reveal]`, `[data-parallax]`, parallax op paginaheroes. Alles via `gsap.matchMedia` met reduced-motion.
+- Beeldkeuze is content: `src/content/fotos.json` (alt, fotograaf, `watermerk`) en per pagina een `beeld: { bron, focus }` in de JSON. `src/lib/fotos.ts` levert `foto(sleutel)`. Fotocredits staan niet meer op de site; de fotograafdata blijft in `fotos.json` voor de rechten.
+- Homepage: hero is een filmische montage (`../02 Beeld/hero-wereldmuseum-2026-09-29/`, `montage.py` + `shots.json`, `afronden.py`). Daarna statement, "Hi, ik ben Angela", de donkere cijferband (tellers plus een marquee die op scrollsnelheid reageert, `home.cijfers` en `home.marquee`), het trouwboek, diensten en de rest.
+- Trouwboek: hoogte afgeleid van de viewport via een container query op `.tb-stage` (`--tb-h: calc(100cqh - kop - onderschrift)`), dus altijd in één scherm op desktop (gemeten 1024x768 tot 1920x1080). Elke kaart heeft plaats, titel en tekst, teller "01 / 07" en voortgangsbalk (ook bij swipen op mobiel).
+- Hover door de hele site: knoppen vullen van onder (`::before`, `--fill`/`--fill-fg` per variant, in donkere secties per sectie overschreven), tekstlinks tekenen hun onderstreping, beelden zoomen en kleuren warm (`scale` en `filter` op de `img`, globaal in `global.css`), kaarten tillen (`translate`), primaire CTA's zijn magnetisch op `pointer: fine` (`initMagnetic` in `Base.astro`).
+- GSAP: titelmasker en scroll-fade in de hero, woord-voor-woord statement (SplitText), tellers, clip-path-onthulling voor elk `[data-img-reveal]`, `[data-parallax]`, parallax op paginaheroes (schaal 1.08). Alles via `gsap.matchMedia` met reduced-motion.
+- Paginaheroes: `darkHero` op elke pagina met een beeldhero (transparante navigatie), beeldhero op desktop `clamp(560px, 76vh, 820px)` hoog, focus per pagina afgesteld.
 
 **Voor productie nodig (juridisch):** toestemming van de fotografen (Merel Shoot It, KAT Films, FoR Fotografia) en van de stellen die herkenbaar of bij naam in beeld zijn (Devika & Shivam, Leonardo & Evelien), liefst via Angela. Vraag KAT Films om versies zonder watermerk. De namen "Merel Shoot It" en "FoR Fotografia" zijn afgeleid van hun Instagram-handle en watermerk.
 
@@ -83,18 +86,21 @@ Per pagina: meta + Open Graph + JSON-LD (Service / Person / Review / FAQPage). `
 - Kling met hetzelfde begin- en eindbeeld beweegt nauwelijks; geen ffmpeg of Homebrew op deze Mac (gebruik `../02 Beeld/venv` met imageio-ffmpeg); Playwright-Chromium speelt geen H.264, video-QA via de Playwright-MCP.
 - Brede posters met `object-fit: cover` hebben een `sizes` nodig die de echte weergavebreedte geeft (`max(100vw, 178vh)` bij 16:9).
 
-**Feedback Ruud 29 september 2026, gedaan:** alle fotocredits weg (hero, overlays, footer; fotograafdata blijft in `fotos.json` voor de rechten), reviews Claire & Theo en Reza & Elaha met sfeerbeeld zonder mensen, tarieven-hero Zichtenburg, Den Haag-hero Zichtenburg-bruidspaar, Over mij-bio nu Angela lachend achter de lessenaar, Contact uit het menu, alle kennismakingsknoppen (ook coaching, die een mailtje opende) naar `/contact#formulier`, formulier compacter en past in één viewport (gemeten 1440x900, 1280x720, 390x700), pagina scrollt zelf naar het formulier.
+**Feedback Ruud 29 september 2026:** alle punten afgerond (credits weg, rustiger reviewbeelden, formulier in één viewport, cijferband, trouwboek, hover-interacties, heroes nagelopen).
 
-**Feedback Ruud, nog te doen (in deze volgorde):**
-1. Cijfers (490+, 2018, heel NL) direct onder "Hi, ik ben Angela" en opnieuw ontwerpen met karakter; nu te standaard. Idee: donkere band met grote gouden italic cijfers, tellers, en een marquee van diensten/plaatsen die op scrollsnelheid reageert.
-2. Trouwboek moet altijd volledig in één viewport passen (ook 1280x720 en 1366x768; onderschriften vielen weg) en professioneler: elke kaart een titel en tekst, teller "01 / 07", strakkere uitlijning. Hoogte afleiden van `100svh` min kop en onderschrift.
-3. Hover-interacties door de hele site: knoppen met vulling, links met tekenende onderstreping, beelden zoom plus warme gloed, kaarten tillen, magnetische CTA's (alleen `pointer: fine`).
-4. Alle paginaheroes en uitsneden nalopen op rare zooms (Ruud noemde tarieven; trouwen vindt hij heel goed).
+**Livegangcheck 29 september 2026** (rapporten in `../06 Livegang/livegang-voor-2026-09-29.md` en `livegang-na-2026-09-29.md`). Gerepareerd: SEO-titels binnen 60 tekens, horizontale scroll op contact, tikvlakken 44px, menu met Escape en scrollslot, CMS-brug alleen in een iframe, cookiebalk niet meer over de heroknop, CSP afgedwongen. Nog open, wachtend op Ruud:
+1. Formuliertest: formulier staat aan met ontvanger Angela maar is nooit getest.
+2. Klantaccount: site hangt aan Ruuds account; Angela heeft al een account (kamangre@hotmail.com, voor Enjoy the Breeze).
+3. Astro 7 en sharp 0.35 (npm audit critical en high, alleen via major).
+4. LCP homepage 4,1 s mobiel: de herovideo telt als LCP en vloeit pas in na `load`.
+5. Vercel Web Analytics staat uit; CAA en DNSSEC kunnen niet bij Wix; Search Console-sitemap niet ingezien.
 
-**Daarna: livegang (opdracht Ruud).** Alles naar productie, met de volledige `/pre-livegang`-check over de hele site: formulier echt verzonden en zichtbaar in het dashboard, security-baseline, klantaccount voor Angela in het dashboard, SEO per pagina (titels, descriptions, canonicals, JSON-LD, sitemap, robots, llms.txt, Search Console), en een complete mobile-first-ronde op 390 breed. Let op: Ruud weet dat toestemming van fotografen en stellen nog niet binnen is en besluit zelf om live te gaan.
-
-**Ook nog open:** klantaccount voor Angela, formuliertest (bewust uitgesteld), Search Console-sitemap, cookiebalk op mobiel valt over de hero-knop.
+**Lessen uit de livegangcheck:**
+- GSAP laat inline `translate: none` en `transform` achter op alles wat het animeert, waardoor CSS-hover op `.reveal`-elementen nooit werkte. De reveal ruimt nu op (`toonDefinitief` in `Base.astro`, class `is-shown`).
+- Een `<input>` heeft een intrinsieke minimumbreedte; in een grid naast elkaar altijd `minmax(0, 1fr)` en `min-width: 0`.
+- De Astro-dev-server pakt wijzigingen in JSON en scoped CSS niet altijd op; bij twijfel schoon herstarten voor je meet.
+- Turnstile geeft fout 110200 op localhost en previews; alleen op angelaceremonies.com te testen.
 
 ## Openstaande TODO's (vóór echt productie-compleet)
 
-- Nog één Pexels-sfeerbeeld (`ring-exchange.jpg`, geloften vernieuwen en kostenpagina) en de Curaçao-beelden op `/trouwlocatie`; vervangen zodra er eigen beeld is.
+- Nog één Pexels-sfeerbeeld (`ring-exchange.jpg`, geloften vernieuwen op `/trouwen`) en de Curaçao-beelden op `/trouwlocatie`; vervangen zodra er eigen beeld is. De kostenpagina heeft sinds 29 september Angela in het Wereldmuseum.
