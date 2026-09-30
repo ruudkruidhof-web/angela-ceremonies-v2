@@ -89,11 +89,13 @@ Per pagina: meta + Open Graph + JSON-LD (Service / Person / Review / FAQPage). `
 **Feedback Ruud 29 september 2026:** alle punten afgerond (credits weg, rustiger reviewbeelden, formulier in één viewport, cijferband, trouwboek, hover-interacties, heroes nagelopen).
 
 **Livegangcheck 29 september 2026** (rapporten in `../06 Livegang/livegang-voor-2026-09-29.md` en `livegang-na-2026-09-29.md`). Gerepareerd: SEO-titels binnen 60 tekens, horizontale scroll op contact, tikvlakken 44px, menu met Escape en scrollslot, CMS-brug alleen in een iframe, cookiebalk niet meer over de heroknop, CSP afgedwongen. Nog open, wachtend op Ruud:
-1. Formuliertest: formulier staat aan met ontvanger Angela maar is nooit getest.
-2. Klantaccount: site hangt aan Ruuds account; Angela heeft al een account (kamangre@hotmail.com, voor Enjoy the Breeze).
-3. Astro 7 en sharp 0.35 (npm audit critical en high, alleen via major).
-4. LCP homepage 4,1 s mobiel: de herovideo telt als LCP en vloeit pas in na `load`.
+1. Klantaccount: Ruud gaf akkoord om de site aan Angela's account (kamangre@hotmail.com) te hangen, maar het dashboard kan een site niet naar een andere klant verplaatsen. Eerst een werkwoord `verplaatsen` in HB-dashboard, of Ruud zet `sites.owner` zelf om.
+2. Stackvraag (30 september): Ruud wil mogelijk naar Next.js plus Payload. Deze repo is sinds 23 juni Astro, en de `website-bouwen`-skill zegt dat bestaande Astro-sites op Astro blijven. Niet beginnen zonder zijn uitdrukkelijke beslissing; het is een eigen project met daarna een nieuwe livegangcheck.
+3. Astro 7 en sharp 0.35 (npm audit critical en high): wacht op punt 2.
+4. LCP homepage 4,1 s mobiel: voorstel staat in `../06 Livegang/livegang-na-2026-09-30.md` (video direct zichtbaar met eigen eerste frame als poster), wacht op punt 2.
 5. Vercel Web Analytics staat uit; CAA en DNSSEC kunnen niet bij Wix; Search Console-sitemap niet ingezien.
+
+Formuliertest gedaan op 30 september: live inzending opgeslagen, testknop afgeleverd bij Angela. Let op bij geautomatiseerde tests: het endpoint gooit een inzending binnen 3 seconden na Turnstile stil weg, en alles vanaf het kantoor-IP telt als test (geen mail, geen lead).
 
 **Lessen uit de livegangcheck:**
 - GSAP laat inline `translate: none` en `transform` achter op alles wat het animeert, waardoor CSS-hover op `.reveal`-elementen nooit werkte. De reveal ruimt nu op (`toonDefinitief` in `Base.astro`, class `is-shown`).
