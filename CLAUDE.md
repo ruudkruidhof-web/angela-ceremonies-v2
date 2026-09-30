@@ -90,9 +90,9 @@ Per pagina: meta + Open Graph + JSON-LD (Service / Person / Review / FAQPage). `
 
 **Livegangcheck 29 september 2026** (rapporten in `../06 Livegang/livegang-voor-2026-09-29.md` en `livegang-na-2026-09-29.md`). Gerepareerd: SEO-titels binnen 60 tekens, horizontale scroll op contact, tikvlakken 44px, menu met Escape en scrollslot, CMS-brug alleen in een iframe, cookiebalk niet meer over de heroknop, CSP afgedwongen. Nog open, wachtend op Ruud:
 1. Klantaccount: Ruud gaf akkoord om de site aan Angela's account (kamangre@hotmail.com) te hangen, maar het dashboard kan een site niet naar een andere klant verplaatsen. Eerst een werkwoord `verplaatsen` in HB-dashboard, of Ruud zet `sites.owner` zelf om.
-2. Stackvraag (30 september): Ruud wil mogelijk naar Next.js plus Payload. Deze repo is sinds 23 juni Astro, en de `website-bouwen`-skill zegt dat bestaande Astro-sites op Astro blijven. Niet beginnen zonder zijn uitdrukkelijke beslissing; het is een eigen project met daarna een nieuwe livegangcheck.
-3. Astro 7 en sharp 0.35 (npm audit critical en high): wacht op punt 2.
-4. LCP homepage 4,1 s mobiel: voorstel staat in `../06 Livegang/livegang-na-2026-09-30.md` (video direct zichtbaar met eigen eerste frame als poster), wacht op punt 2.
+2. **Besluit Ruud 30 september 2026: migreren naar Next.js plus Payload**, zodat deze site op de standaard staat. Bewuste uitzondering op de regel in `website-bouwen` dat bestaande Astro-sites op Astro blijven. Dit gebeurt eerst, in een schone sessie; de andere open punten komen daarna. Uitgangspunt: `~/hb-starter`, ontwerp en content 1-op-1 behouden (het is een port, geen herontwerp), en na afloop een nieuwe `/pre-livegang`.
+3. Astro 7 en sharp 0.35 (npm audit critical en high): vervalt door de migratie.
+4. LCP homepage 4,1 s mobiel: voorstel staat in `../06 Livegang/livegang-na-2026-09-30.md` (video direct zichtbaar met eigen eerste frame als poster), bouwen in de Next.js-versie.
 5. Vercel Web Analytics staat uit; CAA en DNSSEC kunnen niet bij Wix; Search Console-sitemap niet ingezien.
 
 Formuliertest gedaan op 30 september: live inzending opgeslagen, testknop afgeleverd bij Angela. Let op bij geautomatiseerde tests: het endpoint gooit een inzending binnen 3 seconden na Turnstile stil weg, en alles vanaf het kantoor-IP telt als test (geen mail, geen lead).
