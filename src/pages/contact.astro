@@ -62,7 +62,7 @@ const jsonLd = {
         <h2 class="form-title">{c.formulier.titel}</h2>
         <p class="form-intro">{c.formulier.intro}</p>
 
-        <form class="contact-form" data-hb-form="hbf_0dfe80a4dd0ed935d4bdb9b5" data-hb-lead data-contact-form>
+        <form class="contact-form" method="post" data-hb-form="hbf_0dfe80a4dd0ed935d4bdb9b5" data-hb-lead data-contact-form>
           <div class="field-row">
             <label class="field">
               <span>Voornaam</span>
@@ -87,7 +87,7 @@ const jsonLd = {
             <span>Bericht</span>
             <textarea name="bericht" rows="3" required placeholder="Vertel iets over jullie trouwdag, wensen of vragen..."></textarea>
           </label>
-          <input type="text" name="company" class="field-company" tabindex="-1" autocomplete="off" aria-hidden="true" />
+          <input type="text" name="company" class="field-company" tabindex="-1" autocomplete="off" aria-hidden="true" data-lpignore="true" data-1p-ignore />
           <div class="cf-turnstile" data-sitekey="0x4AAAAAAFAXqZ8GdG-36PZw" data-appearance="interaction-only"></div>
           <button type="submit" class="btn btn-gold form-submit">{c.formulier.knopLabel} <span class="arrow">→</span></button>
           <p class="form-melding" data-hb-melding role="status"></p>
@@ -154,7 +154,7 @@ const jsonLd = {
   }
   .field textarea { resize: vertical; }
   .form-submit { margin-top: 0.3rem; align-self: flex-start; }
-  .field-company { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+  .field-company { display: none; }
   .form-melding { font-size: 0.92rem; color: var(--brown); margin: 0; }
   .form-melding:empty { display: none; }
 
